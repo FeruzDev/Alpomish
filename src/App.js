@@ -20,33 +20,23 @@ import Stadion from "./components/pages/Stadion";
 import Support from "./components/pages/Support";
 import View from "./components/pages/View";
 import Work from "./components/pages/Work";
+import {BrowserRouter, Switch ,Route} from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-        {/*<MainPage />*/}
-        {/*<About/>*/}
-        {/*<Bascet/>*/}
-        {/*<Contacts/>*/}
-        {/*<Events/>*/}
-        {/*<Galery />*/}
-        {/*<Information/>*/}
-        {/*<Login/>*/}
-        {/*<News/>*/}
-        {/*<NewsDetail />*/}
-        {/*<Payback/>*/}
-        {/*<PersonalInfo/>*/}
-        {/*<Politics />*/}
-        {/*<Rules/>*/}
-        {/*<Sections/>*/}
-        {/*<Security/>*/}
-        {/*<Sms/>*/}
-        {/*<Stadion />*/}
-        {/*<Support />*/}
-        {/*<View/>*/}
-        <Work/>
 
-    </div>
+
+
+        <BrowserRouter>
+            <Switch>
+                <Route exact path="/" component={MainPage}/>
+                <Route exact path="/login" component={Login}/>
+                <Route exact path="/events/detail/:id" component={View}/>
+                <Route exact path="/news" component={News}/>
+                <Route exact path="/news/detail/:id" component={News}/>
+            </Switch>
+        </BrowserRouter>
+
   );
 }
 

@@ -1,0 +1,1 @@
+export const API_PATH = "https://muzsaroy.bgsoft.uz/api/"
