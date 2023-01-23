@@ -5,6 +5,7 @@ const initialState ={
 
     eventsList: [],
     eventsItem: {},
+    eventsDate: {},
     newsList: [],
     newsItem: {},
 

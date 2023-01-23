@@ -1,64 +1,55 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import "../../css/sector.css"
 import {connect} from "react-redux";
-import {getEvents, getEventsDetail} from "../../redux/action/allActions";
+import {getEvents, getEventsDetail, updateState} from "../../redux/action/allActions";
+import axios from "axios";
+import {API_PATH} from "../const";
+import {useHistory, useParams} from "react-router-dom";
+
+// Get ID from URL
 
 const View = (props) => {
     const monthsRu = ["month", 'Январь', 'Февраль', "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
+    const history = useHistory()
 
     const feruzjalilov = (value) => {
-        alert(value)
-    }
-    useEffect(() =>{
-        props.getEventsDetail(props.match.params.id)
+        console.log(value)
+        history.push("/events/detail/"+ params.id + "/seal")
 
+    }
+    const params = useParams();
+
+    const [myItem , SetMyItem] = useState({})
+    var url = document.URL
+    const last  =  url.substr(url.lastIndexOf('/') + 1) ;
+    const queryParameters = new URLSearchParams(window.location.search)
+    const type = queryParameters.get("type")
+    const name = queryParameters.get("name")
+    const getDetail = () => {
+        axios.get(API_PATH + "event/" +  params.id)
+            .then(res => {
+                SetMyItem( res.data);
+                localStorage.setItem("title", res.data.title)
+                localStorage.setItem("desc", res.data.desc)
+                localStorage.setItem("age_limit", res.data.age_limit)
+                localStorage.setItem("image", res.data.image)
+                localStorage.setItem("slug", res.data.slug)
+                localStorage.setItem("status", res.data.status)
+                localStorage.setItem("eventDate", res.data.eventDate[0]?.eventDate)
+                localStorage.setItem("eventTime", res.data.eventDate[0]?.eventTime)
+                localStorage.setItem("eventDateStatus", res.data.eventDate[0]?.status)
+                console.log( res.data);
+            })
+    }
+    useEffect(() => {
+        getDetail()
+        console.log(queryParameters)
+        console.log(type)
+        console.log(name)
     }, [])
     return (
         <div className="body-site">
-            <header className="header">
-                <div className="container">
-                    <nav className="navbar navbar-expand-lg">
-                        <div className="container-fluid">
-                            <a className="navbar-brand" href="index.html"><img src="/images/logo.png" alt="logo"/></a>
-                            <button className="navbar-toggler focus-none" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                                    aria-expanded="false" aria-label="Toggle navigation">
-                                <i className="fas fa-bars"/>
-                            </button>
-                            <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                                <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-xl-9 ms-lg-5 ms-0">
-                                    <li className="nav-item">
-                                        <a className="nav-link text-grey text-blue_5" aria-current="page"
-                                           href="events.html">Мероприятий</a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a className="nav-link text-grey" href="sections.html">Секции</a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a className="nav-link text-grey" href="information.html">Каток</a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a className="nav-link text-grey" href="#">Контакты</a>
-                                    </li>
-                                </ul>
-                                <form className="d-flex justify-content-between align-items-center" role="search">
-                                    <a href="basket.html"
-                                       className="btn focus-none basket-btn text-grey me-4  text-decoration-none"
-                                       type="button">
-                                        <img src="/images/basket_icon.svg" alt="icon"/> Корзина
-                                    </a>
-                                    {/*                        <button class="btn focus-none login-btn" type="button">Войти</button>*/}
-                                    <button className="btn  focus-none login-btn rounded-circle" type="button"
-                                            data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
-                                            aria-controls="offcanvasExample">
-                                        <i className="fas fa-user"/>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
-            </header>
+           
             <div className="offcanvas offcanvas-end" tabIndex={-1} id="offcanvasExample"
                  aria-labelledby="offcanvasExampleLabel">
                 <div className="offcanvas-header">
@@ -130,27 +121,28 @@ const View = (props) => {
                                     <li className="breadcrumb-item "><a href="#"
                                                                         className="text-grey text-decoration-none">Мероприятий</a>
                                     </li>
-                                    <li className="breadcrumb-item  active" aria-current="page">{props.eventsItem?.title}</li>
+                                    <li className="breadcrumb-item  active" aria-current="page">{localStorage.getItem("title")}</li>
                                 </ol>
                             </nav>
                             <div className="row">
                                 <div className="col-lg-6 mt-lg-0 mt-3" style={{borderRadius: '20px'}}>
-                                    <img src={ props.eventsItem?.image} className="w-100" alt="view"/>
+                                    <img src={localStorage.getItem("image")} className="w-100" alt="view"/>
                                 </div>
                                 <div
                                     className="col-lg-6 mt-lg-0 mt-3 ps-lg-5 d-flex flex-column justify-content-center">
-                                    <p className="fs-32 fw-bold text-black_dark">{props.eventsItem?.title}</p>
+                                    <p className="fs-32 fw-bold text-black_dark">{localStorage.getItem("title")}</p>
                                     <div className="d-flex">
                                         <p className="w-lg-15 fw-bolder fs-14 lh-24 text-black_dark mb-2">Дата</p>
-                                        <p className="w-lg-75 text-blue_2 lh-24 fw-600">{props.eventsItem?.eventDate[0].eventDate?.slice(8, 10) + " " + monthsRu[Number(props.eventsItem?.eventDate[0].eventDate.slice(5, 7))] + " " + props.eventsItem?.eventDate[0].eventDate.slice(0, 4) }  </p>
+                                        <p className="w-lg-75 text-blue_2 lh-24 fw-600">{localStorage.getItem("eventDate")?.slice(8, 10) + " " + monthsRu[Number(localStorage.getItem("eventDate")?.slice(5, 7))] + " " + localStorage.getItem("eventDate")?.slice(0, 4) }  </p>
+
                                     </div>
                                     <div className="d-flex">
                                         <p className="w-lg-15 fw-bolder fs-14 lh-24 text-black_dark mb-2">Время</p>
-                                        <p className="w-lg-75 text-blue_2 lh-24 fw-600">   {props.eventsItem?.eventDate[0].eventTime?.slice(0, 5)}</p>
+                                        <p className="w-lg-75 text-blue_2 lh-24 fw-600"> {localStorage.getItem("eventTime")?.slice(0, 5)}</p>
                                     </div>
                                     <div className="d-flex">
                                         <p className="w-lg-15 fw-bolder fs-14 lh-24 text-black_dark mb-2">Возраст</p>
-                                        <p className="w-lg-75 text-blue_2 lh-24 fw-600">{props.eventsItem?.age_limit}</p>
+                                        <p className="w-lg-75 text-blue_2 lh-24 fw-600">{localStorage.getItem("age_limit")}</p>
                                     </div>
                                     <div className="d-flex">
                                         <p className="w-lg-15 fw-bolder fs-14 lh-24 text-black_dark mb-2">Где</p>
@@ -230,7 +222,7 @@ const View = (props) => {
                                         fill="#AFAFAF"/>
                                     <path
                                         d="M1066.1 319.1H1139.6V128C1139.6 101.2 1129.1 76.9 1112 59L999.4 173.5C1037.7 210.7 1062.6 262 1066.1 319.1Z"
-                                        className="f-hover" onClick={() => feruzjalilov(12)} fill-opacity="0.3"/>
+                                        className="f-hover" onClick={() => feruzjalilov("A1")} fill-opacity="0.3"/>
                                     <path
                                         d="M1074.6 341.6H1139.7V335.6C1117.4 335.6 1090.5 335.6 1074.4 335.6C1074.4 337.6 1074.5 339.6 1074.6 341.6Z"
                                         fill="#AFAFAF"/>
@@ -409,19 +401,19 @@ const View = (props) => {
                                     <path d="M579.1 66.8H577.9V102.9H579.1V66.8Z" fill="#AFAFAF"/>
                                     <path d="M1139.6 331.4H1074.6V464.2H1139.6V331.4Z" fill="#AFAFAF"/>
                                     <path d="M452.8 690.1H343.8V771.9H452.8V690.1Z" className="f-hover"
-                                          onClick={() => feruzjalilov(12)} fill-opacity="0.3"/>
+                                          onClick={() => feruzjalilov("B5")} fill-opacity="0.3"/>
                                     <path d="M452.1 28H343.1V109.8H452.1V28Z" className="f-hover"
-                                          onClick={() => feruzjalilov(12)} fill-opacity="0.3"/>
+                                          onClick={() => feruzjalilov("A5")} fill-opacity="0.3"/>
                                     <path d="M841.8 690.1H695.6V771.9H841.8V690.1Z" className="f-hover"
-                                          onClick={() => feruzjalilov(12)} fill-opacity="0.3"/>
+                                          onClick={() => feruzjalilov("B3")} fill-opacity="0.3"/>
                                     <path d="M841.1 28H694.9V109.8H841.1V28Z" className="f-hover"
-                                          onClick={() => feruzjalilov(12)} fill-opacity="0.3"/>
+                                          onClick={() => feruzjalilov("A3")} fill-opacity="0.3"/>
                                     <path d="M673.3 690.1H475.1V771.9H673.3V690.1Z" className="f-hover"
-                                          onClick={() => feruzjalilov(12)} fill-opacity="0.3"/>
+                                          onClick={() => feruzjalilov("B4")} fill-opacity="0.3"/>
                                     <path d="M672.6 28H474.4V109.8H672.6V28Z" className="f-hover"
-                                          onClick={() => feruzjalilov(12)} fill-opacity="0.3"/>
+                                          onClick={() => feruzjalilov("A4")} fill-opacity="0.3"/>
                                     <path d="M1139.5 331.4H1074.5V464.2H1139.5V331.4Z" fill="#D9D9D9"
-                                          className="f-hover" onClick={() => feruzjalilov(12)} fill-opacity="0.3"/>
+                                          className="f-hover" onClick={() => feruzjalilov("D1")} fill-opacity="0.3"/>
                                     <path d="M1100.6 339.6H1109.3V451.4H1100.6V339.6Z" fill="#FFD600"/>
                                     <path d="M1097 358H1088.9V426.9H1097V358Z" fill="#FFD600"/>
                                     <path d="M1121.7 339.6H1113V451.4H1121.7V339.6Z" fill="#FFD600"/>
@@ -488,7 +480,7 @@ const View = (props) => {
                                           fill="#AFAFAF"/>
                                     <path fill-rule="evenodd" clip-rule="evenodd"
                                           d="M1112 59C1093.8 39.9 1068.1 28 1039.6 28H857.2V112.7C912.3 114.6 962.1 137.4 999.4 173.5L1112 59Z"
-                                          className="f-hover" onClick={() => feruzjalilov(12)} fill-opacity="0.3"/>
+                                          className="f-hover" onClick={() => feruzjalilov("A2")} fill-opacity="0.3"/>
                                     <path
                                         d="M1112 740.9L1002.4 629.4C1044.2 588.3 1071.4 529.7 1074.3 464.1C1090.4 464.1 1117.3 464.1 1139.6 464.1V671.8C1139.7 698.6 1129.1 722.9 1112 740.9Z"
                                         fill="#AFAFAF"/>
@@ -525,7 +517,7 @@ const View = (props) => {
                                         fill="#AFAFAF"/>
                                     <path
                                         d="M1066.1 480.7H1139.6V671.9C1139.6 698.7 1129.1 723 1112 740.9L999.4 626.3C1037.7 589.1 1062.6 537.9 1066.1 480.7Z"
-                                        className="f-hover" onClick={() => feruzjalilov(12)} fill-opacity="0.3"/>
+                                        className="f-hover" onClick={() => feruzjalilov("B1")} fill-opacity="0.3"/>
                                     <path
                                         d="M1112 740.9C1093.8 760 1068.1 771.9 1039.6 771.9H857.2V690.1C857.4 690.1 857.6 690.1 857.8 690.1C913.4 690.1 964.1 667.2 1002.4 629.5L1112 740.9Z"
                                         fill="#AFAFAF"/>
@@ -562,7 +554,7 @@ const View = (props) => {
                                           fill="#AFAFAF"/>
                                     <path fill-rule="evenodd" clip-rule="evenodd"
                                           d="M1112 740.9C1093.8 760 1068.1 771.9 1039.6 771.9H857.2V687.2C912.3 685.3 962.1 662.5 999.4 626.4L1112 740.9Z"
-                                          className="f-hover" onClick={() => feruzjalilov(12)} fill-opacity="0.3"/>
+                                          className="f-hover" onClick={() => feruzjalilov("B2")} fill-opacity="0.3"/>
                                     <path
                                         d="M49.9 59L159.5 170.5C117.7 211.6 90.5 270.2 87.6 335.8C71.5 335.8 44.6 335.8 22.3 335.8V128C22.3 101.2 32.8 76.9 49.9 59Z"
                                         fill="#AFAFAF"/>
@@ -594,13 +586,13 @@ const View = (props) => {
                                         fill="#AFAFAF"/>
                                     <path
                                         d="M95.8 319.1H22.3V128C22.3 101.2 32.8 76.9 49.9 59L162.5 173.6C124.3 210.7 99.3 262 95.8 319.1Z"
-                                        className="f-hover" onClick={() => feruzjalilov(12)} fill-opacity="0.3"/>
+                                        className="f-hover" onClick={() => feruzjalilov("A7")} fill-opacity="0.3"/>
                                     <path
                                         d="M87.4 341.6H22.3V335.6C44.6 335.6 71.5 335.6 87.6 335.6C87.5 337.6 87.4 339.6 87.4 341.6Z"
                                         fill="#AFAFAF"/>
                                     <path d="M87.3 331.4H22.3V464.2H87.3V331.4Z" fill="#AFAFAF"/>
                                     <path d="M87.4 331.4H22.4V464.2H87.4V331.4Z" fill="#D9D9D9" className="f-hover"
-                                          onClick={() => feruzjalilov(12)} fill-opacity="0.3"/>
+                                          onClick={() => feruzjalilov("C1")} fill-opacity="0.3"/>
                                     <path d="M61.3 451.4H52.6V339.6H61.3V451.4Z" fill="#FFD600"/>
                                     <path d="M73.1 358H65V426.9H73.1V358Z" fill="#FFD600"/>
                                     <path d="M49 339.6H40.3V451.4H49V339.6Z" fill="#FFD600"/>
@@ -666,7 +658,7 @@ const View = (props) => {
                                           fill="#AFAFAF"/>
                                     <path fill-rule="evenodd" clip-rule="evenodd"
                                           d="M49.9 59C68.1 39.9 93.8 28 122.3 28H304.7V112.7C249.6 114.6 199.8 137.4 162.5 173.5L49.9 59Z"
-                                          className="f-hover" onClick={() => feruzjalilov(12)} fill-opacity="0.3"/>
+                                          className="f-hover" onClick={() => feruzjalilov("A6")} fill-opacity="0.3"/>
                                     <path
                                         d="M49.9 740.9L159.5 629.4C117.7 588.3 90.5 529.7 87.6 464.1C71.5 464.1 44.6 464.1 22.3 464.1V671.8C22.3 698.6 32.8 722.9 49.9 740.9Z"
                                         fill="#AFAFAF"/>
@@ -696,7 +688,7 @@ const View = (props) => {
                                         fill="#AFAFAF"/>
                                     <path
                                         d="M95.8 480.7H22.3V671.9C22.3 698.7 32.8 723 49.9 740.9L162.5 626.3C124.3 589.1 99.3 537.9 95.8 480.7Z"
-                                        className="f-hover" onClick={() => feruzjalilov(12)} fill-opacity="0.3"/>
+                                        className="f-hover" onClick={() => feruzjalilov("B7")} fill-opacity="0.3"/>
                                     <path
                                         d="M49.9 740.9C68.1 760 93.8 771.9 122.3 771.9H304.7V690.1C304.5 690.1 304.3 690.1 304.1 690.1C248.5 690.1 197.8 667.2 159.5 629.5L49.9 740.9Z"
                                         fill="#AFAFAF"/>
@@ -731,16 +723,16 @@ const View = (props) => {
                                           fill="#AFAFAF"/>
                                     <path fill-rule="evenodd" clip-rule="evenodd"
                                           d="M49.9 740.9C68.1 760 93.8 771.9 122.3 771.9H304.7V687.2C249.6 685.3 199.8 662.5 162.5 626.4L49.9 740.9Z"
-                                          className="f-hover" onClick={() => feruzjalilov(12)} fill-opacity="0.3"/>
+                                          className="f-hover" onClick={() => feruzjalilov("B6")} fill-opacity="0.3"/>
                                 </svg>
 
 
                             </div>
                             <p className="text-black_dark fw-bold fs-38 col mb-lg-0 mb-4">Описание</p>
                             <p className="text-black_dark fs-20 mb-5">
-                                {
-                                    props.eventsItem?.desc
-                                }
+
+                                    {localStorage.getItem("desc")}
+
                             </p>
                             <div className="swiper events-swiper px-lg-5">
                                 <div className="d-flex align-items-center" style={{margin: '0 -48px'}}>
@@ -923,90 +915,7 @@ const View = (props) => {
                     </div>
                 </div>
             </div>
-            <footer className="footer">
-                <div className="container">
-                    <div className="row row-cols-xl-4 row-cols-md-2 pb-lg-7 pb-5 border-bottom border-blue_3">
-                        <div>
-                            <img src="/images/logo_white.png" className="w-md-auto w-100" alt="logo"/>
-                            <div className="mt-4">
-                                <div className="mb-2">
-                                    <a href="tel: +99899 939-44-09"
-                                       className="text-light_grey fw-bold text-decoration-none">+99899
-                                        939-44-09</a>
-                                </div>
-                                <div className="mb-2">
-                                    <a href="tel: +99890 094-49-88"
-                                       className="text-light_grey fw-bold text-decoration-none">+99890
-                                        094-49-88</a>
-                                </div>
-                                <div className="mb-2">
-                                    <span className="text-light_grey">Служба поддержки</span>
-                                    <div className="mt-3">
-                                        <img src="/images/facebook.svg" className alt="social"/>
-                                        <img src="/images/twitter.svg" className="mx-3" alt="social"/>
-                                        <img src="/images/linkedin.svg" className alt="social"/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="pt-2">
-                            <span className="text-white text-capitalize fw-bold fs-18">Информация</span>
-                            <div className="mt-4">
-                                <div className="mb-2">
-                                    <a href="#"
-                                       className="text-light_grey text-decoration-none font-DM fw-500">Помощь</a>
-                                </div>
-                                <div className="mb-2">
-                                    <a href="#" className="text-light_grey text-decoration-none font-DM fw-500">Правила
-                                        и условия</a>
-                                </div>
-                                <div className="mb-2">
-                                    <a href="#" className="text-light_grey text-decoration-none font-DM fw-500">Возврат
-                                        и обмен</a>
-                                </div>
-                                <div className="mb-2">
-                                    <a href="#" className="text-light_grey text-decoration-none font-DM fw-500">Политика
-                                        конфиденциальности</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="pt-2">
-                            <span className="text-white text-capitalize fw-bold fs-18">О нас</span>
-                            <div className="mt-4">
-                                <div className="mb-2">
-                                    <a href="#" className="text-light_grey text-decoration-none font-DM fw-500">Наш
-                                        адресс</a>
-                                </div>
-                                <div className="mb-2">
-                                    <a href="#"
-                                       className="text-light_grey text-decoration-none font-DM fw-500">Контакты</a>
-                                </div>
-                                <div className="mb-2">
-                                    <a href="#"
-                                       className="text-light_grey text-decoration-none font-DM fw-500">Новости</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="pt-2">
-                            <span className="text-white text-capitalize fw-bold fs-18">Настройки</span>
-                            <div className="dropdown mt-4">
-                                <button className="btn dropdown-toggle custom-dropdown focus-none" type="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                    Русский <i className="fas fa-sort ms-3 text-grey"/>
-                                </button>
-                                <ul className="dropdown-menu">
-                                    <li><a className="dropdown-item" href="#">Action</a></li>
-                                    <li><a className="dropdown-item" href="#">Another action</a></li>
-                                    <li><a className="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="text-center my-3 text-light_grey">
-                        Copyright © 2022 Alpomish Muz Saroyi
-                    </div>
-                </div>
-            </footer>
+          
         </div>
     );
 };
@@ -1014,6 +923,10 @@ const View = (props) => {
 const mapStateToProps = (state) =>{
     return{
         eventsItem: state.allReducerData.eventsItem,
+        eventsDate: state.allReducerData.eventsDate,
     }
 }
 export default connect(mapStateToProps, {getEvents, getEventsDetail})(View);
+
+
+

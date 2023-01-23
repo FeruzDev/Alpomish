@@ -27,8 +27,8 @@ export function getEventsDetail(id){
         const last  =  url.substr(url.lastIndexOf('/') + 1) ;
         axios.get(API_PATH + "event/" +  last)
             .then(res => {
-                console.log(last)
                 dispatch(updateState({eventsItem: res.data}));
+                dispatch(updateState({eventsDate: res.data.eventsDate[0]}));
 
             })
     }

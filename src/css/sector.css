@@ -5,3 +5,115 @@
     /*fill: rgba(8, 43, 232, 0.9) !important;*/
     fill: #8EC8FF !important;
 }
+.my-seals{}
+.my-seals div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.my-seals div button{
+    border: 1.5036px solid #5F5F5F;
+    border-radius: 11.277px;
+    font-size: 22.554px;
+    line-height: 27px;
+    height: 44.23px;
+    width: 49.75px;
+    color: #5A5A5A;
+
+    margin-right: 10px;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+.range-1{
+    background: #131F6A;
+    color: #FFFFFF !important;
+}
+.range-2{
+    background: #0F18F4;
+    color: #FFFFFF !important;
+}
+.range-3{
+    background: #C428DD;
+    color: #FFFFFF !important;
+}
+.mini-bascet{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFF;
+    border: 2px solid #131F6A;
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.right-sidebar{
+    position: fixed;
+    right: 0;
+    width: 100%;
+    top: 0;
+    height: 100vh;
+    transition: 2s ;
+    display: flex;
+    animation: 1s linear infinite ;
+
+}
+.right-sidebar .right-sidebar-item-left{
+    width: calc(100% - 300px);
+    background-color: rgba(14, 15, 17, 0.87);
+
+}
+.right-sidebar .right-sidebar-item{
+    width: 300px;
+    position: absolute;
+    right: 0;
+    transform: translateX(-300px);
+    height: 100%;
+    background-color: rgb(44, 41, 119);
+    animation: 1s linear infinite ;
+    color: #fff;
+    padding-left: 20px;
+    padding-right: 20px;
+
+}
+.right-sidebar .side-open .cross img{
+    width: 100%;
+
+}
+.right-sidebar .side-open .cross{
+    position: absolute;
+    border: none;
+    background-color: transparent;
+    width: 30px;
+    left: 12px;
+    top: 22px;
+
+}
+.right-sidebar .side-open{
+    transform: translateX(0px);
+    animation: 1s linear infinite ;
+
+
+}
+.right-sidebar .places{
+   border: 1px solid #fff;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.right-sidebar .places p {
+    margin: 0;
+    padding-right: 0px;
+}
+.right-sidebar .places span{
+    font-size: 14px;
+}
+.right-sidebar .places button img{
+    width: 100%;
+}
+.right-sidebar .places button{
+    border: none;
+    width: 32px;
+    background-color: transparent;
+    padding-bottom: 10px;
+}

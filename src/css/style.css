@@ -10343,6 +10343,9 @@ fieldset:disabled .btn {
 .text-blue_1 {
     color: #242565 !important;
 }
+.text-blue_1 a{
+    color: #242565 !important;
+}
 
 .text-blue_2 {
     color: #1D275F !important;
