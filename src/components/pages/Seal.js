@@ -93,6 +93,7 @@ const Seal = (props) => {
         {number: "1", status: "1", range: "1", row: "6"},
         {number: "1", status: "1", range: "1", row: "6"},
     ]
+    const [fPlace, setFPlace] = useState([])
     const params = useParams();
     const [myItem , SetMyItem] = useState({})
     var url = document.URL
@@ -119,8 +120,23 @@ const Seal = (props) => {
                 localStorage.setItem("eventDateStatus", res.data.eventDate[0]?.status)
             })
     }
+    const getSeals = () => {
+      axios.post(API_PATH + "event-place", {
+          "event_id": 1,
+          "block_name": "A1",
+          "event_date":"2023-01-30",
+          "event_time":"11:00"
+      })
+          .then(res =>{
+              setFPlace(res.data.count_place)
+              console.log(res)
+              console.log(res.data)
+              console.log(res.data.count_place)
+          })
+    }
     useEffect(() => {
         getDetail()
+        getSeals()
     }, [])
     return (
         <div className="body-site">
@@ -256,10 +272,10 @@ const Seal = (props) => {
                                 {/*<img src="/images/view_2.png" className="w-100 mt-4" alt="station" />*/}
                                <div className="frows">
                                    {
-                                       place.map((item, index) =>(
+                                       fPlace?.map((item, index) =>(
                                            <>
                                                {
-                                                   item.row === "1" ?
+                                                   item.row === 1 ?
                                                        <button onClick={() => selectPlace(item)}>{item.number}</button>
                                                    : ""
                                                }
@@ -270,10 +286,10 @@ const Seal = (props) => {
                                </div>
                                 <div className="frows">
                                     {
-                                        place.map((item, index) =>(
+                                        fPlace.map((item, index) =>(
                                             <>
                                                 {
-                                                    item.row === "2" ?
+                                                    item.row === 2 ?
                                                         <button onClick={() => selectPlace(item)}>{item.number}</button>
                                                         : ""
                                                 }</>
@@ -283,10 +299,10 @@ const Seal = (props) => {
                                 </div>
                                 <div className="frows">
                                     {
-                                        place.map((item, index) =>(
+                                        fPlace.map((item, index) =>(
                                             <>
                                                 {
-                                                    item.row === "3" ?
+                                                    item.row === 3 ?
                                                         <button onClick={() => selectPlace(item)}>{item.number}</button>
                                                         : ""
                                                 }</>
@@ -296,10 +312,10 @@ const Seal = (props) => {
                                 </div>
                                 <div className="frows">
                                     {
-                                        place.map((item, index) =>(
+                                        fPlace.map((item, index) =>(
                                             <>
                                                 {
-                                                    item.row === "4" ?
+                                                    item.row === 4 ?
                                                         <button onClick={() => selectPlace(item)}>{item.number}</button>
                                                         : ""
                                                 }</>
@@ -309,10 +325,10 @@ const Seal = (props) => {
                                 </div>
                                 <div className="frows">
                                     {
-                                        place.map((item, index) =>(
+                                        fPlace.map((item, index) =>(
                                             <>
                                                 {
-                                                    item.row === "5" ?
+                                                    item.row === 5 ?
                                                         <button onClick={() => selectPlace(item)}>{item.number}</button>
                                                         : ""
                                                 }</>
@@ -322,10 +338,10 @@ const Seal = (props) => {
                                 </div>
                                 <div className="frows">
                                     {
-                                        place.map((item, index) =>(
+                                        fPlace.map((item, index) =>(
                                             <>
                                                 {
-                                                    item.row === "6" ?
+                                                    item.row === 6 ?
                                                         <button onClick={() => selectPlace(item)}>{item.number}</button>
                                                         : ""
                                                 }</>

@@ -96,6 +96,14 @@
   width: 60px;
   height: 60px;
   font-size: 24px; }
+.custom-swiper-btn-mini {
+  color: #969FA8;
+  width: 32px !important;
+  height: 32px !important;
+  /*font-size: 24px;*/
+  background: #F2F3F7;
+  border-radius: 6px;
+}
 
 @media (max-width: 1024px) {
   .custom-swiper-btn {
@@ -103,7 +111,7 @@
     height: 40px;
     font-size: 20px; } }
 
-.header-carousel .custom-swiper-btn::after {
+ .custom-swiper-btn::after {
   display: none; }
 
 .custom-dropdown {

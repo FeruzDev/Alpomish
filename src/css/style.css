@@ -45382,7 +45382,34 @@ fieldset:disabled .btn {
     position: relative;
     transition-property: transform;
 }
+.swiper-slide-mini {
+    border: none;
+    position: relative;
+    transition-property: transform;
+    background-color: transparent;
+    padding: 0;
+}
 
+.my-mini-galery .slick-slide {
+    width: 100px !important;
+    border-radius: 10px;
+    margin-right: 16px;
+
+    height: 56px !important;
+}
+.my-mini-galery .swiper {
+   overflow: inherit !important;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.swiper-button-prev-mini{
+    top: 58% !important;
+    left: -20px !important;
+}
+.swiper-button-next-mini{
+    top: 58% !important;
+    right: -20px !important;
+}
 .swiper-slide-invisible-blank {
     visibility: hidden;
 }
