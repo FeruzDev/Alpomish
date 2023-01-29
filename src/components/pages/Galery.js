@@ -95,6 +95,7 @@ const Galery = () => {
                     </div>
                 </div>
             </div>
+
             <div className="bg-snow-2">
                 <div className="mt-4 pb-10 mb-5">
                     <div className="container my-mini-galery">
