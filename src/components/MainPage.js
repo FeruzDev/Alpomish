@@ -14,6 +14,7 @@ const MainPage = (props) => {
     const monthsRu = ["month", 'Январь', 'Февраль', "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
 
 
+
     useEffect(() => {
         props.getEvents()
         props.getNews()

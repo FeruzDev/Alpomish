@@ -10,89 +10,6 @@ const Seal = (props) => {
     const monthsRu = ["month", 'Январь', 'Февраль', "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
     const [bascetList, setBascetlist] = useState([])
     const [side, setSide] = useState(false)
-    const place = [
-        {number: "1", status: "1", range: "1", row: "1"},
-        {number: "2", status: "1", range: "1", row: "1"},
-        {number: "3", status: "1", range: "1", row: "1"},
-        {number: "4", status: "1", range: "1", row: "1"},
-        {number: "5", status: "1", range: "1", row: "1"},
-        {number: "6", status: "1", range: "1", row: "1"},
-        {number: "7", status: "1", range: "1", row: "1"},
-        {number: "8", status: "1", range: "1", row: "1"},
-        {number: "9", status: "1", range: "1", row: "1"},
-        {number: "1", status: "1", range: "1", row: "1"},
-        {number: "1", status: "1", range: "1", row: "1"},
-        {number: "1", status: "1", range: "1", row: "2"},
-        {number: "1", status: "1", range: "1", row: "2"},
-        {number: "1", status: "1", range: "1", row: "2"},
-        {number: "1", status: "1", range: "1", row: "2"},
-        {number: "1", status: "1", range: "1", row: "2"},
-        {number: "1", status: "1", range: "1", row: "2"},
-        {number: "1", status: "1", range: "1", row: "2"},
-        {number: "1", status: "1", range: "1", row: "2"},
-        {number: "1", status: "1", range: "1", row: "2"},
-        {number: "1", status: "1", range: "1", row: "2"},
-        {number: "1", status: "1", range: "1", row: "2"},
-        {number: "1", status: "1", range: "1", row: "2"},
-        {number: "1", status: "1", range: "1", row: "3"},
-        {number: "1", status: "1", range: "1", row: "3"},
-        {number: "1", status: "1", range: "1", row: "3"},
-        {number: "1", status: "1", range: "1", row: "3"},
-        {number: "1", status: "1", range: "1", row: "3"},
-        {number: "1", status: "1", range: "1", row: "3"},
-        {number: "1", status: "1", range: "1", row: "3"},
-        {number: "1", status: "1", range: "1", row: "3"},
-        {number: "1", status: "1", range: "1", row: "3"},
-        {number: "1", status: "1", range: "1", row: "3"},
-        {number: "1", status: "1", range: "1", row: "3"},
-        {number: "1", status: "1", range: "1", row: "3"},
-        {number: "1", status: "1", range: "1", row: "4"},
-        {number: "1", status: "1", range: "1", row: "4"},
-        {number: "1", status: "1", range: "1", row: "4"},
-        {number: "1", status: "1", range: "1", row: "4"},
-        {number: "1", status: "1", range: "1", row: "4"},
-        {number: "1", status: "1", range: "1", row: "4"},
-        {number: "1", status: "1", range: "1", row: "4"},
-        {number: "1", status: "1", range: "1", row: "4"},
-        {number: "1", status: "1", range: "1", row: "4"},
-        {number: "1", status: "1", range: "1", row: "4"},
-        {number: "1", status: "1", range: "1", row: "4"},
-        {number: "1", status: "1", range: "1", row: "4"},
-        {number: "1", status: "1", range: "1", row: "4"},
-        {number: "1", status: "1", range: "1", row: "4"},
-        {number: "1", status: "1", range: "1", row: "4"},
-        {number: "1", status: "1", range: "1", row: "4"},
-        {number: "1", status: "1", range: "1", row: "5"},
-        {number: "1", status: "1", range: "1", row: "5"},
-        {number: "1", status: "1", range: "1", row: "5"},
-        {number: "1", status: "1", range: "1", row: "5"},
-        {number: "1", status: "1", range: "1", row: "5"},
-        {number: "1", status: "1", range: "1", row: "5"},
-        {number: "1", status: "1", range: "1", row: "5"},
-        {number: "1", status: "1", range: "1", row: "5"},
-        {number: "1", status: "1", range: "1", row: "5"},
-        {number: "1", status: "1", range: "1", row: "5"},
-        {number: "1", status: "1", range: "1", row: "5"},
-        {number: "1", status: "1", range: "1", row: "5"},
-        {number: "1", status: "1", range: "1", row: "5"},
-        {number: "1", status: "1", range: "1", row: "5"},
-        {number: "1", status: "1", range: "1", row: "6"},
-        {number: "1", status: "1", range: "1", row: "6"},
-        {number: "1", status: "1", range: "1", row: "6"},
-        {number: "1", status: "1", range: "1", row: "6"},
-        {number: "1", status: "1", range: "1", row: "6"},
-        {number: "1", status: "1", range: "1", row: "6"},
-        {number: "1", status: "1", range: "1", row: "6"},
-        {number: "1", status: "1", range: "1", row: "6"},
-        {number: "1", status: "1", range: "1", row: "6"},
-        {number: "1", status: "1", range: "1", row: "6"},
-        {number: "1", status: "1", range: "1", row: "6"},
-        {number: "1", status: "1", range: "1", row: "6"},
-        {number: "1", status: "1", range: "1", row: "6"},
-        {number: "1", status: "1", range: "1", row: "6"},
-        {number: "1", status: "1", range: "1", row: "6"},
-        {number: "1", status: "1", range: "1", row: "6"},
-    ]
     const [fPlace, setFPlace] = useState([])
     const params = useParams();
     const [myItem , SetMyItem] = useState({})
@@ -102,7 +19,33 @@ const Seal = (props) => {
     const selectPlace = (item) => {
         console.log(item)
         setSide(true)
-        bascetList.push(item)
+        // bascetList.push(item)
+
+        axios.post(API_PATH + "basket/view", {
+            "ticket_id": item?.id,
+            // "block_name": item?.block_name,
+            // "event_date":item?.event_date,
+            // "event_time": item?.event_time
+        })
+            .then(res => {
+                console.log(res.data.exists)
+                if (res.data.exists === 1) {
+                    axios.post(API_PATH + "basket/add", {
+                        "ticket_id": item?.id,
+                        // "block_name": item?.block_name,
+                        // "event_date":item?.event_date,
+                        // "event_time": item?.event_time
+                    })
+                        .then(res => {
+                            // setBascetlist(res.data)
+                        })
+                } else {
+                    alert("retry")
+                }
+            })
+
+    }
+    const getBascet =()=>{
 
     }
     const getDetail = () => {
@@ -137,6 +80,7 @@ const Seal = (props) => {
     useEffect(() => {
         getDetail()
         getSeals()
+        getBascet()
     }, [])
     return (
         <div className="body-site">
