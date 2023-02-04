@@ -2,16 +2,18 @@ import React, {useEffect, useState} from 'react';
 import "../../css/sms.css"
 import axios from "axios";
 import {API_PATH} from "../const";
+import PinInput from 'react-pin-input';
 
 const Sms = (props) => {
-    const [code, setCode] = useState("")
+    const [code2, setCode2] = useState("")
 
     const sendCode = () => {
       axios.post(API_PATH + "auth-phone", {
           "phone": localStorage.getItem("phone"),
-          "code": code
+          "code": code2
       })
     }
+
 
     return (
         <div className="body-site">
@@ -85,31 +87,44 @@ const Sms = (props) => {
                                 Мы отправили его на
                                 +998 (99) 999-99-99
                             </p>
-                            <div className="d-flex m-0">
-                                {/*<input type="number" min='0' max='9'*/}
-                                {/*       className="border-bottom border-0 border-black_medium me-2 focus-none fs-20 text-black_dark text-center"*/}
-                                {/*       style={{height: '36px', width: '36px'}}/>*/}
-                                {/*<input type="number" min='0' max='9'*/}
-                                {/*       className="border-bottom border-0 border-black_medium me-2 focus-none fs-20 text-black_dark text-center"*/}
-                                {/*       style={{height: '36px', width: '36px'}}/>*/}
-                                {/*<input type="number" min='0' max='9'*/}
-                                {/*       className="border-bottom border-0 border-black_medium me-2 focus-none fs-20 text-black_dark text-center"*/}
-                                {/*       style={{height: '36px', width: '36px'}}/>*/}
-                                {/*<input type="number" min='0' max='9'*/}
-                                {/*       className="border-bottom border-0 border-black_medium me-2 focus-none fs-20 text-black_dark text-center"*/}
-                                {/*       style={{height: '36px', width: '36px'}}/>*/}
+                            <div className=" m-0" >
+                                <div className="w-100 mb-4 text-center">
 
-                                <input type="number" onChange={(e) => setCode(e.target.value)}/>
-                                <button className="btn login-btn w-100 mt-2" type="button" onClick={sendCode}>Далее</button>
+                                    <PinInput
+                                        length={4}
+                                        initialValue=""
+                                        onChange={(value, index) => setCode2(value)}
+                                        type="numeric"
+                                        inputMode="number"
+                                        style={{padding: '10px'}}
+                                        autoSelect={true}
+                                        regexCriteria={/^[ A-Za-z0-9_@./#&+-]*$/}
+                                    />
+
+                                </div>
+                                {/*<input type="number" onChange={(e) => setCode2(e.target.value)}/>*/}
+                                <button className="btn login-btn w-100 mt-2 d-block" type="button" onClick={sendCode}>Далее</button>
 
                             </div>
                             <div className="form-check mt-4">
-                                <input className="form-check-input focus-none" type="checkbox" defaultValue
-                                       id="flexCheckChecked" defaultChecked/>
-                                <label className="form-check-label focus-none mt-1 ms-2 fw-light text-black_medium"
-                                       htmlFor="flexCheckChecked">
-                                    Запомнить на этом устройстве
-                                </label>
+                                {/*<div className="code-input">*/}
+                                {/*    <form>*/}
+                                {/*        <input type="text" maxLength='1'/>*/}
+                                {/*        <input type="text" maxLength='1'/>*/}
+                                {/*        <input type="text" maxLength='1'/>*/}
+                                {/*        <input type="text" maxLength='1'/>*/}
+                                {/*    </form>*/}
+                                {/*    <div id="code-block" className="special hidden">*/}
+                                {/*        Wait your special code is <span id="code"></span>?*/}
+                                {/*        <br/>*/}
+                                {/*        <i onClick="reset()">Reset*/}
+                                {/*        </i>*/}
+                                {/*    </div>*/}
+                                {/*</div>*/}
+                                {/*<label className="form-check-label focus-none mt-1 ms-2 fw-light text-black_medium"*/}
+                                {/*       htmlFor="flexCheckChecked">*/}
+                                {/*    Запомнить на этом устройстве*/}
+                                {/*</label>*/}
                             </div>
                             <a href="#" className="text-blue_4 mt-4 text-decoration-none w-100 d-block">Отправить код
                                 повторно</a>

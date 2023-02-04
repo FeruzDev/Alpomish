@@ -4,12 +4,10 @@ import {getEvents, getNews} from "../../redux/action/allActions";
 import {Link} from "react-router-dom";
 import Slider from "react-slick";
 
-
 const Events = (props) => {
     const [more, setMore] = useState(8)
     const [moreNews, setMoreNews] = useState(3)
     const monthsRu = ["month", 'Январь', 'Февраль', "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
-
 
     function SampleNextArrow(props) {
         const { className, style, onClick } = props;
@@ -32,7 +30,6 @@ const Events = (props) => {
             </div>
         );
     }
-
 
     useEffect(()=>{
     props.getEvents()
@@ -109,125 +106,125 @@ const Events = (props) => {
                 </div>
                 <div className="bg-snow">
                     <div className="bg-snow-2">
-                        <div className="header-carousel mt-4 mb-lg-7 mb-5">
+                        <div className="header-carousel mt-4   mb-5">
                             <div className="container">
                                 <div className="row align-items-center justify-content-between mb-5">
-                                    <p className="text-blue_1 fw-bold fs-38 col mb-lg-0 mb-4">Все мероприятия</p>
-                                    <div className="col-lg-3 d-flex align-items-center">
-                                        <select className="form-select border-0 bg-white_light_1 text-blue_2 rounded-pill focus-none ps-3 me-3">
-                                            <option value>Сегодня</option>
-                                        </select>
-                                        <select className="form-select border-0 bg-white_light_1 text-blue_2 rounded-pill focus-none ps-3">
-                                            <option value>Категория</option>
-                                        </select>
-                                    </div>
+                                    <p className="text-blue_1 fw-bold fs-38 col mb-lg-0 mb-2">Все мероприятия</p>
+                                    {/*<div className="col-lg-3 d-flex align-items-center">*/}
+                                    {/*    <select className="form-select border-0 bg-white_light_1 text-blue_2 rounded-pill focus-none ps-3 me-3">*/}
+                                    {/*        <option value>Сегодня</option>*/}
+                                    {/*    </select>*/}
+                                    {/*    <select className="form-select border-0 bg-white_light_1 text-blue_2 rounded-pill focus-none ps-3">*/}
+                                    {/*        <option value>Категория</option>*/}
+                                    {/*    </select>*/}
+                                    {/*</div>*/}
                                 </div>
-                                <p className="fs-12 fw-600 text-black_dark ms-3">Декабрь</p>
-                                <div className="swiper calendar-swiper">
-                                    <Slider {...settings}>
-                                            <button className="swiper-slide">
-                                                <p className="text-silver fs-15 fw-600 mb-0">1</p>
-                                                <p className="text-black_dark fs-10 fw-light mb-0">сб</p>
-                                            </button>
-                                            <div className="swiper-slide">
-                                                <p className="text-silver fs-15 fw-600 mb-0">2</p>
-                                                <p className="text-black_dark fs-10 fw-light mb-0">вс</p>
-                                            </div>
-                                            <div className="swiper-slide">
-                                                <p className="text-silver fs-15 fw-600 mb-0">3</p>
-                                                <p className="text-black_dark fs-10 fw-light mb-0">пн</p>
-                                            </div>
-                                            <div className="swiper-slide">
-                                                <p className="text-silver fs-15 fw-600 mb-0">4</p>
-                                                <p className="text-black_dark fs-10 fw-light mb-0">вт</p>
-                                            </div>
-                                            <div className="swiper-slide">
-                                                <p className="text-silver fs-15 fw-600 mb-0">5</p>
-                                                <p className="text-black_dark fs-10 fw-light mb-0">ср</p>
-                                            </div>
-                                            <div className="swiper-slide">
-                                                <p className="text-silver fs-15 fw-600 mb-0">6</p>
-                                                <p className="text-black_dark fs-10 fw-light mb-0">чт</p>
-                                            </div>
-                                            <div className="swiper-slide">
-                                                <p className="text-silver fs-15 fw-600 mb-0">7</p>
-                                                <p className="text-black_dark fs-10 fw-light mb-0">пт</p>
-                                            </div>
-                                            <div className="swiper-slide">
-                                                <p className="text-silver fs-15 fw-600 mb-0">8</p>
-                                                <p className="text-black_dark fs-10 fw-light mb-0">сб</p>
-                                            </div>
-                                            <div className="swiper-slide">
-                                                <p className="text-black_dark fs-15 fw-600 mb-0">9</p>
-                                                <p className="text-black_dark fs-10 fw-light mb-0">вс</p>
-                                            </div>
-                                            <div className="swiper-slide">
-                                                <p className="text-black_dark fs-15 fw-600 mb-0">10</p>
-                                                <p className="text-black_dark fs-10 fw-light mb-0">пн</p>
-                                            </div>
-                                            <div className="swiper-slide">
-                                                <p className="text-black_dark fs-15 fw-600 mb-0">11</p>
-                                                <p className="text-black_dark fs-10 fw-light mb-0">вт</p>
-                                            </div>
-                                            <div className="swiper-slide">
-                                                <p className="text-black_dark fs-15 fw-600 mb-0">12</p>
-                                                <p className="text-black_dark fs-10 fw-light mb-0">ср</p>
-                                            </div>
-                                            <div className="swiper-slide">
-                                                <p className="text-black_dark fs-15 fw-600 mb-0">13</p>
-                                                <p className="text-black_dark fs-10 fw-light mb-0">чт</p>
-                                            </div>
-                                            <div className="swiper-slide">
-                                                <p className="text-black_dark fs-15 fw-600 mb-0">14</p>
-                                                <p className="text-black_dark fs-10 fw-light mb-0">пт</p>
-                                            </div>
-                                            <div className="swiper-slide">
-                                                <p className="text-black_dark fs-15 fw-600 mb-0">15</p>
-                                                <p className="text-black_dark fs-10 fw-light mb-0">сб</p>
-                                            </div>
-                                            <div className="swiper-slide">
-                                                <p className="text-black_dark fs-15 fw-600 mb-0">16</p>
-                                                <p className="text-black_dark fs-10 fw-light mb-0">вс</p>
-                                            </div>
-                                            <div className="swiper-slide">
-                                                <p className="text-black_dark fs-15 fw-600 mb-0">17</p>
-                                                <p className="text-black_dark fs-10 fw-light mb-0">пн</p>
-                                            </div>
-                                            <div className="swiper-slide">
-                                                <p className="text-black_dark fs-15 fw-600 mb-0">18</p>
-                                                <p className="text-black_dark fs-10 fw-light mb-0">вт</p>
-                                            </div>
-                                            <div className="swiper-slide">
-                                                <p className="text-black_dark fs-15 fw-600 mb-0">19</p>
-                                                <p className="text-black_dark fs-10 fw-light mb-0">ср</p>
-                                            </div>
-                                            <div className="swiper-slide">
-                                                <p className="text-black_dark fs-15 fw-600 mb-0">20</p>
-                                                <p className="text-black_dark fs-10 fw-light mb-0">чт</p>
-                                            </div>
-                                            <div className="swiper-slide">
-                                                <p className="text-black_dark fs-15 fw-600 mb-0">21</p>
-                                                <p className="text-black_dark fs-10 fw-light mb-0">пт</p>
-                                            </div>
-                                            <div className="swiper-slide">
-                                                <p className="text-black_dark fs-15 fw-600 mb-0">23</p>
-                                                <p className="text-black_dark fs-10 fw-light mb-0">сб</p>
-                                            </div>
-                                            <div className="swiper-slide">
-                                                <p className="text-black_dark fs-15 fw-600 mb-0">24</p>
-                                                <p className="text-black_dark fs-10 fw-light mb-0">вс</p>
-                                            </div>
-                                            <div className="swiper-slide">
-                                                <p className="text-black_dark fs-15 fw-600 mb-0">25</p>
-                                                <p className="text-black_dark fs-10 fw-light mb-0">пн</p>
-                                            </div>
-                                    </Slider>
-                                    <div className="swiper-button-next" />
-                                    <div className="swiper-button-prev" />
-                                </div>
+                                {/*<p className="fs-12 fw-600 text-black_dark ms-3">Декабрь</p>*/}
+                                {/*<div className="swiper calendar-swiper">*/}
+                                {/*    <Slider {...settings}>*/}
+                                {/*            <button className="swiper-slide">*/}
+                                {/*                <p className="text-silver fs-15 fw-600 mb-0">1</p>*/}
+                                {/*                <p className="text-black_dark fs-10 fw-light mb-0">сб</p>*/}
+                                {/*            </button>*/}
+                                {/*            <div className="swiper-slide">*/}
+                                {/*                <p className="text-silver fs-15 fw-600 mb-0">2</p>*/}
+                                {/*                <p className="text-black_dark fs-10 fw-light mb-0">вс</p>*/}
+                                {/*            </div>*/}
+                                {/*            <div className="swiper-slide">*/}
+                                {/*                <p className="text-silver fs-15 fw-600 mb-0">3</p>*/}
+                                {/*                <p className="text-black_dark fs-10 fw-light mb-0">пн</p>*/}
+                                {/*            </div>*/}
+                                {/*            <div className="swiper-slide">*/}
+                                {/*                <p className="text-silver fs-15 fw-600 mb-0">4</p>*/}
+                                {/*                <p className="text-black_dark fs-10 fw-light mb-0">вт</p>*/}
+                                {/*            </div>*/}
+                                {/*            <div className="swiper-slide">*/}
+                                {/*                <p className="text-silver fs-15 fw-600 mb-0">5</p>*/}
+                                {/*                <p className="text-black_dark fs-10 fw-light mb-0">ср</p>*/}
+                                {/*            </div>*/}
+                                {/*            <div className="swiper-slide">*/}
+                                {/*                <p className="text-silver fs-15 fw-600 mb-0">6</p>*/}
+                                {/*                <p className="text-black_dark fs-10 fw-light mb-0">чт</p>*/}
+                                {/*            </div>*/}
+                                {/*            <div className="swiper-slide">*/}
+                                {/*                <p className="text-silver fs-15 fw-600 mb-0">7</p>*/}
+                                {/*                <p className="text-black_dark fs-10 fw-light mb-0">пт</p>*/}
+                                {/*            </div>*/}
+                                {/*            <div className="swiper-slide">*/}
+                                {/*                <p className="text-silver fs-15 fw-600 mb-0">8</p>*/}
+                                {/*                <p className="text-black_dark fs-10 fw-light mb-0">сб</p>*/}
+                                {/*            </div>*/}
+                                {/*            <div className="swiper-slide">*/}
+                                {/*                <p className="text-black_dark fs-15 fw-600 mb-0">9</p>*/}
+                                {/*                <p className="text-black_dark fs-10 fw-light mb-0">вс</p>*/}
+                                {/*            </div>*/}
+                                {/*            <div className="swiper-slide">*/}
+                                {/*                <p className="text-black_dark fs-15 fw-600 mb-0">10</p>*/}
+                                {/*                <p className="text-black_dark fs-10 fw-light mb-0">пн</p>*/}
+                                {/*            </div>*/}
+                                {/*            <div className="swiper-slide">*/}
+                                {/*                <p className="text-black_dark fs-15 fw-600 mb-0">11</p>*/}
+                                {/*                <p className="text-black_dark fs-10 fw-light mb-0">вт</p>*/}
+                                {/*            </div>*/}
+                                {/*            <div className="swiper-slide">*/}
+                                {/*                <p className="text-black_dark fs-15 fw-600 mb-0">12</p>*/}
+                                {/*                <p className="text-black_dark fs-10 fw-light mb-0">ср</p>*/}
+                                {/*            </div>*/}
+                                {/*            <div className="swiper-slide">*/}
+                                {/*                <p className="text-black_dark fs-15 fw-600 mb-0">13</p>*/}
+                                {/*                <p className="text-black_dark fs-10 fw-light mb-0">чт</p>*/}
+                                {/*            </div>*/}
+                                {/*            <div className="swiper-slide">*/}
+                                {/*                <p className="text-black_dark fs-15 fw-600 mb-0">14</p>*/}
+                                {/*                <p className="text-black_dark fs-10 fw-light mb-0">пт</p>*/}
+                                {/*            </div>*/}
+                                {/*            <div className="swiper-slide">*/}
+                                {/*                <p className="text-black_dark fs-15 fw-600 mb-0">15</p>*/}
+                                {/*                <p className="text-black_dark fs-10 fw-light mb-0">сб</p>*/}
+                                {/*            </div>*/}
+                                {/*            <div className="swiper-slide">*/}
+                                {/*                <p className="text-black_dark fs-15 fw-600 mb-0">16</p>*/}
+                                {/*                <p className="text-black_dark fs-10 fw-light mb-0">вс</p>*/}
+                                {/*            </div>*/}
+                                {/*            <div className="swiper-slide">*/}
+                                {/*                <p className="text-black_dark fs-15 fw-600 mb-0">17</p>*/}
+                                {/*                <p className="text-black_dark fs-10 fw-light mb-0">пн</p>*/}
+                                {/*            </div>*/}
+                                {/*            <div className="swiper-slide">*/}
+                                {/*                <p className="text-black_dark fs-15 fw-600 mb-0">18</p>*/}
+                                {/*                <p className="text-black_dark fs-10 fw-light mb-0">вт</p>*/}
+                                {/*            </div>*/}
+                                {/*            <div className="swiper-slide">*/}
+                                {/*                <p className="text-black_dark fs-15 fw-600 mb-0">19</p>*/}
+                                {/*                <p className="text-black_dark fs-10 fw-light mb-0">ср</p>*/}
+                                {/*            </div>*/}
+                                {/*            <div className="swiper-slide">*/}
+                                {/*                <p className="text-black_dark fs-15 fw-600 mb-0">20</p>*/}
+                                {/*                <p className="text-black_dark fs-10 fw-light mb-0">чт</p>*/}
+                                {/*            </div>*/}
+                                {/*            <div className="swiper-slide">*/}
+                                {/*                <p className="text-black_dark fs-15 fw-600 mb-0">21</p>*/}
+                                {/*                <p className="text-black_dark fs-10 fw-light mb-0">пт</p>*/}
+                                {/*            </div>*/}
+                                {/*            <div className="swiper-slide">*/}
+                                {/*                <p className="text-black_dark fs-15 fw-600 mb-0">23</p>*/}
+                                {/*                <p className="text-black_dark fs-10 fw-light mb-0">сб</p>*/}
+                                {/*            </div>*/}
+                                {/*            <div className="swiper-slide">*/}
+                                {/*                <p className="text-black_dark fs-15 fw-600 mb-0">24</p>*/}
+                                {/*                <p className="text-black_dark fs-10 fw-light mb-0">вс</p>*/}
+                                {/*            </div>*/}
+                                {/*            <div className="swiper-slide">*/}
+                                {/*                <p className="text-black_dark fs-15 fw-600 mb-0">25</p>*/}
+                                {/*                <p className="text-black_dark fs-10 fw-light mb-0">пн</p>*/}
+                                {/*            </div>*/}
+                                {/*    </Slider>*/}
+                                {/*    <div className="swiper-button-next" />*/}
+                                {/*    <div className="swiper-button-prev" />*/}
+                                {/*</div>*/}
                             </div>
                         </div>
-                        <div className="events mb-7">
+                        <div className="events mb-7 pb-7">
                             <div className="container">
                                 <div className="row row-cols-xl-4 row-cols-md-2 mb-5">
 

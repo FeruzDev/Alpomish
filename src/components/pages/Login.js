@@ -4,7 +4,7 @@ import {API_PATH} from "../const";
 import Sms from "./Sms";
 import MyNavbar from "../MyNavbar";
 
-const Login = () => {
+const   Login = () => {
     const [number, setNumber] = useState("")
     const login = () => {
       axios.post(API_PATH + "send-sms", {"phone"  : number})

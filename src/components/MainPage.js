@@ -89,16 +89,16 @@ const MainPage = (props) => {
                         <div className="container">
                             <div className="row align-items-center justify-content-between mb-5">
                                 <p className="text-blue_1 fw-bold fs-38 col mb-lg-0 mb-4">Ближайшие мероприятия</p>
-                                <div className="col-lg-3 d-flex align-items-center">
-                                    <select
-                                        className="form-select border-0 bg-white_light_1 text-blue_2 rounded-pill focus-none ps-3 me-3">
-                                        <option value>Сегодня</option>
-                                    </select>
-                                    <select
-                                        className="form-select border-0 bg-white_light_1 text-blue_2 rounded-pill focus-none ps-3">
-                                        <option value>Категория</option>
-                                    </select>
-                                </div>
+                                {/*<div className="col-lg-3 d-flex align-items-center">*/}
+                                {/*    <select*/}
+                                {/*        className="form-select border-0 bg-white_light_1 text-blue_2 rounded-pill focus-none ps-3 me-3">*/}
+                                {/*        <option value>Сегодня</option>*/}
+                                {/*    </select>*/}
+                                {/*    <select*/}
+                                {/*        className="form-select border-0 bg-white_light_1 text-blue_2 rounded-pill focus-none ps-3">*/}
+                                {/*        <option value>Категория</option>*/}
+                                {/*    </select>*/}
+                                {/*</div>*/}
                             </div>
                             <div className="row row-cols-xl-4 row-cols-md-2 mb-5">
                                 {

@@ -2811,13 +2811,42 @@ textarea.form-control-lg {
     font-size: 1.25rem;
 }
 
-.form-check {
-    display: block;
-    min-height: 1.5rem;
-    padding-left: 1.5em;
-    margin-bottom: 0.125rem;
+h1 {
+    font-family: helvetica;
+    text-align:center;
 }
 
+.pin-code{
+    padding: 0;
+    margin: 0 auto;
+    display: flex;
+    justify-content:center;
+
+}
+
+.pin-code input {
+    border: none;
+    text-align: center;
+    width: 48px;
+    height:48px;
+    font-size: 36px;
+    background-color: #F3F3F3;
+    margin-right:5px;
+}
+
+
+
+.pin-code input:focus {
+    border: 1px solid #573D8B;
+    outline:none;
+}
+
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
 .form-check .form-check-input {
     float: left;
     margin-left: -1.5em;
@@ -9122,7 +9151,13 @@ fieldset:disabled .btn {
 .border-light {
     border-color: #f8f9fa !important;
 }
+.pincode-input-text{
+    border-color: #1D2023 !important;
+    border-top: 0px !important;
+    border-left: 0px !important;
+    border-right: 0px !important;
 
+}
 .border-dark {
     border-color: #212529 !important;
 }

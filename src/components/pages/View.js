@@ -734,183 +734,183 @@ const View = (props) => {
                                     {localStorage.getItem("desc")}
 
                             </p>
-                            <div className="swiper events-swiper px-lg-5">
-                                <div className="d-flex align-items-center" style={{margin: '0 -48px'}}>
-                                    <p className="text-black_dark fw-bold fs-38">Похожие мероприятия</p>
-                                    <div className="swiper-button-next bg-white_light_1 text-black_dark"/>
-                                    <div className="swiper-button-prev bg-white_light_1 text-black_dark"/>
-                                </div>
-                                <div className="swiper-wrapper">
-                                    <div className="swiper-slide">
-                                        <div className="my-3">
-                                            <div className="card border-0 bg-transparent">
-                                                <div className="position-relative">
-                                                    <img src="/images/card.png" className="card-img-top" alt="card"/>
-                                                    <div className="card-status px-3">
-                                                        <div
-                                                            className="bg-black_medium py-1 px-3 text-white rounded-pill">
-                                                            Концерт
-                                                        </div>
-                                                        <div className="text-white">
-                                                            <i className="fal fa-heart"/>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="card-body bg-white shadow-sm d-flex p-4"
-                                                     style={{borderRadius: '0 0 19px 19px'}}>
-                                                    <div className="me-4">
-                                                        <p className="card-moth text-uppercase font-DM fw-bold text-blue fs-12 mb-0">
-                                                            APR
-                                                        </p>
-                                                        <p className="card-day text-black_dark font-DM fs-28 fw-bold">
-                                                            14
-                                                        </p>
-                                                    </div>
-                                                    <div>
-                                                        <p className="card-text-title fw-bold text-black_dark mb-0">Wonder
-                                                            Girls 2010
-                                                            Wonder
-                                                            Girls
-                                                            World
-                                                            Tour
-                                                            San Francisco</p>
-                                                        <p className="card-p font-DM fs-14 text-grey mb-0">
-                                                            12:00 · 24 декабря 2022
-                                                            Ледниковый дворец “Alpomish”
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="swiper-slide">
-                                        <div className="my-3">
-                                            <div className="card border-0 bg-transparent">
-                                                <div className="position-relative">
-                                                    <img src="/images/card.png" className="card-img-top" alt="card"/>
-                                                    <div className="card-status px-3">
-                                                        <div
-                                                            className="bg-black_medium py-1 px-3 text-white rounded-pill">
-                                                            Концерт
-                                                        </div>
-                                                        <div className="text-white">
-                                                            <i className="fal fa-heart"/>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="card-body bg-white shadow-sm d-flex p-4"
-                                                     style={{borderRadius: '0 0 19px 19px'}}>
-                                                    <div className="me-4">
-                                                        <p className="card-moth text-uppercase font-DM fw-bold text-blue fs-12 mb-0">
-                                                            APR
-                                                        </p>
-                                                        <p className="card-day text-black_dark font-DM fs-28 fw-bold">
-                                                            14
-                                                        </p>
-                                                    </div>
-                                                    <div>
-                                                        <p className="card-text-title fw-bold text-black_dark mb-0">Wonder
-                                                            Girls 2010
-                                                            Wonder
-                                                            Girls
-                                                            World
-                                                            Tour
-                                                            San Francisco</p>
-                                                        <p className="card-p font-DM fs-14 text-grey mb-0">
-                                                            12:00 · 24 декабря 2022
-                                                            Ледниковый дворец “Alpomish”
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="swiper-slide">
-                                        <div className="my-3">
-                                            <div className="card border-0 bg-transparent">
-                                                <div className="position-relative">
-                                                    <img src="/images/card.png" className="card-img-top" alt="card"/>
-                                                    <div className="card-status px-3">
-                                                        <div
-                                                            className="bg-black_medium py-1 px-3 text-white rounded-pill">
-                                                            Концерт
-                                                        </div>
-                                                        <div className="text-white">
-                                                            <i className="fal fa-heart"/>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="card-body bg-white shadow-sm d-flex p-4"
-                                                     style={{borderRadius: '0 0 19px 19px'}}>
-                                                    <div className="me-4">
-                                                        <p className="card-moth text-uppercase font-DM fw-bold text-blue fs-12 mb-0">
-                                                            APR
-                                                        </p>
-                                                        <p className="card-day text-black_dark font-DM fs-28 fw-bold">
-                                                            14
-                                                        </p>
-                                                    </div>
-                                                    <div>
-                                                        <p className="card-text-title fw-bold text-black_dark mb-0">Wonder
-                                                            Girls 2010
-                                                            Wonder
-                                                            Girls
-                                                            World
-                                                            Tour
-                                                            San Francisco</p>
-                                                        <p className="card-p font-DM fs-14 text-grey mb-0">
-                                                            12:00 · 24 декабря 2022
-                                                            Ледниковый дворец “Alpomish”
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="swiper-slide">
-                                        <div className="my-3">
-                                            <div className="card border-0 bg-transparent">
-                                                <div className="position-relative">
-                                                    <img src="/images/card.png" className="card-img-top" alt="card"/>
-                                                    <div className="card-status px-3">
-                                                        <div
-                                                            className="bg-black_medium py-1 px-3 text-white rounded-pill">
-                                                            Концерт
-                                                        </div>
-                                                        <div className="text-white">
-                                                            <i className="fal fa-heart"/>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="card-body bg-white shadow-sm d-flex p-4"
-                                                     style={{borderRadius: '0 0 19px 19px'}}>
-                                                    <div className="me-4">
-                                                        <p className="card-moth text-uppercase font-DM fw-bold text-blue fs-12 mb-0">
-                                                            APR
-                                                        </p>
-                                                        <p className="card-day text-black_dark font-DM fs-28 fw-bold">
-                                                            14
-                                                        </p>
-                                                    </div>
-                                                    <div>
-                                                        <p className="card-text-title fw-bold text-black_dark mb-0">Wonder
-                                                            Girls 2010
-                                                            Wonder
-                                                            Girls
-                                                            World
-                                                            Tour
-                                                            San Francisco</p>
-                                                        <p className="card-p font-DM fs-14 text-grey mb-0">
-                                                            12:00 · 24 декабря 2022
-                                                            Ледниковый дворец “Alpomish”
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            {/*<div className="swiper events-swiper px-lg-5">*/}
+                            {/*    <div className="d-flex align-items-center" style={{margin: '0 -48px'}}>*/}
+                            {/*        <p className="text-black_dark fw-bold fs-38">Похожие мероприятия</p>*/}
+                            {/*        <div className="swiper-button-next bg-white_light_1 text-black_dark"/>*/}
+                            {/*        <div className="swiper-button-prev bg-white_light_1 text-black_dark"/>*/}
+                            {/*    </div>*/}
+                            {/*    <div className="swiper-wrapper">*/}
+                            {/*        <div className="swiper-slide">*/}
+                            {/*            <div className="my-3">*/}
+                            {/*                <div className="card border-0 bg-transparent">*/}
+                            {/*                    <div className="position-relative">*/}
+                            {/*                        <img src="/images/card.png" className="card-img-top" alt="card"/>*/}
+                            {/*                        <div className="card-status px-3">*/}
+                            {/*                            <div*/}
+                            {/*                                className="bg-black_medium py-1 px-3 text-white rounded-pill">*/}
+                            {/*                                Концерт*/}
+                            {/*                            </div>*/}
+                            {/*                            <div className="text-white">*/}
+                            {/*                                <i className="fal fa-heart"/>*/}
+                            {/*                            </div>*/}
+                            {/*                        </div>*/}
+                            {/*                    </div>*/}
+                            {/*                    <div className="card-body bg-white shadow-sm d-flex p-4"*/}
+                            {/*                         style={{borderRadius: '0 0 19px 19px'}}>*/}
+                            {/*                        <div className="me-4">*/}
+                            {/*                            <p className="card-moth text-uppercase font-DM fw-bold text-blue fs-12 mb-0">*/}
+                            {/*                                APR*/}
+                            {/*                            </p>*/}
+                            {/*                            <p className="card-day text-black_dark font-DM fs-28 fw-bold">*/}
+                            {/*                                14*/}
+                            {/*                            </p>*/}
+                            {/*                        </div>*/}
+                            {/*                        <div>*/}
+                            {/*                            <p className="card-text-title fw-bold text-black_dark mb-0">Wonder*/}
+                            {/*                                Girls 2010*/}
+                            {/*                                Wonder*/}
+                            {/*                                Girls*/}
+                            {/*                                World*/}
+                            {/*                                Tour*/}
+                            {/*                                San Francisco</p>*/}
+                            {/*                            <p className="card-p font-DM fs-14 text-grey mb-0">*/}
+                            {/*                                12:00 · 24 декабря 2022*/}
+                            {/*                                Ледниковый дворец “Alpomish”*/}
+                            {/*                            </p>*/}
+                            {/*                        </div>*/}
+                            {/*                    </div>*/}
+                            {/*                </div>*/}
+                            {/*            </div>*/}
+                            {/*        </div>*/}
+                            {/*        <div className="swiper-slide">*/}
+                            {/*            <div className="my-3">*/}
+                            {/*                <div className="card border-0 bg-transparent">*/}
+                            {/*                    <div className="position-relative">*/}
+                            {/*                        <img src="/images/card.png" className="card-img-top" alt="card"/>*/}
+                            {/*                        <div className="card-status px-3">*/}
+                            {/*                            <div*/}
+                            {/*                                className="bg-black_medium py-1 px-3 text-white rounded-pill">*/}
+                            {/*                                Концерт*/}
+                            {/*                            </div>*/}
+                            {/*                            <div className="text-white">*/}
+                            {/*                                <i className="fal fa-heart"/>*/}
+                            {/*                            </div>*/}
+                            {/*                        </div>*/}
+                            {/*                    </div>*/}
+                            {/*                    <div className="card-body bg-white shadow-sm d-flex p-4"*/}
+                            {/*                         style={{borderRadius: '0 0 19px 19px'}}>*/}
+                            {/*                        <div className="me-4">*/}
+                            {/*                            <p className="card-moth text-uppercase font-DM fw-bold text-blue fs-12 mb-0">*/}
+                            {/*                                APR*/}
+                            {/*                            </p>*/}
+                            {/*                            <p className="card-day text-black_dark font-DM fs-28 fw-bold">*/}
+                            {/*                                14*/}
+                            {/*                            </p>*/}
+                            {/*                        </div>*/}
+                            {/*                        <div>*/}
+                            {/*                            <p className="card-text-title fw-bold text-black_dark mb-0">Wonder*/}
+                            {/*                                Girls 2010*/}
+                            {/*                                Wonder*/}
+                            {/*                                Girls*/}
+                            {/*                                World*/}
+                            {/*                                Tour*/}
+                            {/*                                San Francisco</p>*/}
+                            {/*                            <p className="card-p font-DM fs-14 text-grey mb-0">*/}
+                            {/*                                12:00 · 24 декабря 2022*/}
+                            {/*                                Ледниковый дворец “Alpomish”*/}
+                            {/*                            </p>*/}
+                            {/*                        </div>*/}
+                            {/*                    </div>*/}
+                            {/*                </div>*/}
+                            {/*            </div>*/}
+                            {/*        </div>*/}
+                            {/*        <div className="swiper-slide">*/}
+                            {/*            <div className="my-3">*/}
+                            {/*                <div className="card border-0 bg-transparent">*/}
+                            {/*                    <div className="position-relative">*/}
+                            {/*                        <img src="/images/card.png" className="card-img-top" alt="card"/>*/}
+                            {/*                        <div className="card-status px-3">*/}
+                            {/*                            <div*/}
+                            {/*                                className="bg-black_medium py-1 px-3 text-white rounded-pill">*/}
+                            {/*                                Концерт*/}
+                            {/*                            </div>*/}
+                            {/*                            <div className="text-white">*/}
+                            {/*                                <i className="fal fa-heart"/>*/}
+                            {/*                            </div>*/}
+                            {/*                        </div>*/}
+                            {/*                    </div>*/}
+                            {/*                    <div className="card-body bg-white shadow-sm d-flex p-4"*/}
+                            {/*                         style={{borderRadius: '0 0 19px 19px'}}>*/}
+                            {/*                        <div className="me-4">*/}
+                            {/*                            <p className="card-moth text-uppercase font-DM fw-bold text-blue fs-12 mb-0">*/}
+                            {/*                                APR*/}
+                            {/*                            </p>*/}
+                            {/*                            <p className="card-day text-black_dark font-DM fs-28 fw-bold">*/}
+                            {/*                                14*/}
+                            {/*                            </p>*/}
+                            {/*                        </div>*/}
+                            {/*                        <div>*/}
+                            {/*                            <p className="card-text-title fw-bold text-black_dark mb-0">Wonder*/}
+                            {/*                                Girls 2010*/}
+                            {/*                                Wonder*/}
+                            {/*                                Girls*/}
+                            {/*                                World*/}
+                            {/*                                Tour*/}
+                            {/*                                San Francisco</p>*/}
+                            {/*                            <p className="card-p font-DM fs-14 text-grey mb-0">*/}
+                            {/*                                12:00 · 24 декабря 2022*/}
+                            {/*                                Ледниковый дворец “Alpomish”*/}
+                            {/*                            </p>*/}
+                            {/*                        </div>*/}
+                            {/*                    </div>*/}
+                            {/*                </div>*/}
+                            {/*            </div>*/}
+                            {/*        </div>*/}
+                            {/*        <div className="swiper-slide">*/}
+                            {/*            <div className="my-3">*/}
+                            {/*                <div className="card border-0 bg-transparent">*/}
+                            {/*                    <div className="position-relative">*/}
+                            {/*                        <img src="/images/card.png" className="card-img-top" alt="card"/>*/}
+                            {/*                        <div className="card-status px-3">*/}
+                            {/*                            <div*/}
+                            {/*                                className="bg-black_medium py-1 px-3 text-white rounded-pill">*/}
+                            {/*                                Концерт*/}
+                            {/*                            </div>*/}
+                            {/*                            <div className="text-white">*/}
+                            {/*                                <i className="fal fa-heart"/>*/}
+                            {/*                            </div>*/}
+                            {/*                        </div>*/}
+                            {/*                    </div>*/}
+                            {/*                    <div className="card-body bg-white shadow-sm d-flex p-4"*/}
+                            {/*                         style={{borderRadius: '0 0 19px 19px'}}>*/}
+                            {/*                        <div className="me-4">*/}
+                            {/*                            <p className="card-moth text-uppercase font-DM fw-bold text-blue fs-12 mb-0">*/}
+                            {/*                                APR*/}
+                            {/*                            </p>*/}
+                            {/*                            <p className="card-day text-black_dark font-DM fs-28 fw-bold">*/}
+                            {/*                                14*/}
+                            {/*                            </p>*/}
+                            {/*                        </div>*/}
+                            {/*                        <div>*/}
+                            {/*                            <p className="card-text-title fw-bold text-black_dark mb-0">Wonder*/}
+                            {/*                                Girls 2010*/}
+                            {/*                                Wonder*/}
+                            {/*                                Girls*/}
+                            {/*                                World*/}
+                            {/*                                Tour*/}
+                            {/*                                San Francisco</p>*/}
+                            {/*                            <p className="card-p font-DM fs-14 text-grey mb-0">*/}
+                            {/*                                12:00 · 24 декабря 2022*/}
+                            {/*                                Ледниковый дворец “Alpomish”*/}
+                            {/*                            </p>*/}
+                            {/*                        </div>*/}
+                            {/*                    </div>*/}
+                            {/*                </div>*/}
+                            {/*            </div>*/}
+                            {/*        </div>*/}
+                            {/*    </div>*/}
+                            {/*</div>*/}
                         </div>
                     </div>
                 </div>
