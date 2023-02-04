@@ -56,3 +56,15 @@ export function getNewsDetail(id){
             })
     }
 }
+
+
+export function getSections(){
+    return function (dispatch){
+        axios.get(API_PATH + "katok-service")
+            .then(res => {
+                console.log(res.data.data)
+                dispatch(updateState({sectionList: res.data.data}));
+
+            })
+    }
+}

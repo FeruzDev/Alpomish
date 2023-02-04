@@ -6,6 +6,7 @@ const initialState ={
     eventsList: [],
     eventsItem: {},
     eventsDate: {},
+    sectionList: [],
     newsList: [],
     newsItem: {},
 

@@ -3,7 +3,7 @@ import "../../css/sector.css"
 import {connect} from "react-redux";
 import {getEvents, getEventsDetail, updateState} from "../../redux/action/allActions";
 import axios from "axios";
-import {API_PATH} from "../const";
+import {API_PATH, AUTH} from "../const";
 import {useHistory, useParams} from "react-router-dom";
 
 const Seal = (props) => {
@@ -26,18 +26,19 @@ const Seal = (props) => {
             // "block_name": item?.block_name,
             // "event_date":item?.event_date,
             // "event_time": item?.event_time
-        })
+        }, AUTH)
             .then(res => {
                 console.log(res.data.exists)
-                if (res.data.exists === 1) {
+                if (res.data.exists === 0) {
                     axios.post(API_PATH + "basket/add", {
                         "ticket_id": item?.id,
                         // "block_name": item?.block_name,
                         // "event_date":item?.event_date,
                         // "event_time": item?.event_time
-                    })
+                    }, AUTH)
                         .then(res => {
                             // setBascetlist(res.data)
+                            getBascet()
                         })
                 } else {
                     alert("retry")
@@ -45,11 +46,21 @@ const Seal = (props) => {
             })
 
     }
-    const getBascet =()=>{
 
+    const getBascet =()=>{
+        axios.get(API_PATH + "basket", AUTH)
+            .then(res =>{
+                setBascetlist(res.data)
+            })
+    }
+    const remove =(id)=>{
+        axios.delete(API_PATH + "basket/delete-ticket", {"ticket_id": id},  AUTH)
+            .then(res =>{
+                setBascetlist(res.data)
+            })
     }
     const getDetail = () => {
-        axios.get(API_PATH + "event/" +  params.id)
+        axios.get(API_PATH + "event/" +  params.id, AUTH)
             .then(res => {
                 SetMyItem( res.data);
                 localStorage.setItem("title", res.data.title)
@@ -69,7 +80,7 @@ const Seal = (props) => {
           "block_name": "A1",
           "event_date":"2023-01-30",
           "event_time":"11:00"
-      })
+      }, AUTH)
           .then(res =>{
               setFPlace(res.data.count_place)
               console.log(res)
@@ -85,65 +96,7 @@ const Seal = (props) => {
     return (
         <div className="body-site">
 
-            <div className="offcanvas offcanvas-end" tabIndex={-1} id="offcanvasExample"
-                 aria-labelledby="offcanvasExampleLabel">
-                <div className="offcanvas-header">
-                    <h5 className="offcanvas-title fw-800" id="offcanvasExampleLabel">Профиль</h5>
-                    <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"/>
-                </div>
-                <div className="offcanvas-body">
-                    <div className="d-flex align-items-center">
-                        <button className="btn focus-none login-btn rounded-circle" type="button">
-                            <i className="fas fa-user"/>
-                        </button>
-                        <p className="mb-0 ms-3">+998 (99) 999-99-99</p>
-                    </div>
-                    <div className="card-3d mt-4"
-                         style={{background: 'linear-gradient(99.29deg, #387EC1 0.94%, #47A8DF 100%)'}}>
-                        <div className="w-lg-45">
-                            <img className="mb-3" src="/images/logo_white.png" alt="logo"/>
-                            <p className="mb-0 text-white">
-                                Записаться в секцию
-                                по хоккею
-                            </p>
-                        </div>
-                        <div className="card-3d-img position-relative d-flex align-items-center w-lg-55">
-                            <img src="/images/person.png" alt="image" style={{right: '10px'}}/>
-                        </div>
-                    </div>
-                    <div className="card-3d mt-5"
-                         style={{background: 'linear-gradient(99.29deg, #E4048F 0.94%, #7A1B86 100%)'}}>
-                        <div className="card-3d-img position-relative d-flex align-items-center w-lg-30">
-                            <img src="/images/balerina.png" alt="image" style={{left: '10px'}}/>
-                        </div>
-                        <div className="w-lg-65">
-                            <img className="mb-3" src="/images/logo_white.png" alt="logo"/>
-                            <p className="mb-0 text-white">
-                                Записаться в секцию
-                                по фигурному катанию
-                            </p>
-                        </div>
-                    </div>
-                    <div className="d-flex align-items-center mt-6">
-                        <div className="px-2 me-3 text-silver fs-20">
-                            <i className="fal fa-heart"/>
-                        </div>
-                        <a href="likes.html" className="text-decoration-none text-black_medium">Избранное</a>
-                    </div>
-                    <div className="d-flex align-items-center mt-4">
-                        <div className="px-2 me-3 text-silver fs-20">
-                            <i className="fal fa-headset"/>
-                        </div>
-                        <a href="call.html" className="text-decoration-none text-black_medium">Поддержка</a>
-                    </div>
-                    <div className="d-flex align-items-center mt-4">
-                        <div className="px-2 me-3 text-danger fs-20">
-                            <i className="far fa-sign-out-alt"/>
-                        </div>
-                        <a href="logout.html" className="text-decoration-none text-black_medium">Выход</a>
-                    </div>
-                </div>
-            </div>
+            
             <div className="bg-snow">
                 <div className="bg-snow-2">
                     <div className="header-carousel mt-4 mb-5">
@@ -220,8 +173,12 @@ const Seal = (props) => {
                                            <>
                                                {
                                                    item.row === 1 ?
-                                                       <button onClick={() => selectPlace(item)}>{item.number}</button>
-                                                   : ""
+                                                       <button
+                                                           disabled={item.status === 1 ? true : false}
+                                                           className={item.range === 1 ? " range-1 " : item.range === 2 ? " range-2 " : item.range === 3 ? " range-3 " :  item.range === 4 ? " range-4 "  : ""}
+                                                           onClick={() => selectPlace(item)}>{item.number}</button>
+                                                   :
+                                                   ""
                                                }
                                                 </>
                                        ))
@@ -234,7 +191,10 @@ const Seal = (props) => {
                                             <>
                                                 {
                                                     item.row === 2 ?
-                                                        <button onClick={() => selectPlace(item)}>{item.number}</button>
+                                                        <button
+                                                            disabled={item.status === 1 ? true : false}
+                                                            className={item.range === 1 ? " range-1 " : item.range === 2 ? " range-2 " : item.range === 3 ? " range-3 " :  item.range === 4 ? " range-4 "  : ""}
+                                                            onClick={() => selectPlace(item)}>{item.number}</button>
                                                         : ""
                                                 }</>
                                         ))
@@ -247,7 +207,10 @@ const Seal = (props) => {
                                             <>
                                                 {
                                                     item.row === 3 ?
-                                                        <button onClick={() => selectPlace(item)}>{item.number}</button>
+                                                        <button
+                                                            disabled={item.status === 1 ? true : false}
+                                                            className={item.range === 1 ? " range-1 " : item.range === 2 ? " range-2 " : item.range === 3 ? " range-3 " :  item.range === 4 ? " range-4 "  : ""}
+                                                                 onClick={() => selectPlace(item)}>{item.number}</button>
                                                         : ""
                                                 }</>
                                         ))
@@ -260,7 +223,10 @@ const Seal = (props) => {
                                             <>
                                                 {
                                                     item.row === 4 ?
-                                                        <button onClick={() => selectPlace(item)}>{item.number}</button>
+                                                        <button
+                                                            disabled={item.status === 1 ? true : false}
+                                                            className={item.range === 1 ? " range-1 " : item.range === 2 ? " range-2 " : item.range === 3 ? " range-3 " :  item.range === 4 ? " range-4 "  : ""}
+                                                            onClick={() => selectPlace(item)}>{item.number}</button>
                                                         : ""
                                                 }</>
                                         ))
@@ -273,7 +239,10 @@ const Seal = (props) => {
                                             <>
                                                 {
                                                     item.row === 5 ?
-                                                        <button onClick={() => selectPlace(item)}>{item.number}</button>
+                                                        <button
+                                                            disabled={item.status === 1 ? true : false}
+                                                            className={item.range === 1 ? " range-1 " : item.range === 2 ? " range-2 " : item.range === 3 ? " range-3 " :  item.range === 4 ? " range-4 "  : ""}
+                                                            onClick={() => selectPlace(item)}>{item.number}</button>
                                                         : ""
                                                 }</>
                                         ))
@@ -286,7 +255,10 @@ const Seal = (props) => {
                                             <>
                                                 {
                                                     item.row === 6 ?
-                                                        <button onClick={() => selectPlace(item)}>{item.number}</button>
+                                                        <button
+                                                            disabled={item.status === 1 ? true : false}
+                                                            className={item.range === 1 ? " range-1 " : item.range === 2 ? " range-2 " : item.range === 3 ? " range-3 " :  item.range === 4 ? " range-4 "  : ""}
+                                                            onClick={() => selectPlace(item)}>{item.number}</button>
                                                         : ""
                                                 }</>
                                         ))
@@ -322,15 +294,16 @@ const Seal = (props) => {
                             {
                                 bascetList?.map((item, index)=>(
                                     <div className="places">
-                                        <p className="d-flex justify-content-between ">Juma, 10 Fevral - 19:00 <button><img src="/images/trash.png" alt=""/></button></p>
+                                        <p className="d-flex justify-content-between ">{item.tickets.event_date.slice(8,11) + "-" + monthsRu[Number(item.tickets.event_date.slice(5,7))]} Fevral - {item.tickets.event_time}
+                                            <button onClick={() => remove(item.id)}><img src="/images/trash.png" alt=""/></button></p>
                                         <div className="d-flex justify-content-between">
                                             <div >
-                                                <span className="sm-cart-item-sector d-block">Sektor: Parter </span>
-                                                <span>Qator: {" " + item.row} </span> <span>O'rin: {" " + item.number} </span>
+                                                <span className="sm-cart-item-sector d-block">Sektor: {item.tickets.block_name} </span>
+                                                <span>Qator: {" " + item.tickets.row} </span> <span>O'rin: {" " + item.tickets.place} </span>
                                             </div>
                                             <div>
                                                 <span className="d-block">Standart</span>
-                                                <span>50 000</span>
+                                                <span>{item.tickets.price}</span>
                                             </div>
                                         </div>
                                     </div>

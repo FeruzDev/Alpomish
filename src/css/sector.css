@@ -19,22 +19,38 @@
     height: 44.23px;
     width: 49.75px;
     color: #5A5A5A;
-
     margin-right: 10px;
     margin-bottom: 7px;
     font-weight: bold;
 }
+.my-seals div button:disabled,
+button[disabled] {
+
+    background-color: rgba(14,15,17,0.58) !important;
+
+}
 .range-1{
     background: #131F6A;
+    border: 1.5036px solid #5F5F5F;
     color: #FFFFFF !important;
 }
 .range-2{
     background: #0F18F4;
     color: #FFFFFF !important;
+    border: 1.5036px solid #6B6B6B;
+
 }
 .range-3{
     background: #C428DD;
     color: #FFFFFF !important;
+    border: 1.5036px solid #6B6B6B;
+
+}
+.range-4{
+    background: #5c006b;
+    color: #FFFFFF !important;
+    border: 1.5036px solid #6B6B6B;
+
 }
 .mini-bascet{
     width: 50px;
@@ -55,11 +71,17 @@
     height: 100vh;
     transition: 2s ;
     display: flex;
+    z-index: 969999;
     animation: 1s linear infinite ;
 
 }
 .right-sidebar .right-sidebar-item-left{
     width: calc(100% - 300px);
+    background-color: rgba(14, 15, 17, 0.87);
+
+}
+.right-sidebar .right-sidebar-item-left-main{
+    width: calc(100% - 400px);
     background-color: rgba(14, 15, 17, 0.87);
 
 }
@@ -72,6 +94,18 @@
     background-color: rgb(44, 41, 119);
     animation: 1s linear infinite ;
     color: #fff;
+    padding-left: 20px;
+    padding-right: 20px;
+
+}
+.right-sidebar .right-sidebar-item-main{
+    width: 400px;
+    position: absolute;
+    right: 0;
+    transform: translateX(-300px);
+    height: 100%;
+    background-color: #FFF;
+    animation: 1s linear infinite ;
     padding-left: 20px;
     padding-right: 20px;
 

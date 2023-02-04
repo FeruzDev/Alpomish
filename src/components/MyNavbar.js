@@ -1,7 +1,14 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Link} from "react-router-dom";
+import SideBarMain from "./pages/SideBarMain";
 
 const MyNavbar = () => {
+    const [sideBarMain, setSideBarMain] = useState(false)
+    const [changeLink, setChangeLink]= useState(window.location.pathname)
+    useEffect(() =>{
+        // setSideBarMain(window.location.pathname)
+
+    }, [changeLink ])
     return (
         <header className="header">
             <div className="container">
@@ -14,31 +21,46 @@ const MyNavbar = () => {
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-xl-9 ms-lg-5 ms-0">
                                 <li className="nav-item">
-                                    <Link className="nav-link text-grey text-blue_5" aria-current="page" to="events">Мероприятий</Link>
+                                    <Link  className={changeLink === "/" ? "nav-link text-grey text-blue_5" : "nav-link text-grey" } onClick={() => setChangeLink("/")} aria-current="page" to="events">Мероприятий</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link text-grey" to="/sections">Секции</Link>
+                                    <Link  className={changeLink === "/sections" ? "nav-link text-grey text-blue_5" : "nav-link text-grey" }   onClick={() => setChangeLink("/sections")} to="/sections">Секции</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link text-grey" to="information">Каток</Link>
+                                    <Link  className={changeLink === "/information" ? "nav-link text-grey text-blue_5" : "nav-link text-grey" }  onClick={() => setChangeLink("/information")} to="information">Каток</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link text-grey" to="/contacts">Контакты</Link>
+                                    <Link className={changeLink === "/contacts" ? "nav-link text-grey text-blue_5" : "nav-link text-grey" }  onClick={() => setChangeLink("/contacts")} to="/contacts">Контакты</Link>
                                 </li>
                             </ul>
                             <form className="d-flex justify-content-between align-items-center" role="search">
                                 <button  to="/bascet" className="btn focus-none basket-btn text-grey me-4  text-decoration-none" type="button">
                                     <img src="/images/basket_icon.svg" alt="icon" /> Корзина
                                 </button>
-                                {/*                        <button class="btn focus-none login-btn" type="button">Войти</button>*/}
-                                <button className="btn  focus-none login-btn rounded-circle" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
-                                    <i className="fas fa-user" />
-                                </button>
+                                {
+                                    localStorage.getItem("alpToken") ?
+                                        <button
+                                            className="btn  focus-none login-btn rounded-circle"
+                                            type="button" data-bs-toggle="offcanvas"
+                                            data-bs-target="#offcanvasExample"
+                                            onClick={() => setSideBarMain(!sideBarMain)}
+                                            aria-controls="offcanvasExample">
+                                            <i className="fas fa-user" />
+                                        </button>
+                                        :
+                                        <Link to="/login" className="btn focus-none login-btn" type="button">Войти</Link>
+                                }
+
+
                             </form>
                         </div>
                     </div>
                 </nav>
             </div>
+            <SideBarMain
+                setSideBarMain={setSideBarMain}
+                sideBarMain={sideBarMain}
+            />
         </header>
     );
 };
