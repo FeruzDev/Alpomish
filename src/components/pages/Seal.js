@@ -18,7 +18,6 @@ const Seal = (props) => {
 
     const selectPlace = (item) => {
         console.log(item)
-        setSide(true)
         // bascetList.push(item)
 
         axios.post(API_PATH + "basket/view", {
@@ -26,7 +25,7 @@ const Seal = (props) => {
             // "block_name": item?.block_name,
             // "event_date":item?.event_date,
             // "event_time": item?.event_time
-        }, AUTH)
+        }, {headers: {Authorization: "Bearer " + localStorage.getItem("alpToken")}})
             .then(res => {
                 console.log(res.data.exists)
                 if (res.data.exists === 0) {
@@ -39,6 +38,8 @@ const Seal = (props) => {
                         .then(res => {
                             // setBascetlist(res.data)
                             getBascet()
+                            setSide(true)
+
                         })
                 } else {
                     alert("retry")
@@ -47,20 +48,24 @@ const Seal = (props) => {
 
     }
 
+    let history = useHistory()
+    const sendPay = () => {
+      history.push("/bascket")
+    }
     const getBascet =()=>{
-        axios.get(API_PATH + "basket", AUTH)
+        axios.get(API_PATH + "basket", {headers: {Authorization: "Bearer " + localStorage.getItem("alpToken")}})
             .then(res =>{
                 setBascetlist(res.data)
             })
     }
     const remove =(id)=>{
-        axios.delete(API_PATH + "basket/delete-ticket", {"ticket_id": id},  AUTH)
+        axios.post(API_PATH + "basket/delete-ticket", {"ticket_id": id},  {headers: {Authorization: "Bearer " + localStorage.getItem("alpToken")}})
             .then(res =>{
-                setBascetlist(res.data)
+                getBascet()
             })
     }
     const getDetail = () => {
-        axios.get(API_PATH + "event/" +  params.id, AUTH)
+        axios.get(API_PATH + "event/" +  params.id, {headers: {Authorization: "Bearer " + localStorage.getItem("alpToken")}})
             .then(res => {
                 SetMyItem( res.data);
                 localStorage.setItem("title", res.data.title)
@@ -295,7 +300,7 @@ const Seal = (props) => {
                                 bascetList?.map((item, index)=>(
                                     <div className="places">
                                         <p className="d-flex justify-content-between ">{item.tickets.event_date.slice(8,11) + "-" + monthsRu[Number(item.tickets.event_date.slice(5,7))]} Fevral - {item.tickets.event_time}
-                                            <button onClick={() => remove(item.id)}><img src="/images/trash.png" alt=""/></button></p>
+                                            <button onClick={() => remove(item.ticket_id)}><img src="/images/trash.png" alt=""/></button></p>
                                         <div className="d-flex justify-content-between">
                                             <div >
                                                 <span className="sm-cart-item-sector d-block">Sektor: {item.tickets.block_name} </span>
@@ -303,12 +308,18 @@ const Seal = (props) => {
                                             </div>
                                             <div>
                                                 <span className="d-block">Standart</span>
+
+
+
                                                 <span>{item.tickets.price}</span>
                                             </div>
                                         </div>
                                     </div>
                                 ))
                             }
+                            <button onClick={sendPay} className="sendPay">
+                                ОФОРМИТЬ ЗАКАЗ
+                            </button>
                         </div>
                     </div>
                     :

@@ -46520,3 +46520,7 @@ body {
 .myf-link div, p, li, i, a{
     text-decoration: none;
 }
+
+.slick-list div:focus{
+    outline: none;
+}

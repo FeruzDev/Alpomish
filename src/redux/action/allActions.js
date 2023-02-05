@@ -68,3 +68,13 @@ export function getSections(){
             })
     }
 }
+export function getBascketList(){
+    return function (dispatch){
+        axios.get(API_PATH + "basket", {headers: {Authorization: "Bearer " + localStorage.getItem("alpToken")}})
+            .then(res => {
+                console.log(res.data)
+                dispatch(updateState({bascketList: res.data}));
+
+            })
+    }
+}

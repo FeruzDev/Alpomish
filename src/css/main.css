@@ -254,3 +254,9 @@
   color: #888888;
   height: 50px; }
 
+.bilet2{
+  border: 1px solid #000;
+  border-radius: 10px;
+  padding: 10px 20px;
+}
+

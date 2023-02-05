@@ -34,19 +34,22 @@ const MyNavbar = () => {
                                 </li>
                             </ul>
                             <form className="d-flex justify-content-between align-items-center" role="search">
-                                <button  to="/bascet" className="btn focus-none basket-btn text-grey me-4  text-decoration-none" type="button">
-                                    <img src="/images/basket_icon.svg" alt="icon" /> Корзина
-                                </button>
+
                                 {
                                     localStorage.getItem("alpToken") ?
-                                        <button
-                                            className="btn  focus-none login-btn rounded-circle"
-                                            type="button" data-bs-toggle="offcanvas"
-                                            data-bs-target="#offcanvasExample"
-                                            onClick={() => setSideBarMain(!sideBarMain)}
-                                            aria-controls="offcanvasExample">
-                                            <i className="fas fa-user" />
-                                        </button>
+                                       <>
+                                           <Link  to="/bascket" className="btn focus-none basket-btn text-grey me-4  text-decoration-none" type="button">
+                                               <img src="/images/basket_icon.svg" alt="icon" /> Корзина
+                                           </Link>
+                                           <button
+                                               className="btn  focus-none login-btn rounded-circle"
+                                               type="button" data-bs-toggle="offcanvas"
+                                               data-bs-target="#offcanvasExample"
+                                               onClick={() => setSideBarMain(!sideBarMain)}
+                                               aria-controls="offcanvasExample">
+                                               <i className="fas fa-user" />
+                                           </button>
+                                       </>
                                         :
                                         <Link to="/login" className="btn focus-none login-btn" type="button">Войти</Link>
                                 }

@@ -1,6 +1,14 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {connect} from "react-redux";
+import {getBascketList} from "../../redux/action/allActions";
 
-const Bascet = () => {
+const Bascet = (props) => {
+    const monthsRu = ["month", 'Январь', 'Февраль', "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
+    const   nnn = "2023-01-30"
+    useEffect(()=>{
+        props.getBascketList()
+        console.log(nnn.slice(8, 11))
+    }, [])
     return (
         <div className="body-site">
            
@@ -16,48 +24,27 @@ const Bascet = () => {
                                 </div>
                                 <div className="row align-items-start">
                                     <div className="col-lg-6 mt-lg-0 mt-3">
-                                        <div className="row bilet position-relative m-0 justify-content-between">
-                                            <div className="col-4 d-flex align-items-center justify-content-center">
-                                                <img src="https://www.pngmart.com/files/22/QR-Code-Transparent-Isolated-Background.png" className="w-80" alt="" />
-                                            </div>
-                                            <div className="col-xxl-7 col-md-7 col-sm-8 col-7 py-3 d-flex flex-column justify-content-between">
-                                                <div className>
-                                                    <p className="fw-600 fs-xl-20 fs-lg-14 fs-sm-28 fs-14 text-black_dark mb-sm-2 mb-0">
-                                                        Концерт Сплин</p>
-                                                    <p className="fs-xl-14 fs-lg-10 fs-sm-12 fs-10 text-black_dark mb-sm-2 mb-0">20
-                                                        авгутса, 2022 год, пятница, 18:00</p>
-                                                    <p className="fs-xl-14 fs-lg-10 fs-sm-12 fs-10 text-blue mb-sm-2 mb-0">Alpomish muz
-                                                        saroyi</p>
-                                                    <p className="fs-xl-14 fs-lg-10 fs-sm-12 fs-10 text-black_dark mb-sm-2 mb-0">Ряд №7
-                                                        / Место 55</p>
+                                        {
+                                            props.bascketList?.map((item, index) =>(
+                                                <div className="row bilet2 position-relative m-0 justify-content-between mt-5">
+                                                    <div className="col-xxl-7 col-md-7 col-sm-8 col-7 py-3 d-flex flex-column justify-content-between">
+                                                        <div className>
+                                                            <p className="fw-600 fs-xl-20 fs-lg-14 fs-sm-28 fs-14 text-black_dark mb-sm-2 mb-0">
+                                                                Концерт Сплин</p>
+                                                            <p className="fs-xl-14 fs-lg-10 fs-sm-12 fs-10 text-black_dark mb-sm-2 mb-0">
+                                                                {Number(item?.tickets?.event_date?.slice(8, 11)) + " " +  monthsRu[Number(item?.tickets?.event_date?.slice(5,7))]}, {item?.tickets?.event_date?.slice(0,4 )} год,  {item?.tickets?.event_time}</p>
+                                                            <p className="fs-xl-14 fs-lg-10 fs-sm-12 fs-10 text-blue mb-sm-2 mb-0">Alpomish muz
+                                                                saroyi</p>
+                                                            <p className="fs-xl-14 fs-lg-10 fs-sm-12 fs-10 text-black_dark mb-sm-2 mb-0">Ряд {item?.tickets?.block_name}
+                                                                / Место {item?.tickets?.place}</p>
+                                                        </div>
+                                                        <p className="fw-bold fs-xl-28 fs-lg-14 fs-sm-28 fs-14 text-black_dark mb-0 ">{item?.tickets?.price}
+                                                            <span className="text-blue font-DM"> UZS</span>
+                                                        </p>
+                                                    </div>
                                                 </div>
-                                                <p className="fw-bold fs-xl-28 fs-lg-14 fs-sm-28 fs-14 text-black_dark mb-0 ">400 000
-                                                    <span className="text-blue font-DM">UZS</span>
-                                                </p>
-                                            </div>
-                                            <div className="bilet-shadow position-absolute rounded-16" />
-                                        </div>
-                                        <div className="row bilet position-relative m-0 justify-content-between mt-5">
-                                            <div className="col-4 d-flex align-items-center justify-content-center">
-                                                <img src="https://www.pngmart.com/files/22/QR-Code-Transparent-Isolated-Background.png" className="w-80" alt="" />
-                                            </div>
-                                            <div className="col-xxl-7 col-md-7 col-sm-8 col-7 py-3 d-flex flex-column justify-content-between">
-                                                <div className>
-                                                    <p className="fw-600 fs-xl-20 fs-lg-14 fs-sm-28 fs-14 text-black_dark mb-sm-2 mb-0">
-                                                        Концерт Сплин</p>
-                                                    <p className="fs-xl-14 fs-lg-10 fs-sm-12 fs-10 text-black_dark mb-sm-2 mb-0">20
-                                                        авгутса, 2022 год, пятница, 18:00</p>
-                                                    <p className="fs-xl-14 fs-lg-10 fs-sm-12 fs-10 text-blue mb-sm-2 mb-0">Alpomish muz
-                                                        saroyi</p>
-                                                    <p className="fs-xl-14 fs-lg-10 fs-sm-12 fs-10 text-black_dark mb-sm-2 mb-0">Ряд №7
-                                                        / Место 55</p>
-                                                </div>
-                                                <p className="fw-bold fs-xl-28 fs-lg-14 fs-sm-28 fs-14 text-black_dark mb-0 ">400 000
-                                                    <span className="text-blue font-DM">UZS</span>
-                                                </p>
-                                            </div>
-                                            <div className="bilet-shadow position-absolute rounded-16" />
-                                        </div>
+                                            ))
+                                        }
                                     </div>
                                     <div className="col-lg-6 mt-lg-0 mt-3 ps-lg-5 d-flex flex-column justify-content-center">
                                         <div className="bg-white border rounded-16 p-3">
@@ -121,4 +108,9 @@ const Bascet = () => {
     );
 };
 
-export default Bascet;
+const mapStateToProps = (state) =>{
+    return{
+        bascketList: state.allReducerData.bascketList,
+    }
+}
+export default connect(mapStateToProps, {getBascketList})(Bascet);

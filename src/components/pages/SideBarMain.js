@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import axios from "axios";
 import {API_PATH} from "../const";
-import {useHistory} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import {connect} from "react-redux";
 import {getSections} from "../../redux/action/allActions";
 
@@ -15,6 +15,11 @@ const SideBarMain = (props) => {
     const contactsLink = () => {
         history.push("/contacts")
         props.setSideBarMain(false)
+    }
+    const sections = () => {
+      history.push("/sections")
+        props.setSideBarMain(false)
+
     }
     useEffect(()=>{
         getSections()
@@ -42,30 +47,15 @@ const SideBarMain = (props) => {
                         <p className="mb-0 ms-3">{localStorage.getItem("phone") ? localStorage.getItem("phone") : "" }</p>
 
                     </div>
-                    <div className="card-3d mt-4" style={{background: 'linear-gradient(99.29deg, #387EC1 0.94%, #47A8DF 100%)'}}>
-                        <div className="w-lg-45">
-                            <img className="mb-3" src="/images/logo_white.png" alt="logo" />
-                            <p className="mb-0 text-white">
-                                Записаться в секцию
-                                по хоккею
-                            </p>
-                        </div>
-                        <div className="card-3d-img position-relative d-flex align-items-center w-lg-55">
-                            <img src="/images/person.png" alt="image" style={{right: '10px'}} />
-                        </div>
-                    </div>
-                    <div className="card-3d mt-5" style={{background: 'linear-gradient(99.29deg, #E4048F 0.94%, #7A1B86 100%)'}}>
-                        <div className="card-3d-img position-relative d-flex align-items-center w-lg-30">
-                            <img src="/images/balerina.png" alt="image" style={{left: '10px'}} />
-                        </div>
-                        <div className="w-lg-65">
-                            <img className="mb-3" src="/images/logo_white.png" alt="logo" />
-                            <p className="mb-0 text-white">
-                                Записаться в секцию
-                                по фигурному катанию
-                            </p>
-                        </div>
-                    </div>
+
+                    {
+                        props.sectionList?.slice(0 , 2).map(item =>(
+                            <button onClick={sections} className="card-3d mt-5 p-0 border-0 bg-transparent" >
+                                <img src={item?.img_url} alt=""/>
+                            </button>
+
+                        ))
+                    }
 
                     {/*<div className="d-flex align-items-center mt-6">*/}
                     {/*    <div className="px-2 me-3 text-silver fs-20">*/}

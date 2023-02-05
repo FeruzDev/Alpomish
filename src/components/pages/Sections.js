@@ -1,8 +1,10 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {connect} from "react-redux";
 import {getSections} from "../../redux/action/allActions";
 import {Link} from "react-router-dom";
 import Modal from 'react-modal';
+import axios from "axios";
+import {API_PATH} from "../const";
 
 
 const customStyles = {
@@ -24,9 +26,15 @@ const Sections = (props) => {
 
     let subtitle;
     const [modalIsOpen, setIsOpen] = React.useState(false);
-
-    function openModal() {
+    const [first_name, setfirst_name] = useState("")
+    const [last_name, setlast_name] = useState("")
+    const [phone, setphone] = useState("")
+    const [comment, setcomment] = useState("")
+    const [appid, setappid] = useState("")
+    function openModal(id) {
         setIsOpen(true);
+        setappid(id)
+        console.log(id)
     }
 
     function afterOpenModal() {
@@ -38,6 +46,18 @@ const Sections = (props) => {
         setIsOpen(false);
     }
 
+    const appKatok = () => {
+        axios.post(API_PATH + "app-katok/add",{
+            "first_name": first_name,
+            "last_name": last_name,
+            "phone": phone,
+            "comment": comment,
+            "katok_service_id": appid
+        }, {headers: {Authorization: "Bearer " + localStorage.getItem("alpToken")}})
+            .then(res => {
+                alert("error")
+            })
+    }
     useEffect(()=>{
         props.getSections()
     }, [])
@@ -61,22 +81,22 @@ const Sections = (props) => {
                                 <div className="d-flex align-items-center mt-4">
                                     <div className="me-4">
                                         <label htmlFor="name" className="form-label">Имя</label>
-                                        <input type="text" className="form-control rounded-8 py-3" id="name" />
+                                        <input type="text" onChange={(e) => setfirst_name(e.target.value)} className="form-control rounded-8 py-3" id="name" />
                                     </div>
                                     <div>
                                         <label htmlFor="surname" className="form-label">Фамилия</label>
-                                        <input type="text" className="form-control rounded-8 py-3" id="surname" />
+                                        <input type="text" onChange={(e) => setlast_name(e.target.value)} className="form-control rounded-8 py-3" id="surname" />
                                     </div>
                                 </div>
                                 <div className="d-flex align-items-center mt-4">
                                     <div className="me-4">
                                         <label htmlFor="number" className="form-label">Номер</label>
-                                        <input type="text" className="form-control rounded-8 py-3" id="number" />
-                                        <button className="btn login-btn mt-4 w-100">Записаться</button>
+                                        <input type="text"  onChange={(e) => setphone(e.target.value)} className="form-control rounded-8 py-3" id="number" />
+                                        <button className="btn login-btn mt-4 w-100" onClick={() => appKatok()}>Записаться</button>
                                     </div>
                                     <div>
                                         <label htmlFor="comment" className="form-label">Коментарий</label>
-                                        <textarea type="text" className="form-control rounded-8 py-3" id="comment" rows={4} defaultValue={""} />
+                                        <textarea type="text"  onChange={(e) => setcomment(e.target.value)} className="form-control rounded-8 py-3" id="comment" rows={4} defaultValue={""} />
                                     </div>
                                 </div>
                             </div>
@@ -106,7 +126,7 @@ const Sections = (props) => {
                                                 </div>
                                             </div>
                                             <div className="col-lg-4">
-                                                  <button onClick={openModal} className="btn border-0 bg-transparent focus-none">
+                                                  <button onClick={() => openModal(item.id)} className="btn border-0 bg-transparent focus-none">
                                                       <img src={  item?.img_url} />
                                                   </button>
                                                 {/*<div className="card-3d mt-5" style={{background: 'linear-gradient(99.29deg, #E4048F 0.94%, #7A1B86 100%)'}} data-bs-toggle="modal" data-bs-target="#exampleModal">*/}
@@ -140,22 +160,22 @@ const Sections = (props) => {
                                 <div className="d-flex align-items-center mt-4">
                                     <div className="me-4">
                                         <label htmlFor="name" className="form-label">Имя</label>
-                                        <input type="text" className="form-control rounded-8 py-3" id="name" />
+                                        <input type="text" onChange={(e) => setfirst_name(e.target.value)} className="form-control rounded-8 py-3" id="name" />
                                     </div>
                                     <div>
                                         <label htmlFor="surname" className="form-label">Фамилия</label>
-                                        <input type="text" className="form-control rounded-8 py-3" id="surname" />
+                                        <input type="text" onChange={(e) => setlast_name(e.target.value)} className="form-control rounded-8 py-3" id="surname" />
                                     </div>
                                 </div>
                                 <div className="d-flex align-items-center mt-4">
                                     <div className="me-4">
                                         <label htmlFor="number" className="form-label">Номер</label>
-                                        <input type="text" className="form-control rounded-8 py-3" id="number" />
-                                        <button className="btn login-btn mt-4 w-100">Записаться</button>
+                                        <input type="text"  onChange={(e) => setphone(e.target.value)} className="form-control rounded-8 py-3" id="number" />
+                                        <button className="btn login-btn mt-4 w-100" onClick={() => appKatok()}>Записаться</button>
                                     </div>
                                     <div>
                                         <label htmlFor="comment" className="form-label">Коментарий</label>
-                                        <textarea type="text" className="form-control rounded-8 py-3" id="comment" rows={4} defaultValue={""} />
+                                        <textarea type="text"  onChange={(e) => setcomment(e.target.value)} className="form-control rounded-8 py-3" id="comment" rows={4} defaultValue={""} />
                                     </div>
                                 </div>
                             </div>

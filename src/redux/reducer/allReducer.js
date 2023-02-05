@@ -8,6 +8,7 @@ const initialState ={
     eventsDate: {},
     sectionList: [],
     newsList: [],
+    bascketList: [],
     newsItem: {},
 
 

@@ -47,7 +47,7 @@ function App() {
                 <Route exact path="/politics" component={Politics}/>
                 <Route exact path="/work" component={Work}/>
                 <Route exact path="/sections" component={Sections}/>
-                <Route exact path="/bascet" component={Bascet}/>
+                <Route exact path="/bascket" component={Bascet}/>
                 <Route exact path="/events/detail/:id" component={View}/>
                 <Route exact path="/events/detail/:id/seal" component={Seal}/>
                 <Route exact path="/events" component={Events}/>

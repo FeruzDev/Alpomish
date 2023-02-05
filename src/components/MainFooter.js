@@ -69,20 +69,20 @@ const MainFooter = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="pt-2">
-                            <span className="text-white text-capitalize fw-bold fs-18">Настройки</span>
-                            <div className="dropdown mt-4">
-                                <button className="btn dropdown-toggle custom-dropdown focus-none" type="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                    Русский <i className="fas fa-sort ms-3 text-grey"/>
-                                </button>
-                                <ul className="dropdown-menu">
-                                    <li><a className="dropdown-item" href="#">Action</a></li>
-                                    <li><a className="dropdown-item" href="#">Another action</a></li>
-                                    <li><a className="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
-                            </div>
-                        </div>
+                        {/*<div className="pt-2">*/}
+                        {/*    <span className="text-white text-capitalize fw-bold fs-18">Настройки</span>*/}
+                        {/*    <div className="dropdown mt-4">*/}
+                        {/*        <button className="btn dropdown-toggle custom-dropdown focus-none" type="button"*/}
+                        {/*                data-bs-toggle="dropdown" aria-expanded="false">*/}
+                        {/*            Русский <i className="fas fa-sort ms-3 text-grey"/>*/}
+                        {/*        </button>*/}
+                        {/*        <ul className="dropdown-menu">*/}
+                        {/*            <li><a className="dropdown-item" href="#">Action</a></li>*/}
+                        {/*            <li><a className="dropdown-item" href="#">Another action</a></li>*/}
+                        {/*            <li><a className="dropdown-item" href="#">Something else here</a></li>*/}
+                        {/*        </ul>*/}
+                        {/*    </div>*/}
+                        {/*</div>*/}
                     </div>
                     <div className="text-center my-3 text-light_grey">
                         Copyright © 2022 Alpomish Muz Saroyi
