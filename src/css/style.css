@@ -46142,7 +46142,7 @@ button.swiper-pagination-bullet {
 }
 
 .news-card_text {
-    margin-top: 50px;
+    margin-top: 20px;
     font-family: 'DM Sans', sans-serif;
     color: #000;
 }
@@ -46499,8 +46499,8 @@ body {
 }
 
 .f-carousel-item {
-    padding-left: 80px;
-    padding-right: 80px;
+    padding-left: 2px;
+    padding-right: 2px;
 }
 
 .mt17-f {

@@ -1,13 +1,47 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {connect} from "react-redux";
-import {getBascketList} from "../../redux/action/allActions";
+import {getBascketList, updateState} from "../../redux/action/allActions";
+import axios from "axios";
+import {API_PATH} from "../const";
 
 const Bascet = (props) => {
     const monthsRu = ["month", 'Январь', 'Февраль', "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
-    const   nnn = "2023-01-30"
+    const [summa, setSumma]= useState("")
+    let i=0
+    // let summa = 0
+    const total   = 0
+    const summaZ =()=>{
+        axios.get(API_PATH + "basket", {headers: {Authorization: "Bearer " + localStorage.getItem("alpToken")}})
+            .then(res => {
+                console.log(res.data)
+                setSumma(res.data.reduce(
+                    (prevValue, currentValue) => prevValue + currentValue.tickets?.price,
+                    0
+                ))
+
+                //  total = res.data.reduce(
+                //     (prevValue, currentValue) => prevValue + currentValue.tickets?.price,
+                //     0
+                // );
+            })
+
+
+    }
+    const array1 = [1, 2, 3, 4];
+
+// 0 + 1 + 2 + 3 + 4
+    const initialValue = 0;
+    const sumWithInitial = array1.reduce(
+        (accumulator, currentValue) => accumulator + currentValue,
+        initialValue
+    );
+
+// Expected output: 10
+
     useEffect(()=>{
         props.getBascketList()
-        console.log(nnn.slice(8, 11))
+        summaZ()
+
     }, [])
     return (
         <div className="body-site">
@@ -54,7 +88,7 @@ const Bascet = (props) => {
                                             </div>
                                             <div className="d-flex align-items-center py-2 border-bottom">
                                                 <p className="mb-0 text-silver_3 w-50">Цена билета</p>
-                                                <p className="mb-0 text-silver_3">400 000 UZS</p>
+                                                <p className="mb-0 text-silver_3">{summa} UZS</p>
                                             </div>
                                             <div className="d-flex align-items-center py-2 border-bottom">
                                                 <p className="mb-0 text-silver_3 w-50">Сервисный сбор</p>

@@ -142,11 +142,11 @@ const MainPage = (props) => {
                                         {item?.title}
                                     </p>
                                     <p className="news-card_text">
-                                        {item?.desc.length > 100 ? item?.desc.slice(0, 100) + "..." : item?.desc}
+                                        {item?.short_text}
                                     </p>
-                                    <p className="news-card_time">12 Март - 16:00
-                                          {item?.created_at.slice(8, 10) + " " + monthsRu[Number(item?.created_at?.slice(5, 7))] + " " +
-                                        item?.created_at?.eventTime?.slice(0, 5)}
+                                    <p className="news-card_time">
+                                          {item?.created_at.slice(0, 2) + " " + monthsRu[Number(item?.created_at?.slice(3,6))] + " - " +
+                                        item?.created_at?.slice(11, 16)}
                                     </p>
                                 </Link>
 
