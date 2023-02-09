@@ -5,6 +5,7 @@ import {getEvents, getEventsDetail, updateState} from "../../redux/action/allAct
 import axios from "axios";
 import {API_PATH, AUTH} from "../const";
 import {useHistory, useParams} from "react-router-dom";
+import {toast} from "react-toastify";
 
 const Seal = (props) => {
     const monthsRu = ["month", 'Январь', 'Февраль', "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
@@ -42,7 +43,7 @@ const Seal = (props) => {
 
                         })
                 } else {
-                    alert("retry")
+                    toast.warning("Это место занято")
                 }
             })
 
@@ -81,10 +82,10 @@ const Seal = (props) => {
     }
     const getSeals = () => {
       axios.post(API_PATH + "event-place", {
-          "event_id": 1,
-          "block_name": "A1",
-          "event_date":"2023-01-30",
-          "event_time":"11:00"
+          "event_id": params?.id,
+          "block_name": localStorage.getItem("block_name"),
+          "event_date":localStorage.getItem("eventDate"),
+          "event_time": localStorage.getItem("eventTime")
       }, AUTH)
           .then(res =>{
               setFPlace(res.data.count_place)
@@ -94,6 +95,8 @@ const Seal = (props) => {
           })
     }
     useEffect(() => {
+        window.scrollTo(0, 0)
+
         getDetail()
         getSeals()
         getBascet()
@@ -195,7 +198,7 @@ const Seal = (props) => {
                                         fPlace.map((item, index) =>(
                                             <>
                                                 {
-                                                    item.row === 2 ?
+                                                    item?.row === 2 ?
                                                         <button
                                                             disabled={item.status === 1 ? true : false}
                                                             className={item.range === 1 ? " range-1 " : item.range === 2 ? " range-2 " : item.range === 3 ? " range-3 " :  item.range === 4 ? " range-4 "  : ""}
@@ -211,7 +214,7 @@ const Seal = (props) => {
                                         fPlace.map((item, index) =>(
                                             <>
                                                 {
-                                                    item.row === 3 ?
+                                                    item?.row === 3 ?
                                                         <button
                                                             disabled={item.status === 1 ? true : false}
                                                             className={item.range === 1 ? " range-1 " : item.range === 2 ? " range-2 " : item.range === 3 ? " range-3 " :  item.range === 4 ? " range-4 "  : ""}
@@ -227,7 +230,7 @@ const Seal = (props) => {
                                         fPlace.map((item, index) =>(
                                             <>
                                                 {
-                                                    item.row === 4 ?
+                                                    item?.row === 4 ?
                                                         <button
                                                             disabled={item.status === 1 ? true : false}
                                                             className={item.range === 1 ? " range-1 " : item.range === 2 ? " range-2 " : item.range === 3 ? " range-3 " :  item.range === 4 ? " range-4 "  : ""}
@@ -243,7 +246,7 @@ const Seal = (props) => {
                                         fPlace.map((item, index) =>(
                                             <>
                                                 {
-                                                    item.row === 5 ?
+                                                    item?.row === 5 ?
                                                         <button
                                                             disabled={item.status === 1 ? true : false}
                                                             className={item.range === 1 ? " range-1 " : item.range === 2 ? " range-2 " : item.range === 3 ? " range-3 " :  item.range === 4 ? " range-4 "  : ""}
@@ -259,7 +262,7 @@ const Seal = (props) => {
                                         fPlace.map((item, index) =>(
                                             <>
                                                 {
-                                                    item.row === 6 ?
+                                                    item?.row === 6 ?
                                                         <button
                                                             disabled={item.status === 1 ? true : false}
                                                             className={item.range === 1 ? " range-1 " : item.range === 2 ? " range-2 " : item.range === 3 ? " range-3 " :  item.range === 4 ? " range-4 "  : ""}
@@ -299,19 +302,19 @@ const Seal = (props) => {
                             {
                                 bascetList?.map((item, index)=>(
                                     <div className="places">
-                                        <p className="d-flex justify-content-between ">{item.tickets.event_date.slice(8,11) + "-" + monthsRu[Number(item.tickets.event_date.slice(5,7))]} Fevral - {item.tickets.event_time}
+                                        <p className="d-flex justify-content-between ">{item.tickets?.event_date?.slice(8,11) + "-" + monthsRu[Number(item.tickets.event_date.slice(5,7))]} Fevral - {item.tickets?.event_time}
                                             <button onClick={() => remove(item.ticket_id)}><img src="/images/trash.png" alt=""/></button></p>
                                         <div className="d-flex justify-content-between">
                                             <div >
-                                                <span className="sm-cart-item-sector d-block">Sektor: {item.tickets.block_name} </span>
-                                                <span>Qator: {" " + item.tickets.row} </span> <span>O'rin: {" " + item.tickets.place} </span>
+                                                <span className="sm-cart-item-sector d-block">Sektor: {item.tickets?.block_name} </span>
+                                                <span>Qator: {" " + item.tickets?.row} </span> <span>O'rin: {" " + item.tickets?.place} </span>
                                             </div>
                                             <div>
                                                 <span className="d-block">Standart</span>
 
 
 
-                                                <span>{item.tickets.price}</span>
+                                                <span>{item.tickets?.price}</span>
                                             </div>
                                         </div>
                                     </div>

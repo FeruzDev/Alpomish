@@ -18,7 +18,9 @@ const Sms = (props) => {
               localStorage.setItem("user_id", res.data.user.id)
               localStorage.setItem("username", res.data.user.username)
               history.push("/")
-      })
+              window.location.reload(true);
+
+          })
     }
 
 
@@ -30,10 +32,10 @@ const Sms = (props) => {
                     <form className="d-flex align-items-center justify-content-center">
                         <div className="bg-white p-5 rounded-16">
                             <img src="images/logo.png" className="me-4 mb-3" alt="logo"/>
-                            <p className="fw-800 text-black_medium fs-20">Введите код из SMS</p>
-                            <p className="fw-light text-black_medium">
-                                Мы отправили его на
-                                +998 (99) 999-99-99
+                            <p className="fw-800 text-black_medium fs-20 text-center">Введите код из SMS</p>
+                            <p className="fw-light text-black_medium text-center">
+                                Мы отправили его на <br/>
+                                {" +" + localStorage.getItem("phone")}
                             </p>
                             <div className=" m-0" >
                                 <div className="w-100 mb-4 text-center">

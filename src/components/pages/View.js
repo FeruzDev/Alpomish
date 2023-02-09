@@ -14,6 +14,7 @@ const View = (props) => {
 
     const feruzjalilov = (value) => {
         console.log(value)
+        localStorage.setItem("block_name", value)
         history.push("/events/detail/"+ params.id + "/seal")
 
     }

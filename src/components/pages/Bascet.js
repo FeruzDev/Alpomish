@@ -2,12 +2,20 @@ import React, {useEffect, useState} from 'react';
 import {connect} from "react-redux";
 import {getBascketList, updateState} from "../../redux/action/allActions";
 import axios from "axios";
-import {API_PATH} from "../const";
+import {API_PATH, AUTH} from "../const";
 
 const Bascet = (props) => {
     const monthsRu = ["month", 'Январь', 'Февраль', "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"]
+    const [firstName, setFirstName]= useState("")
+    const [lastName, setLastName]= useState("")
+    const [phone, setPhone]= useState("")
+    const [email, setEmail]= useState("")
+    const [paymnet, setPayment]= useState("")
     const [summa, setSumma]= useState("")
+    const [tick, setTick]= useState([])
+    const [myObj, setMyObj] = useState({})
     let i=0
+
     // let summa = 0
     const total   = 0
     const summaZ =()=>{
@@ -27,21 +35,44 @@ const Bascet = (props) => {
 
 
     }
-    const array1 = [1, 2, 3, 4];
 
-// 0 + 1 + 2 + 3 + 4
-    const initialValue = 0;
-    const sumWithInitial = array1.reduce(
-        (accumulator, currentValue) => accumulator + currentValue,
-        initialValue
-    );
+    const Pay =()=>{
+        props.bascketList?.map(item =>{
+            // setTick(...tick, item.id)
+            tick.push(item?.tickets?.id)
+        })
+        console.log(tick)
+        axios.post(API_PATH + "order/add", {
+            "first_name": firstName,
+            "last_name": lastName,
+            "phone": phone,
+            "email": email,
+            "payment_type": "payme",
+            "tickets": tick
 
-// Expected output: 10
+        }, {headers: {Authorization: "Bearer " + localStorage.getItem("alpToken")}})
+            .then(res =>{
+                setMyObj(res.data.payme)
+                document.getElementById("target_form").submit()
+            })
+
+
+    }
+
+    function convertDate(unixDate) {
+        const d = new Date(unixDate * 1000);
+        const day = d.toLocaleString(d.getDate())
+        console.log(day)
+
+        return(day);
+    }
+
+
 
     useEffect(()=>{
         props.getBascketList()
         summaZ()
-
+        console.log(Date.now())
     }, [])
     return (
         <div className="body-site">
@@ -84,49 +115,45 @@ const Bascet = (props) => {
                                         <div className="bg-white border rounded-16 p-3">
                                             <div className="d-flex align-items-center py-2 border-bottom">
                                                 <p className="mb-0 text-silver_3 w-50">Кол-во билетов</p>
-                                                <p className="mb-0 text-silver_3">2</p>
+                                                <p className="mb-0 text-silver_3">{props.bascketList?.length > 0 ? props.bascketList?.length : 0 }</p>
                                             </div>
                                             <div className="d-flex align-items-center py-2 border-bottom">
                                                 <p className="mb-0 text-silver_3 w-50">Цена билета</p>
                                                 <p className="mb-0 text-silver_3">{summa} UZS</p>
                                             </div>
-                                            <div className="d-flex align-items-center py-2 border-bottom">
-                                                <p className="mb-0 text-silver_3 w-50">Сервисный сбор</p>
-                                                <p className="mb-0 text-silver_3">4 000 UZS</p>
-                                            </div>
+                                            {/*<div className="d-flex align-items-center py-2 border-bottom">*/}
+                                            {/*    <p className="mb-0 text-silver_3 w-50">Сервисный сбор</p>*/}
+                                            {/*    <p className="mb-0 text-silver_3"> 0 UZS</p>*/}
+                                            {/*</div>*/}
                                             <div className="d-flex align-items-center mt-2">
                                                 <p className="mb-0 text-black_small fw-600 w-50">Итого к оплате</p>
-                                                <p className="mb-0 text-black_small fw-600">804 000 UZS</p>
+                                                <p className="mb-0 text-black_small fw-600">{summa} UZS</p>
                                             </div>
                                         </div>
                                         <div className="mt-5">
                                             <div className="d-flex align-items-center py-1 justify-content-between">
                                                 <div className="w-100 me-3">
                                                     <label htmlFor="name" className="form-label fw-bold text-black_small">Имя</label>
-                                                    <input type="text" id="name" className="form-control rounded-10" />
+                                                    <input type="text" id="name" onChange={(e) => setFirstName(e.target.value)} className="form-control rounded-10" />
                                                 </div>
                                                 <div className="w-100">
                                                     <label htmlFor="surname" className="form-label fw-bold text-black_small">Фамилия</label>
-                                                    <input type="text" id="surname" className="form-control rounded-10" />
+                                                    <input type="text" id="surname"  onChange={(e) => setLastName(e.target.value)} className="form-control rounded-10" />
                                                 </div>
                                             </div>
                                             <div className="d-flex align-items-center py-1 justify-content-between">
                                                 <div className="w-100 me-3">
                                                     <label htmlFor="number" className="form-label fw-bold text-black_small">Номер</label>
-                                                    <input type="text" id="number" className="form-control rounded-10" />
+                                                    <input type="text" id="number"  onChange={(e) => setPhone(e.target.value)} className="form-control rounded-10" />
                                                 </div>
                                                 <div className="w-100">
                                                     <label htmlFor="email" className="form-label fw-bold text-black_small">Почта</label>
-                                                    <input type="text" id="email" className="form-control rounded-10" />
+                                                    <input type="text" id="email"  onChange={(e) => setEmail(e.target.value)} className="form-control rounded-10" />
                                                 </div>
                                             </div>
                                             <div className="d-flex align-items-end py-1 justify-content-between">
-                                                <div className="w-100 me-3">
-                                                    <label htmlFor="code" className="form-label fw-bold text-black_small">Промокод</label>
-                                                    <input type="text" id="code" className="form-control rounded-10" />
-                                                </div>
                                                 <div className="w-100">
-                                                    <button className="btn login-btn w-100">Оплатить</button>
+                                                    <button className="btn login-btn w-100" onClick={Pay}>Оплатить</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -136,6 +163,12 @@ const Bascet = (props) => {
                         </div>
                     </div>
                 </div>
+                <form method="POST" action="https://checkout.paycom.uz "  id="target_form">
+                        <input type="hidden" name="merchant" value={myObj?.merchant_id}/>
+                        <input type="hidden" name="amount" value={myObj?.amount + "00"}/>
+                        <input type="hidden" name="account[ticket_id]" value={myObj?.order_id}/>
+                        <input type="hidden" name="callback" value="https://alpomisharena.uz/"/>
+                </form>
             </div>
             
         </div>

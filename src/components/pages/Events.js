@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {connect} from "react-redux";
 import {getEvents, getNews} from "../../redux/action/allActions";
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import Slider from "react-slick";
 
 const Events = (props) => {
@@ -31,6 +31,11 @@ const Events = (props) => {
         );
     }
 
+    let history = useHistory()
+    const viewEvent =(item)=>{
+
+        history.push("events/detail/" + item)
+    }
     useEffect(()=>{
     props.getEvents()
     props.getNews()
@@ -173,7 +178,7 @@ const Events = (props) => {
 
                                     {
                                         props.eventsList?.slice(0, more).map((item, index) => (
-                                            <Link className="my-3 myf-link" to={"events/detail/" + item?.id}>
+                                            <button onClick={() => viewEvent(item?.id)} className="my-3 myf-link border-0 bg-transparent ">
                                                 <div className="card border-0">
                                                     <div className="position-relative">
                                                         <img style={{borderRadius: '19px 19px 0 0'}} src={item?.image} className="card-img-top" alt="card"/>
@@ -210,7 +215,7 @@ const Events = (props) => {
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </Link>
+                                            </button>
                                         ))
                                     }
                                 </div>

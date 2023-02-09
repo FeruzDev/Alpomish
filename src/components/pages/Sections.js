@@ -5,6 +5,7 @@ import {Link} from "react-router-dom";
 import Modal from 'react-modal';
 import axios from "axios";
 import {API_PATH} from "../const";
+import {toast} from "react-toastify";
 
 
 const customStyles = {
@@ -34,7 +35,6 @@ const Sections = (props) => {
     function openModal(id) {
         setIsOpen(true);
         setappid(id)
-        console.log(id)
     }
 
     function afterOpenModal() {
@@ -55,7 +55,8 @@ const Sections = (props) => {
             "katok_service_id": appid
         }, {headers: {Authorization: "Bearer " + localStorage.getItem("alpToken")}})
             .then(res => {
-                alert("error")
+                toast.success("Успешно отправлено")
+                setIsOpen(false)
             })
     }
     useEffect(()=>{
@@ -183,7 +184,6 @@ const Sections = (props) => {
                     </div>
                 </div>
             </div>
-            
         </div>
     );
 };

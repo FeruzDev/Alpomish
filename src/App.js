@@ -25,6 +25,8 @@ import MyNavbar from "./components/MyNavbar";
 import MainFooter from "./components/MainFooter";
 import Stadion2 from "./components/pages/Stadion2";
 import Seal from "./components/pages/Seal";
+import 'react-toastify/dist/ReactToastify.css';
+import {ToastContainer} from "react-toastify";
 function App() {
   return (
         <BrowserRouter>
@@ -55,6 +57,7 @@ function App() {
                 <Route exact path="/news/detail/:id" component={NewsDetail}/>
             </Switch>
             <MainFooter/>
+            <ToastContainer />
         </BrowserRouter>
 
   );
