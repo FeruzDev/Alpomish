@@ -53,7 +53,19 @@ const Bascet = (props) => {
         }, {headers: {Authorization: "Bearer " + localStorage.getItem("alpToken")}})
             .then(res =>{
                 setMyObj(res.data.payme)
-                document.getElementById("target_form").submit()
+                setTimeout(()=>{
+                    axios.post(API_PATH + "basket/delete-all",
+                        {"tickets" : tick},
+                        {headers: {Authorization: "Bearer " + localStorage.getItem("alpToken")}})
+                        .then(res =>{
+                            props.getBascketList()
+                        })
+                }, [200])
+                setTimeout(()=>{
+                    document.getElementById("target_form").submit()
+                }, [300])
+
+
             })
 
 

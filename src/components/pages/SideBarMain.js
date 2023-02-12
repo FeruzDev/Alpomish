@@ -44,7 +44,7 @@ const SideBarMain = (props) => {
                         <button className="btn focus-none login-btn rounded-circle" type="button">
                             <i className="fas fa-user" />
                         </button>
-                        <p className="mb-0 ms-3">{localStorage.getItem("phone") ? localStorage.getItem("phone") : "" }</p>
+                        <p className="mb-0 ms-3">{localStorage.getItem("phone") ? "+" + localStorage.getItem("phone") : "" }</p>
 
                     </div>
 

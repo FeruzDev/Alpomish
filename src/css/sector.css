@@ -5,52 +5,87 @@
     /*fill: rgba(8, 43, 232, 0.9) !important;*/
     fill: #8EC8FF !important;
 }
-.my-seals{}
+.my-seals{
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background: #F1F1F1;
+}
 .my-seals div{
-    width: 100%;
+    /*width: 100%;*/
     display: flex;
     justify-content: center;
 }
+.overflow-scroll-my{
+    overflow-x: scroll;
+}
 .my-seals div button{
-    border: 1.5036px solid #5F5F5F;
-    border-radius: 11.277px;
-    font-size: 22.554px;
-    line-height: 27px;
-    height: 44.23px;
-    width: 49.75px;
-    color: #5A5A5A;
-    margin-right: 10px;
-    margin-bottom: 7px;
-    font-weight: bold;
+    /*border: 1.5036px solid #5F5F5F;*/
+    /*border-radius: 11.277px;*/
+    color: #FFF;
+    margin-right: 1px ;
+    margin-bottom: -14px;
+    /*background: #134170;*/
+    border: 0.5px solid #FFFFFF;
+    border-radius: 6px 6px 0px 0px;
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 4px;
+    width: 39px;
+    height: 45px;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    padding-top: 10px;
+    /*padding: 10px;*/
 }
 .my-seals div button:disabled,
 button[disabled] {
-
     background-color: rgba(14,15,17,0.58) !important;
 
 }
+.frows{
+    min-width: 1360px;
+    position: relative;
+}
 .range-1{
-    background: #131F6A;
-    border: 1.5036px solid #5F5F5F;
-    color: #FFFFFF !important;
+    /*background: #131F6A;*/
+    background: #206DBC;
+    border: 0.5px solid #FFFFFF;
+    border-radius: 6px 6px 0px 0px;
+    /*border: 1.5036px solid #5F5F5F;*/
+    /*color: #FFFFFF !important;*/
 }
 .range-2{
-    background: #0F18F4;
-    color: #FFFFFF !important;
-    border: 1.5036px solid #6B6B6B;
-
+    /*background: #0F18F4;*/
+    /*color: #FFFFFF !important;*/
+    /*border: 1.5036px solid #6B6B6B;*/
+    background: #1C62A9;
+    border: 0.5px solid #FFFFFF;
+    border-radius: 6px 6px 0px 0px;
 }
 .range-3{
-    background: #C428DD;
-    color: #FFFFFF !important;
-    border: 1.5036px solid #6B6B6B;
-
+    /*background: #C428DD;*/
+    /*color: #FFFFFF !important;*/
+    /*border: 1.5036px solid #6B6B6B;*/
+    background: #195796;
+    border: 0.5px solid #FFFFFF;
+    border-radius: 6px 6px 0px 0px;
 }
 .range-4{
-    background: #5c006b;
-    color: #FFFFFF !important;
-    border: 1.5036px solid #6B6B6B;
-
+    /*background: #5c006b;*/
+    /*color: #FFFFFF !important;*/
+    /*border: 1.5036px solid #6B6B6B;*/
+    background: #164C83;
+    border: 0.5px solid #FFFFFF;
+    border-radius: 6px 6px 0px 0px;
+}
+.count-row{
+    font-size: 24px;
+    position: absolute;
+    left: 30px;
+    /*margin-right: 100px;*/
+    top: 5px;
+    font-weight: bold
 }
 .mini-bascet{
     width: 50px;
