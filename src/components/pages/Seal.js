@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import {getEvents, getEventsDetail, updateState} from "../../redux/action/allActions";
 import axios from "axios";
 import {API_PATH, AUTH} from "../const";
-import {useHistory, useParams} from "react-router-dom";
+import {Link, useHistory, useParams} from "react-router-dom";
 import {toast} from "react-toastify";
 
 const Seal = (props) => {
@@ -16,7 +16,7 @@ const Seal = (props) => {
     const [myItem , SetMyItem] = useState({})
     var url = document.URL
     const last  =  url.substr(url.lastIndexOf('/') + 1) ;
-
+    const [rowCount ,setRowCount] = useState(false)
     const selectPlace = (item) => {
         console.log(item)
         // bascetList.push(item)
@@ -111,11 +111,11 @@ const Seal = (props) => {
                         <div className="container">
                             <nav aria-label="breadcrumb">
                                 <ol className="breadcrumb">
-                                    <li className="breadcrumb-item "><a href="#"
-                                                                        className="text-grey text-decoration-none">Главная</a>
+                                    <li className="breadcrumb-item "><Link to="/"
+                                                                        className="text-grey text-decoration-none">Главная</Link>
                                     </li>
-                                    <li className="breadcrumb-item "><a href="#"
-                                                                        className="text-grey text-decoration-none">Мероприятий</a>
+                                    <li className="breadcrumb-item "><Link to="/events"
+                                                                        className="text-grey text-decoration-none">Мероприятий</Link>
                                     </li>
                                     <li className="breadcrumb-item  active" aria-current="page">{localStorage.getItem("title")}</li>
                                 </ol>
@@ -170,12 +170,135 @@ const Seal = (props) => {
                         </div>
                     </div>
                     <div className="events mb-7">
-                        <div className="container">
+                        <div className="container ">
                             <p className="text-black_dark fw-bold fs-38 col mb-lg-0 mb-4 d-flex justify-content-between">Выбрать место <button  onClick={() => setSide(true)}  className=" mini-bascet"> <img src="/images/basket_icon.svg" alt="icon" /></button></p>
-                            <div className="mt-3 mb-4 my-seals">
+                            <div className="mt-3 mb-4 my-seals w-100 overflow-scroll-my">
                                 {/*<img src="/images/stadion.svg" className="w-100" alt="station" />*/}
                                 {/*<img src="/images/view_2.png" className="w-100 mt-4" alt="station" />*/}
+                                <div className="frows">
+                                    <span className="count-row">
+                                        7
+                                    </span>
+                                    {
+                                        fPlace.map((item, index) =>(
+                                            <>
+                                                {
+                                                    item?.row === 7 ?
+
+                                                        <>
+                                                            <button
+                                                                disabled={item.status === 1 ? true : false}
+                                                                className={item.range === 1 ? " range-1 " : item.range === 2 ? " range-2 " : item.range === 3 ? " range-3 " :  item.range === 4 ? " range-4 "  : ""}
+                                                                onClick={() => selectPlace(item)}>{item.number}</button>
+                                                        </>
+                                                        : ""
+                                                }</>
+                                        ))
+                                    }
+
+                                </div>
+
+                                <div className="frows">
+                                       <span className="count-row">
+                                        6
+                                    </span>
+                                    {
+                                        fPlace.map((item, index) =>(
+                                            <>
+                                                {
+                                                    item?.row === 6 ?
+                                                        <button
+                                                            disabled={item.status === 1 ? true : false}
+                                                            className={item.range === 1 ? " range-1 " : item.range === 2 ? " range-2 " : item.range === 3 ? " range-3 " :  item.range === 4 ? " range-4 "  : ""}
+                                                            onClick={() => selectPlace(item)}>{item.number}</button>
+                                                        : ""
+                                                }</>
+                                        ))
+                                    }
+
+                                </div>
+
+                                <div className="frows">
+                                       <span className="count-row">
+                                        5
+                                    </span>
+                                    {
+                                        fPlace.map((item, index) =>(
+                                            <>
+                                                {
+                                                    item?.row === 5 ?
+                                                        <button
+                                                            disabled={item.status === 1 ? true : false}
+                                                            className={item.range === 1 ? " range-1 " : item.range === 2 ? " range-2 " : item.range === 3 ? " range-3 " :  item.range === 4 ? " range-4 "  : ""}
+                                                            onClick={() => selectPlace(item)}>{item.number}</button>
+                                                        : ""
+                                                }</>
+                                        ))
+                                    }
+
+                                </div>
+                                <div className="frows">
+                                       <span className="count-row">
+                                        4
+                                    </span>
+                                    {
+                                        fPlace.map((item, index) =>(
+                                            <>
+                                                {
+                                                    item?.row === 4 ?
+                                                        <button
+                                                            disabled={item.status === 1 ? true : false}
+                                                            className={item.range === 1 ? " range-1 " : item.range === 2 ? " range-2 " : item.range === 3 ? " range-3 " :  item.range === 4 ? " range-4 "  : ""}
+                                                            onClick={() => selectPlace(item)}>{item.number}</button>
+                                                        : ""
+                                                }</>
+                                        ))
+                                    }
+
+                                </div>
+                                <div className="frows">
+                                       <span className="count-row">
+                                        3
+                                    </span>
+                                    {
+                                        fPlace.map((item, index) =>(
+                                            <>
+                                                {
+                                                    item?.row === 3 ?
+                                                        <button
+                                                            disabled={item.status === 1 ? true : false}
+                                                            className={item.range === 1 ? " range-1 " : item.range === 2 ? " range-2 " : item.range === 3 ? " range-3 " :  item.range === 4 ? " range-4 "  : ""}
+                                                            onClick={() => selectPlace(item)}>{item.number}</button>
+                                                        : ""
+                                                }</>
+                                        ))
+                                    }
+
+                                </div>
+
+                                <div className="frows">
+                                       <span className="count-row">
+                                        2
+                                    </span>
+                                    {
+                                        fPlace.map((item, index) =>(
+                                            <>
+                                                {
+                                                    item?.row === 2 ?
+                                                        <button
+                                                            disabled={item.status === 1 ? true : false}
+                                                            className={item.range === 1 ? " range-1 " : item.range === 2 ? " range-2 " : item.range === 3 ? " range-3 " :  item.range === 4 ? " range-4 "  : ""}
+                                                            onClick={() => selectPlace(item)}>{item.number}</button>
+                                                        : ""
+                                                }</>
+                                        ))
+                                    }
+
+                                </div>
                                <div className="frows">
+                                      <span className="count-row">
+                                        1
+                                    </span>
                                    {
                                        fPlace?.map((item, index) =>(
                                            <>
@@ -193,86 +316,6 @@ const Seal = (props) => {
                                    }
 
                                </div>
-                                <div className="frows">
-                                    {
-                                        fPlace.map((item, index) =>(
-                                            <>
-                                                {
-                                                    item?.row === 2 ?
-                                                        <button
-                                                            disabled={item.status === 1 ? true : false}
-                                                            className={item.range === 1 ? " range-1 " : item.range === 2 ? " range-2 " : item.range === 3 ? " range-3 " :  item.range === 4 ? " range-4 "  : ""}
-                                                            onClick={() => selectPlace(item)}>{item.number}</button>
-                                                        : ""
-                                                }</>
-                                        ))
-                                    }
-
-                                </div>
-                                <div className="frows">
-                                    {
-                                        fPlace.map((item, index) =>(
-                                            <>
-                                                {
-                                                    item?.row === 3 ?
-                                                        <button
-                                                            disabled={item.status === 1 ? true : false}
-                                                            className={item.range === 1 ? " range-1 " : item.range === 2 ? " range-2 " : item.range === 3 ? " range-3 " :  item.range === 4 ? " range-4 "  : ""}
-                                                                 onClick={() => selectPlace(item)}>{item.number}</button>
-                                                        : ""
-                                                }</>
-                                        ))
-                                    }
-
-                                </div>
-                                <div className="frows">
-                                    {
-                                        fPlace.map((item, index) =>(
-                                            <>
-                                                {
-                                                    item?.row === 4 ?
-                                                        <button
-                                                            disabled={item.status === 1 ? true : false}
-                                                            className={item.range === 1 ? " range-1 " : item.range === 2 ? " range-2 " : item.range === 3 ? " range-3 " :  item.range === 4 ? " range-4 "  : ""}
-                                                            onClick={() => selectPlace(item)}>{item.number}</button>
-                                                        : ""
-                                                }</>
-                                        ))
-                                    }
-
-                                </div>
-                                <div className="frows">
-                                    {
-                                        fPlace.map((item, index) =>(
-                                            <>
-                                                {
-                                                    item?.row === 5 ?
-                                                        <button
-                                                            disabled={item.status === 1 ? true : false}
-                                                            className={item.range === 1 ? " range-1 " : item.range === 2 ? " range-2 " : item.range === 3 ? " range-3 " :  item.range === 4 ? " range-4 "  : ""}
-                                                            onClick={() => selectPlace(item)}>{item.number}</button>
-                                                        : ""
-                                                }</>
-                                        ))
-                                    }
-
-                                </div>
-                                <div className="frows">
-                                    {
-                                        fPlace.map((item, index) =>(
-                                            <>
-                                                {
-                                                    item?.row === 6 ?
-                                                        <button
-                                                            disabled={item.status === 1 ? true : false}
-                                                            className={item.range === 1 ? " range-1 " : item.range === 2 ? " range-2 " : item.range === 3 ? " range-3 " :  item.range === 4 ? " range-4 "  : ""}
-                                                            onClick={() => selectPlace(item)}>{item.number}</button>
-                                                        : ""
-                                                }</>
-                                        ))
-                                    }
-
-                                </div>
                             </div>
 
 

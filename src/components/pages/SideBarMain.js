@@ -47,7 +47,7 @@ const SideBarMain = (props) => {
                         <button className="btn focus-none login-btn rounded-circle" type="button">
                             <i className="fas fa-user" />
                         </button>
-                        <button  onClick={profile} className="mb-0 ms-3 p-0 border-0 bg-transparent">{localStorage.getItem("phone") ? localStorage.getItem("phone") : "" }</button>
+                        <button  onClick={profile} className="mb-0 ms-3 p-0 border-0 bg-transparent">{localStorage.getItem("phone") ? "+" + localStorage.getItem("phone") : "" }</button>
 
                     </div>
 

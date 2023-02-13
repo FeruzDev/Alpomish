@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import {getEvents, getEventsDetail, updateState} from "../../redux/action/allActions";
 import axios from "axios";
 import {API_PATH} from "../const";
-import {useHistory, useParams} from "react-router-dom";
+import {Link, useHistory, useParams} from "react-router-dom";
 
 // Get ID from URL
 
@@ -56,11 +56,11 @@ const View = (props) => {
                         <div className="container">
                             <nav aria-label="breadcrumb">
                                 <ol className="breadcrumb">
-                                    <li className="breadcrumb-item "><a href="#"
-                                                                        className="text-grey text-decoration-none">Главная</a>
+                                    <li className="breadcrumb-item "><Link to="/"
+                                                                        className="text-grey text-decoration-none">Главная</Link>
                                     </li>
-                                    <li className="breadcrumb-item "><a href="#"
-                                                                        className="text-grey text-decoration-none">Мероприятий</a>
+                                    <li className="breadcrumb-item "><Link to="/events"
+                                                                        className="text-grey text-decoration-none">Мероприятий</Link>
                                     </li>
                                     <li className="breadcrumb-item  active" aria-current="page">{localStorage.getItem("title")}</li>
                                 </ol>
