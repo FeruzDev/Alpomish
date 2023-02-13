@@ -34,7 +34,9 @@ function App() {
             <MyNavbar />
             <Switch>
                 <Route exact path="/" component={MainPage}/>
+                <Route exact path="/security" component={Security}/>
                 <Route exact path="/login" component={Login}/>
+                <Route exact path="/profile" component={PersonalInfo}/>
                 <Route exact path="/sms" component={Sms}/>
                 <Route exact path="/contacts" component={Contacts}/>
                 <Route exact path="/about-us" component={About}/>

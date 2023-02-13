@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 
 
 const Security = () => {
@@ -14,19 +15,19 @@ const Security = () => {
                                 <div className="px-2 me-3 text-silver fs-20">
                                     <i className="fal fa-id-card" />
                                 </div>
-                                <a href="person_info.html" className="text-decoration-none text-black_medium">Личная информация</a>
+                                <Link to="profile" className="text-decoration-none text-black_medium">Личная информация</Link>
                             </div>
-                            <div className="d-flex align-items-center mt-3">
-                                <div className="px-2 me-3 text-blue_5 fs-20">
-                                    <i className="fal fa-shield" />
-                                </div>
-                                <a href="security.html" className="text-decoration-none text-blue_5">Безопасность</a>
-                            </div>
+                            {/*<div className="d-flex align-items-center mt-3">*/}
+                            {/*    <div className="px-2 me-3 text-blue_5 fs-20">*/}
+                            {/*        <i className="fal fa-shield" />*/}
+                            {/*    </div>*/}
+                            {/*    <a href="security.html" className="text-decoration-none text-blue_5">Безопасность</a>*/}
+                            {/*</div>*/}
                             <div className="d-flex align-items-center mt-3">
                                 <div className="px-2 me-3 text-silver fs-20">
                                     <i className="fal fa-ticket-alt" />
                                 </div>
-                                <a href="orders.html" className="text-decoration-none text-black_medium">Заказы</a>
+                                <Link to="orders" className="text-decoration-none text-black_medium">Заказы</Link>
                             </div>
                         </div>
                         <form className="col-lg-8 mt-lg-0 mt-3 bg-white">

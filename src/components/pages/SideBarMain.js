@@ -19,7 +19,10 @@ const SideBarMain = (props) => {
     const sections = () => {
       history.push("/sections")
         props.setSideBarMain(false)
-
+    }
+    const profile = () => {
+      history.push("/profile")
+        props.setSideBarMain(false)
     }
     useEffect(()=>{
         getSections()
@@ -44,7 +47,7 @@ const SideBarMain = (props) => {
                         <button className="btn focus-none login-btn rounded-circle" type="button">
                             <i className="fas fa-user" />
                         </button>
-                        <p className="mb-0 ms-3">{localStorage.getItem("phone") ? localStorage.getItem("phone") : "" }</p>
+                        <button  onClick={profile} className="mb-0 ms-3 p-0 border-0 bg-transparent">{localStorage.getItem("phone") ? localStorage.getItem("phone") : "" }</button>
 
                     </div>
 
