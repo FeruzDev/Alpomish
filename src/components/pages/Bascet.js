@@ -16,6 +16,7 @@ const Bascet = (props) => {
     const [myObj, setMyObj] = useState({})
     let i=0
 
+
     // let summa = 0
     const total   = 0
     const summaZ =()=>{
@@ -85,6 +86,14 @@ const Bascet = (props) => {
         props.getBascketList()
         summaZ()
         console.log(Date.now())
+        axios.get(API_PATH + "user-profile", {headers: {Authorization: "Bearer " + localStorage.getItem("alpToken")}})
+            .then(res => {
+                setFirstName(res.data?.data?.first_name)
+                setLastName(res.data?.data?.last_name)
+                setPhone(res.data?.data?.phone)
+                setEmail(res.data?.data?.email)
+            })
+
     }, [])
     return (
         <div className="body-site">
@@ -146,21 +155,21 @@ const Bascet = (props) => {
                                             <div className="d-flex align-items-center py-1 justify-content-between">
                                                 <div className="w-100 me-3">
                                                     <label htmlFor="name" className="form-label fw-bold text-black_small">Имя</label>
-                                                    <input type="text" id="name" onChange={(e) => setFirstName(e.target.value)} className="form-control rounded-10" />
+                                                    <input type="text" id="name" value={firstName} onChange={(e) => setFirstName(e.target.value)} className="form-control rounded-10" />
                                                 </div>
                                                 <div className="w-100">
                                                     <label htmlFor="surname" className="form-label fw-bold text-black_small">Фамилия</label>
-                                                    <input type="text" id="surname"  onChange={(e) => setLastName(e.target.value)} className="form-control rounded-10" />
+                                                    <input type="text" id="surname" value={lastName}  onChange={(e) => setLastName(e.target.value)} className="form-control rounded-10" />
                                                 </div>
                                             </div>
                                             <div className="d-flex align-items-center py-1 justify-content-between">
                                                 <div className="w-100 me-3">
                                                     <label htmlFor="number" className="form-label fw-bold text-black_small">Номер</label>
-                                                    <input type="text" id="number"  onChange={(e) => setPhone(e.target.value)} className="form-control rounded-10" />
+                                                    <input type="text" id="number" value={phone}  onChange={(e) => setPhone(e.target.value)} className="form-control rounded-10" />
                                                 </div>
                                                 <div className="w-100">
                                                     <label htmlFor="email" className="form-label fw-bold text-black_small">Почта</label>
-                                                    <input type="text" id="email"  onChange={(e) => setEmail(e.target.value)} className="form-control rounded-10" />
+                                                    <input type="text" id="email" value={email}  onChange={(e) => setEmail(e.target.value)} className="form-control rounded-10" />
                                                 </div>
                                             </div>
                                             <div className="d-flex align-items-end py-1 justify-content-between">

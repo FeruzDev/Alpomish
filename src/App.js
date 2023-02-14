@@ -27,6 +27,7 @@ import Stadion2 from "./components/pages/Stadion2";
 import Seal from "./components/pages/Seal";
 import 'react-toastify/dist/ReactToastify.css';
 import {ToastContainer} from "react-toastify";
+import Orders from "./components/pages/Orders";
 function App() {
   return (
         <BrowserRouter>
@@ -35,6 +36,7 @@ function App() {
             <Switch>
                 <Route exact path="/" component={MainPage}/>
                 <Route exact path="/security" component={Security}/>
+                <Route exact path="/orders" component={Orders}/>
                 <Route exact path="/login" component={Login}/>
                 <Route exact path="/profile" component={PersonalInfo}/>
                 <Route exact path="/sms" component={Sms}/>

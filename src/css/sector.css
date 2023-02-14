@@ -201,3 +201,37 @@ button[disabled] {
     background-color: #fff;
     color: #3D37F1 !important
 }
+.orders .orders-items h3 {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 150%;
+}
+.orders .orders-items .items-right .col-4{
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 14px;
+}
+.orders .orders-items .items-right .col-8{
+    font-size: 14px;
+}
+.orders .orders-items  .col-lg-1 button{
+    background: linear-gradient(94.65deg, #387EC1 0.66%, #47A8DF 100%);
+    border-radius: 8px;
+    border: none;
+    width: 40px;
+    height: 40px;
+    float: right;
+}
+.orders .orders-items .items-right{
+    padding-left: 20px;
+}
+.orders .orders-items .items{
+    display: flex;
+    background: #FFFFFF;
+    border: 1px solid #BCC3D0;
+    border-radius: 16px;
+    padding: 24px;
+}
+.orders .orders-items .items{
+    margin-top: 50px;
+}

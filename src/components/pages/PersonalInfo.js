@@ -36,8 +36,6 @@ const PersonalInfo = () => {
     }, [])
     return (
         <div className="body-site">
-           
-            
             <div className="bg-snow">
                 <div className="container pt-5 mt-5 pb-10">
                     <div className="row pb-10">

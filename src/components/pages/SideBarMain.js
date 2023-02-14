@@ -16,6 +16,10 @@ const SideBarMain = (props) => {
         history.push("/contacts")
         props.setSideBarMain(false)
     }
+    const tickets = () => {
+        history.push("/orders")
+        props.setSideBarMain(false)
+    }
     const sections = () => {
       history.push("/sections")
         props.setSideBarMain(false)
@@ -60,13 +64,14 @@ const SideBarMain = (props) => {
                         ))
                     }
 
-                    {/*<div className="d-flex align-items-center mt-6">*/}
-                    {/*    <div className="px-2 me-3 text-silver fs-20">*/}
-                    {/*        <i className="fal fa-heart" />*/}
-                    {/*    </div>*/}
-                    {/*    <a href="likes.html" className="text-decoration-none text-black_medium">Избранное</a>*/}
-                    {/*</div>*/}
-                    <div className="d-flex align-items-center mt-5">
+                    <div className="d-flex align-items-center mt-6">
+                        <div className="px-2 me-3 text-silver fs-20">
+                            <i className="fal fa-ticket" />
+                        </div>
+                        <button onClick={() => tickets()} className="btn btn-transparent p-0 text-decoration-none text-black_medium">Заказы</button>
+
+                    </div>
+                    <div className="d-flex align-items-center mt-4">
                         <div className="px-2 me-3 text-silver fs-20">
                             <i className="fal fa-headset" />
                         </div>
