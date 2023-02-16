@@ -18,6 +18,7 @@ const Sms = (props) => {
               localStorage.setItem("user_id", res.data.user.id)
               localStorage.setItem("username", res.data.user.username)
               history.push("/")
+
               window.location.reload(true);
 
           })

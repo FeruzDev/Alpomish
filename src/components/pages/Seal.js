@@ -18,8 +18,7 @@ const Seal = (props) => {
     const last  =  url.substr(url.lastIndexOf('/') + 1) ;
     const [rowCount ,setRowCount] = useState(false)
     const selectPlace = (item) => {
-        console.log(item)
-        // bascetList.push(item)
+
 
         axios.post(API_PATH + "basket/view", {
             "ticket_id": item?.id,
@@ -44,6 +43,11 @@ const Seal = (props) => {
                         })
                 } else {
                     toast.warning("Это место занято")
+                }
+            })
+            .catch(err =>{
+                if(err.response.status === 401){
+                    history.push("/login")
                 }
             })
 
@@ -184,10 +188,9 @@ const Seal = (props) => {
                                             <>
                                                 {
                                                     item?.row === 7 ?
-
                                                         <>
                                                             <button
-                                                                disabled={item.status === 1 ? true : false}
+                                                                disabled={item?.status === 1 ? true : false}
                                                                 className={item.range === 1 ? " range-1 " : item.range === 2 ? " range-2 " : item.range === 3 ? " range-3 " :  item.range === 4 ? " range-4 "  : ""}
                                                                 onClick={() => selectPlace(item)}>{item.number}</button>
                                                         </>

@@ -1,6 +1,7 @@
 .f-hover{
-    fill: rgba(255, 255, 255, 0.3);
+    position: relative;
 }
+
 .f-hover:hover{
     /*fill: rgba(8, 43, 232, 0.9) !important;*/
     fill: #8EC8FF !important;
@@ -39,9 +40,10 @@
     /*padding: 10px;*/
 }
 .my-seals div button:disabled,
-button[disabled] {
-    background-color: rgba(14,15,17,0.58) !important;
-
+button[disabled]{
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
 }
 .frows{
     min-width: 1360px;

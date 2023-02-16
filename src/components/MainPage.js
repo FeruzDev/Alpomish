@@ -77,7 +77,7 @@ const MainPage = (props) => {
                                                             {item?.eventDate[0]?.eventTime?.slice(0, 5)} · {item?.eventDate[0]?.eventDate?.slice(8, 10) + " "}
                                                             {monthsRu[Number(item?.eventDate[0]?.eventDate?.slice(5, 7))] + " "}
                                                             {item?.eventDate[0]?.eventDate?.slice(0, 4) + " "}
-                                                            Ледниковый дворец “Alpomish”
+                                                            {/*Ледниковый дворец “Alpomish”*/}
                                                         </p>
                                                     </div>
                                                 </div>
