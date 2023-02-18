@@ -118,7 +118,7 @@ const Bascet = (props) => {
                                                             <p className="fw-600 fs-xl-20 fs-lg-14 fs-sm-28 fs-14 text-black_dark mb-sm-2 mb-0">
                                                                 Концерт Сплин</p>
                                                             <p className="fs-xl-14 fs-lg-10 fs-sm-12 fs-10 text-black_dark mb-sm-2 mb-0">
-                                                                {Number(item?.tickets?.event_date?.slice(8, 11)) + " " +  monthsRu[Number(item?.tickets?.event_date?.slice(5,7))]}, {item?.tickets?.event_date?.slice(0,4 )} год,  {item?.tickets?.event_time}</p>
+                                                                {Number(item?.tickets?.event_date?.slice(8, 11)) + " " +  monthsRu[Number(item?.tickets?.event_date?.slice(5,7))]}, {item?.tickets?.event_date?.slice(0,4 )} год,  {item?.tickets?.event_time.slice(0, 5)}</p>
                                                             <p className="fs-xl-14 fs-lg-10 fs-sm-12 fs-10 text-blue mb-sm-2 mb-0">Alpomish muz
                                                                 saroyi</p>
                                                             <p className="fs-xl-14 fs-lg-10 fs-sm-12 fs-10 text-black_dark mb-sm-2 mb-0">Ряд {item?.tickets?.block_name}

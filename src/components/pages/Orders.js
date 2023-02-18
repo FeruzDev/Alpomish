@@ -42,8 +42,6 @@ const Orders = () => {
                              {
                                  orders?.map((item, index) => (
                                      <>
-                                         {
-                                             item?.tickets?.map((item2, index) => (
                                              <div className="items">
                                                  <div className="col-lg-4">
                                                      <img src="/images/items.png" className="w-100" alt="123"/>
@@ -53,12 +51,12 @@ const Orders = () => {
                                                      <div className="row">
                                                          <div className="col-6 ">
                                                              <div className="row">
-                                                                 <div className="col-4">Когда</div>
-                                                                 <div className="col-8">{item2?.event_date}</div>
+                                                                 <div className="col-4">Кому</div>
+                                                                 <div className="col-8">{item?.first_name}</div>
                                                              </div>
                                                              <div className="row">
-                                                                 <div className="col-4">Время</div>
-                                                                 <div className="col-8">{item2?.event_time.slice(0, 5)}</div>
+                                                                 <div className="col-4">Телефон</div>
+                                                                 <div className="col-8">{item?.phone}</div>
                                                              </div>
                                                              <div className="row">
                                                                  <div className="col-4">Где</div>
@@ -69,28 +67,28 @@ const Orders = () => {
                                                          <div className="col-6">
                                                              <div className="row">
                                                                  <div className="col-4">Ряд</div>
-                                                                 <div className="col-8">{item2?.block_name}
+                                                                 <div className="col-8">{item?.tickets?.map(item3 => (<span>{item3.block_name + " "}</span>))}
                                                                  </div>
                                                              </div>
                                                              <div className="row">
                                                                  <div className="col-4">Место</div>
-                                                                 <div className="col-8">{item2?.place}</div>
+                                                                 <div className="col-8">{item?.tickets?.map(item3 => (<span>{item3.place + " "}</span>))}
+                                                                 </div>
                                                              </div>
                                                              <div className="row">
                                                                  <div className="col-4">Сумма</div>
-                                                                 <div className="col-8">{item2?.price}</div>
+                                                                 <div className="col-8">{item?.summ}</div>
                                                              </div>
                                                          </div>
                                                      </div>
                                                  </div>
                                                  <div className="col-lg-1">
-                                                     <button>
-                                                         <img src="/images/down.svg" alt=""/>
+                                                     <button className=" ">
+                                                         <img src="/images/view2.png" className="w-100" alt=""/>
                                                      </button>
                                                  </div>
                                              </div>
-                                         ))
-                                         }
+
                                      </>
                                  ))
                              }

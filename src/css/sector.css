@@ -132,8 +132,8 @@ button[disabled]{
     overflow-y: auto;
     animation: 1s linear infinite ;
     color: #fff;
-    padding-left: 20px;
-    padding-right: 20px;
+    /*padding-left: 20px;*/
+    /*padding-right: 20px;*/
 
 }
 .right-sidebar .right-sidebar-item-main{
@@ -172,6 +172,8 @@ button[disabled]{
     border-radius: 10px;
     padding: 10px;
     margin-bottom: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 .right-sidebar .places p {
     margin: 0;
@@ -191,7 +193,7 @@ button[disabled]{
     padding-bottom: 10px;
 }
 .right-sidebar .sendPay{
-   position: fixed;
+    position: fixed;
     width: 100%;
     bottom: 0;
     left: 0;
@@ -236,4 +238,27 @@ button[disabled]{
 }
 .orders .orders-items .items{
     margin-top: 50px;
+}
+
+.my_content span{
+    /*display: block;*/
+    margin-top: 10px;
+    padding: 0;
+
+}
+.my_content{
+    display: none;
+    position: absolute;
+    width: 150px;
+    color: #0e0f11;
+    background: #ffffff;
+    font-size: 14px;
+    z-index: 999;
+    top: 30px;
+    padding-left: 20px;
+    border-radius: 10px;
+}
+
+.frows button:hover .my_content {
+    display: block;
 }

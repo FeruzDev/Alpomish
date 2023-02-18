@@ -13,13 +13,31 @@ const Seal = (props) => {
     const [side, setSide] = useState(false)
     const [fPlace, setFPlace] = useState([])
     const params = useParams();
+    const [r1, setR1] = useState(false)
+    const [r2, setR2] = useState(false)
+    const [r3, setR3] = useState(false)
+    const [r4, setR4] = useState(false)
+    const [r5, setR5] = useState(false)
+    const [r6, setR6] = useState(false)
+    const [r7, setR7] = useState(false)
     const [myItem , SetMyItem] = useState({})
-    var url = document.URL
-    const last  =  url.substr(url.lastIndexOf('/') + 1) ;
-    const [rowCount ,setRowCount] = useState(false)
+    const getSeals = () => {
+        axios.post(API_PATH + "event-place", {
+            "event_id": params?.id,
+            "block_name": localStorage.getItem("block_name"),
+            "event_date":localStorage.getItem("eventDate"),
+            "event_time": localStorage.getItem("eventTime")
+        }, AUTH)
+            .then(res =>{
+                setFPlace(res.data.count_place)
+                console.log(res)
+                console.log(res.data)
+                console.log(res.data.count_place)
+            })
+    }
     const selectPlace = (item) => {
 
-
+        getSeals()
         axios.post(API_PATH + "basket/view", {
             "ticket_id": item?.id,
             // "block_name": item?.block_name,
@@ -67,6 +85,8 @@ const Seal = (props) => {
         axios.post(API_PATH + "basket/delete-ticket", {"ticket_id": id},  {headers: {Authorization: "Bearer " + localStorage.getItem("alpToken")}})
             .then(res =>{
                 getBascet()
+                getSeals()
+
             })
     }
     const getDetail = () => {
@@ -84,27 +104,14 @@ const Seal = (props) => {
                 localStorage.setItem("eventDateStatus", res.data.eventDate[0]?.status)
             })
     }
-    const getSeals = () => {
-      axios.post(API_PATH + "event-place", {
-          "event_id": params?.id,
-          "block_name": localStorage.getItem("block_name"),
-          "event_date":localStorage.getItem("eventDate"),
-          "event_time": localStorage.getItem("eventTime")
-      }, AUTH)
-          .then(res =>{
-              setFPlace(res.data.count_place)
-              console.log(res)
-              console.log(res.data)
-              console.log(res.data.count_place)
-          })
-    }
-    useEffect(() => {
-        window.scrollTo(0, 0)
 
+
+    useEffect(() => {
+        // window.scrollTo(0, 0)
         getDetail()
         getSeals()
         getBascet()
-    }, [])
+    }, [side])
     return (
         <div className="body-site">
 
@@ -180,9 +187,12 @@ const Seal = (props) => {
                                 {/*<img src="/images/stadion.svg" className="w-100" alt="station" />*/}
                                 {/*<img src="/images/view_2.png" className="w-100 mt-4" alt="station" />*/}
                                 <div className="frows">
-                                    <span className="count-row">
-                                        7
-                                    </span>
+                                    {fPlace.filter(item => item.row === 7).map(item =>(
+                                        <span className="count-row">
+                                           7
+                                      </span>
+                                    ))}
+
                                     {
                                         fPlace.map((item, index) =>(
                                             <>
@@ -192,7 +202,25 @@ const Seal = (props) => {
                                                             <button
                                                                 disabled={item?.status === 1 ? true : false}
                                                                 className={item.range === 1 ? " range-1 " : item.range === 2 ? " range-2 " : item.range === 3 ? " range-3 " :  item.range === 4 ? " range-4 "  : ""}
-                                                                onClick={() => selectPlace(item)}>{item.number}</button>
+                                                                onClick={() => selectPlace(item)}>{item.number}
+
+                                                                <span className="my_content p-3 justify-content-center">
+                                                                    <span className="row   text-center  mt-3 ">
+                                                                        Ряд:
+                                                                        {" " + item?.block_name}
+                                                                    </span>
+                                                                    <span className="row mt-3   ">
+                                                                         Дата: {" " + item?.event_date}
+                                                                    </span>
+                                                                    <span className="row mt-3">
+                                                                       Время  {" " + item?.event_time?.slice(0, 5)}
+                                                                    </span>
+                                                                    <span className="row mt-3">
+                                                                        Цена  {" " + item?.price}
+                                                                    </span>
+                                                                </span>
+                                                            </button>
+
                                                         </>
                                                         : ""
                                                 }</>
@@ -202,9 +230,11 @@ const Seal = (props) => {
                                 </div>
 
                                 <div className="frows">
-                                       <span className="count-row">
-                                        6
-                                    </span>
+                                    {fPlace.filter(item => item.row === 6).map(item =>(
+                                        <span className="count-row">
+                                           6
+                                      </span>
+                                    ))}
                                     {
                                         fPlace.map((item, index) =>(
                                             <>
@@ -222,9 +252,11 @@ const Seal = (props) => {
                                 </div>
 
                                 <div className="frows">
-                                       <span className="count-row">
-                                        5
-                                    </span>
+                                    {fPlace.filter(item => item.row === 5).map(item =>(
+                                        <span className="count-row">
+                                           5
+                                      </span>
+                                    ))}
                                     {
                                         fPlace.map((item, index) =>(
                                             <>
@@ -241,9 +273,11 @@ const Seal = (props) => {
 
                                 </div>
                                 <div className="frows">
-                                       <span className="count-row">
-                                        4
-                                    </span>
+                                    {fPlace.filter(item => item.row === 4).map(item =>(
+                                        <span className="count-row">
+                                           4
+                                      </span>
+                                    ))}
                                     {
                                         fPlace.map((item, index) =>(
                                             <>
@@ -260,9 +294,11 @@ const Seal = (props) => {
 
                                 </div>
                                 <div className="frows">
-                                       <span className="count-row">
-                                        3
-                                    </span>
+                                    {fPlace.filter(item => item.row === 3).map(item =>(
+                                        <span className="count-row">
+                                           3
+                                      </span>
+                                    ))}
                                     {
                                         fPlace.map((item, index) =>(
                                             <>
@@ -280,9 +316,11 @@ const Seal = (props) => {
                                 </div>
 
                                 <div className="frows">
-                                       <span className="count-row">
-                                        2
-                                    </span>
+                                    {fPlace.filter(item => item.row === 2).map(item =>(
+                                        <span className="count-row">
+                                           2
+                                      </span>
+                                    ))}
                                     {
                                         fPlace.map((item, index) =>(
                                             <>
@@ -299,9 +337,11 @@ const Seal = (props) => {
 
                                 </div>
                                <div className="frows">
-                                      <span className="count-row">
-                                        1
-                                    </span>
+                                   {fPlace.filter(item => item.row === 1).map(item =>(
+                                       <span className="count-row">
+                                           1
+                                      </span>
+                                   ))}
                                    {
                                        fPlace?.map((item, index) =>(
                                            <>
