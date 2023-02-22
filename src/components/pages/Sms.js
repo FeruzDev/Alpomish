@@ -77,12 +77,12 @@ const Sms = (props) => {
                                 {/*    Запомнить на этом устройстве*/}
                                 {/*</label>*/}
                             </div>
-                            <a href="#" className="text-blue_4 mt-4 text-decoration-none w-100 d-block">Отправить код
-                                повторно</a>
-                            <a href="#" className="text-blue_4 mt-4 text-decoration-none w-100 d-block">Войти с другим
-                                номером</a>
-                            <a href="#" className="text-grey mt-4 text-decoration-none w-100 d-block">Не получается
-                                войти</a>
+                            {/*<a href="#" className="text-blue_4 mt-4 text-decoration-none w-100 d-block">Отправить код*/}
+                            {/*    повторно</a>*/}
+                            {/*<a href="#" className="text-blue_4 mt-4 text-decoration-none w-100 d-block">Войти с другим*/}
+                            {/*    номером</a>*/}
+                            {/*<a href="#" className="text-grey mt-4 text-decoration-none w-100 d-block">Не получается*/}
+                            {/*    войти</a>*/}
                         </div>
                     </form>
                 </div>

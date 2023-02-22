@@ -25,13 +25,13 @@ const MyNavbar = () => {
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul className="navbar-nav me-auto mb-2 mb-lg-0 ms-xl-9 ms-lg-5 ms-0">
                                 <li className="nav-item">
-                                    <Link  className={changeLink === "/" ? "nav-link text-grey text-blue_5" : "nav-link text-grey" } onClick={() => setChangeLink("/")} aria-current="page" to="events">Мероприятий</Link>
+                                    <Link  className={changeLink === "/" ? "nav-link text-grey text-blue_5" : "nav-link text-grey" } onClick={() => setChangeLink("/")} aria-current="page" to="/events">Мероприятий</Link>
                                 </li>
                                 <li className="nav-item">
                                     <Link  className={changeLink === "/sections" ? "nav-link text-grey text-blue_5" : "nav-link text-grey" }   onClick={() => setChangeLink("/sections")} to="/sections">Секции</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link  className={changeLink === "/information" ? "nav-link text-grey text-blue_5" : "nav-link text-grey" }  onClick={() => setChangeLink("/information")} to="information">Каток</Link>
+                                    <Link  className={changeLink === "/information" ? "nav-link text-grey text-blue_5" : "nav-link text-grey" }  onClick={() => setChangeLink("/information")} to="/information">Каток</Link>
                                 </li>
                                 <li className="nav-item">
                                     <Link className={changeLink === "/contacts" ? "nav-link text-grey text-blue_5" : "nav-link text-grey" }  onClick={() => setChangeLink("/contacts")} to="/contacts">Контакты</Link>

@@ -118,7 +118,7 @@ const Seal = (props) => {
             
             <div className="bg-snow">
                 <div className="bg-snow-2">
-                    <div className="header-carousel mt-4 mb-5">
+                    <div className="header-carousel pt-4 mb-5">
                         <div className="container">
                             <nav aria-label="breadcrumb">
                                 <ol className="breadcrumb">
@@ -183,28 +183,31 @@ const Seal = (props) => {
                     <div className="events mb-7">
                         <div className="container ">
                             <p className="text-black_dark fw-bold fs-38 col mb-lg-0 mb-4 d-flex justify-content-between">Выбрать место <button  onClick={() => setSide(true)}  className=" mini-bascet"> <img src="/images/basket_icon.svg" alt="icon" /></button></p>
-                            <div className="mt-3 mb-4 my-seals w-100 overflow-scroll-my">
-                                {/*<img src="/images/stadion.svg" className="w-100" alt="station" />*/}
-                                {/*<img src="/images/view_2.png" className="w-100 mt-4" alt="station" />*/}
-                                <div className="frows">
-                                    {fPlace.filter(item => item.row === 7).map(item =>(
-                                        <span className="count-row">
+                            {
+                                fPlace.length > 0
+                                ?
+                                    <div className="mt-3 mb-4 my-seals w-100 overflow-scroll-my">
+                                        {/*<img src="/images/stadion.svg" className="w-100" alt="station" />*/}
+                                        {/*<img src="/images/view_2.png" className="w-100 mt-4" alt="station" />*/}
+                                        <div className="frows">
+                                            {fPlace.filter(item => item.row === 7).map(item =>(
+                                                <span className="count-row">
                                            7
                                       </span>
-                                    ))}
+                                            ))}
 
-                                    {
-                                        fPlace.map((item, index) =>(
-                                            <>
-                                                {
-                                                    item?.row === 7 ?
-                                                        <>
-                                                            <button
-                                                                disabled={item?.status === 1 ? true : false}
-                                                                className={item.range === 1 ? " range-1 " : item.range === 2 ? " range-2 " : item.range === 3 ? " range-3 " :  item.range === 4 ? " range-4 "  : ""}
-                                                                onClick={() => selectPlace(item)}>{item.number}
+                                            {
+                                                fPlace.map((item, index) =>(
+                                                    <>
+                                                        {
+                                                            item?.row === 7 ?
+                                                                <>
+                                                                    <button
+                                                                        disabled={item?.status === 1 ? true : false}
+                                                                        className={item.range === 1 ? " range-1 " : item.range === 2 ? " range-2 " : item.range === 3 ? " range-3 " :  item.range === 4 ? " range-4 "  : ""}
+                                                                        onClick={() => selectPlace(item)}>{item.number}
 
-                                                                <span className="my_content p-3 justify-content-center">
+                                                                        <span className="my_content p-3 justify-content-center">
                                                                     <span className="row   text-center  mt-3 ">
                                                                         Ряд:
                                                                         {" " + item?.block_name}
@@ -219,147 +222,271 @@ const Seal = (props) => {
                                                                         Цена  {" " + item?.price}
                                                                     </span>
                                                                 </span>
-                                                            </button>
+                                                                    </button>
 
-                                                        </>
-                                                        : ""
-                                                }</>
-                                        ))
-                                    }
+                                                                </>
+                                                                : ""
+                                                        }</>
+                                                ))
+                                            }
 
-                                </div>
+                                        </div>
 
-                                <div className="frows">
-                                    {fPlace.filter(item => item.row === 6).map(item =>(
-                                        <span className="count-row">
+                                        <div className="frows">
+                                            {fPlace.filter(item => item.row === 6).map(item =>(
+                                                <span className="count-row">
                                            6
                                       </span>
-                                    ))}
-                                    {
-                                        fPlace.map((item, index) =>(
-                                            <>
-                                                {
-                                                    item?.row === 6 ?
-                                                        <button
-                                                            disabled={item.status === 1 ? true : false}
-                                                            className={item.range === 1 ? " range-1 " : item.range === 2 ? " range-2 " : item.range === 3 ? " range-3 " :  item.range === 4 ? " range-4 "  : ""}
-                                                            onClick={() => selectPlace(item)}>{item.number}</button>
-                                                        : ""
-                                                }</>
-                                        ))
-                                    }
+                                            ))}
+                                            {
+                                                fPlace.map((item, index) =>(
+                                                    <>
+                                                        {
+                                                            item?.row === 6 ?
+                                                                <>
+                                                                    <button
+                                                                        disabled={item?.status === 1 ? true : false}
+                                                                        className={item.range === 1 ? " range-1 " : item.range === 2 ? " range-2 " : item.range === 3 ? " range-3 " :  item.range === 4 ? " range-4 "  : ""}
+                                                                        onClick={() => selectPlace(item)}>{item.number}
 
-                                </div>
+                                                                        <span className="my_content p-3 justify-content-center">
+                                                                    <span className="row   text-center  mt-3 ">
+                                                                        Ряд:
+                                                                        {" " + item?.block_name}
+                                                                    </span>
+                                                                    <span className="row mt-3   ">
+                                                                         Дата: {" " + item?.event_date}
+                                                                    </span>
+                                                                    <span className="row mt-3">
+                                                                       Время  {" " + item?.event_time?.slice(0, 5)}
+                                                                    </span>
+                                                                    <span className="row mt-3">
+                                                                        Цена  {" " + item?.price}
+                                                                    </span>
+                                                                </span>
+                                                                    </button>
 
-                                <div className="frows">
-                                    {fPlace.filter(item => item.row === 5).map(item =>(
-                                        <span className="count-row">
+                                                                </>
+                                                                : ""
+                                                        }</>
+                                                ))
+                                            }
+
+                                        </div>
+
+                                        <div className="frows">
+                                            {fPlace.filter(item => item.row === 5).map(item =>(
+                                                <span className="count-row">
                                            5
                                       </span>
-                                    ))}
-                                    {
-                                        fPlace.map((item, index) =>(
-                                            <>
-                                                {
-                                                    item?.row === 5 ?
-                                                        <button
-                                                            disabled={item.status === 1 ? true : false}
-                                                            className={item.range === 1 ? " range-1 " : item.range === 2 ? " range-2 " : item.range === 3 ? " range-3 " :  item.range === 4 ? " range-4 "  : ""}
-                                                            onClick={() => selectPlace(item)}>{item.number}</button>
-                                                        : ""
-                                                }</>
-                                        ))
-                                    }
+                                            ))}
+                                            {
+                                                fPlace.map((item, index) =>(
+                                                    <>
+                                                        {
+                                                            item?.row === 5 ?
+                                                                <>
+                                                                    <button
+                                                                        disabled={item?.status === 1 ? true : false}
+                                                                        className={item.range === 1 ? " range-1 " : item.range === 2 ? " range-2 " : item.range === 3 ? " range-3 " :  item.range === 4 ? " range-4 "  : ""}
+                                                                        onClick={() => selectPlace(item)}>{item.number}
 
-                                </div>
-                                <div className="frows">
-                                    {fPlace.filter(item => item.row === 4).map(item =>(
-                                        <span className="count-row">
+                                                                        <span className="my_content p-3 justify-content-center">
+                                                                    <span className="row   text-center  mt-3 ">
+                                                                        Ряд:
+                                                                        {" " + item?.block_name}
+                                                                    </span>
+                                                                    <span className="row mt-3   ">
+                                                                         Дата: {" " + item?.event_date}
+                                                                    </span>
+                                                                    <span className="row mt-3">
+                                                                       Время  {" " + item?.event_time?.slice(0, 5)}
+                                                                    </span>
+                                                                    <span className="row mt-3">
+                                                                        Цена  {" " + item?.price}
+                                                                    </span>
+                                                                </span>
+                                                                    </button>
+
+                                                                </>
+                                                                : ""
+                                                        }</>
+                                                ))
+                                            }
+
+                                        </div>
+                                        <div className="frows">
+                                            {fPlace.filter(item => item.row === 4).map(item =>(
+                                                <span className="count-row">
                                            4
                                       </span>
-                                    ))}
-                                    {
-                                        fPlace.map((item, index) =>(
-                                            <>
-                                                {
-                                                    item?.row === 4 ?
-                                                        <button
-                                                            disabled={item.status === 1 ? true : false}
-                                                            className={item.range === 1 ? " range-1 " : item.range === 2 ? " range-2 " : item.range === 3 ? " range-3 " :  item.range === 4 ? " range-4 "  : ""}
-                                                            onClick={() => selectPlace(item)}>{item.number}</button>
-                                                        : ""
-                                                }</>
-                                        ))
-                                    }
+                                            ))}
+                                            {
+                                                fPlace.map((item, index) =>(
+                                                    <>
+                                                        {
+                                                            item?.row === 4 ?
+                                                                <>
+                                                                    <button
+                                                                        disabled={item?.status === 1 ? true : false}
+                                                                        className={item.range === 1 ? " range-1 " : item.range === 2 ? " range-2 " : item.range === 3 ? " range-3 " :  item.range === 4 ? " range-4 "  : ""}
+                                                                        onClick={() => selectPlace(item)}>{item.number}
 
-                                </div>
-                                <div className="frows">
-                                    {fPlace.filter(item => item.row === 3).map(item =>(
-                                        <span className="count-row">
+                                                                        <span className="my_content p-3 justify-content-center">
+                                                                    <span className="row   text-center  mt-3 ">
+                                                                        Ряд:
+                                                                        {" " + item?.block_name}
+                                                                    </span>
+                                                                    <span className="row mt-3   ">
+                                                                         Дата: {" " + item?.event_date}
+                                                                    </span>
+                                                                    <span className="row mt-3">
+                                                                       Время  {" " + item?.event_time?.slice(0, 5)}
+                                                                    </span>
+                                                                    <span className="row mt-3">
+                                                                        Цена  {" " + item?.price}
+                                                                    </span>
+                                                                </span>
+                                                                    </button>
+
+                                                                </>
+                                                                : ""
+                                                        }</>
+                                                ))
+                                            }
+
+                                        </div>
+                                        <div className="frows">
+                                            {fPlace.filter(item => item.row === 3).map(item =>(
+                                                <span className="count-row">
                                            3
                                       </span>
-                                    ))}
-                                    {
-                                        fPlace.map((item, index) =>(
-                                            <>
-                                                {
-                                                    item?.row === 3 ?
-                                                        <button
-                                                            disabled={item.status === 1 ? true : false}
-                                                            className={item.range === 1 ? " range-1 " : item.range === 2 ? " range-2 " : item.range === 3 ? " range-3 " :  item.range === 4 ? " range-4 "  : ""}
-                                                            onClick={() => selectPlace(item)}>{item.number}</button>
-                                                        : ""
-                                                }</>
-                                        ))
-                                    }
+                                            ))}
+                                            {
+                                                fPlace.map((item, index) =>(
+                                                    <>
+                                                        {
+                                                            item?.row === 3 ?
+                                                                <>
+                                                                    <button
+                                                                        disabled={item?.status === 1 ? true : false}
+                                                                        className={item.range === 1 ? " range-1 " : item.range === 2 ? " range-2 " : item.range === 3 ? " range-3 " :  item.range === 4 ? " range-4 "  : ""}
+                                                                        onClick={() => selectPlace(item)}>{item.number}
 
-                                </div>
+                                                                        <span className="my_content p-3 justify-content-center">
+                                                                    <span className="row   text-center  mt-3 ">
+                                                                        Ряд:
+                                                                        {" " + item?.block_name}
+                                                                    </span>
+                                                                    <span className="row mt-3   ">
+                                                                         Дата: {" " + item?.event_date}
+                                                                    </span>
+                                                                    <span className="row mt-3">
+                                                                       Время  {" " + item?.event_time?.slice(0, 5)}
+                                                                    </span>
+                                                                    <span className="row mt-3">
+                                                                        Цена  {" " + item?.price}
+                                                                    </span>
+                                                                </span>
+                                                                    </button>
 
-                                <div className="frows">
-                                    {fPlace.filter(item => item.row === 2).map(item =>(
-                                        <span className="count-row">
+                                                                </>
+                                                                : ""
+                                                        }</>
+                                                ))
+                                            }
+
+                                        </div>
+
+                                        <div className="frows">
+                                            {fPlace.filter(item => item.row === 2).map(item =>(
+                                                <span className="count-row">
                                            2
                                       </span>
-                                    ))}
-                                    {
-                                        fPlace.map((item, index) =>(
-                                            <>
-                                                {
-                                                    item?.row === 2 ?
-                                                        <button
-                                                            disabled={item.status === 1 ? true : false}
-                                                            className={item.range === 1 ? " range-1 " : item.range === 2 ? " range-2 " : item.range === 3 ? " range-3 " :  item.range === 4 ? " range-4 "  : ""}
-                                                            onClick={() => selectPlace(item)}>{item.number}</button>
-                                                        : ""
-                                                }</>
-                                        ))
-                                    }
+                                            ))}
+                                            {
+                                                fPlace.map((item, index) =>(
+                                                    <>
+                                                        {
+                                                            item?.row === 2 ?
+                                                                <>
+                                                                    <button
+                                                                        disabled={item?.status === 1 ? true : false}
+                                                                        className={item.range === 1 ? " range-1 " : item.range === 2 ? " range-2 " : item.range === 3 ? " range-3 " :  item.range === 4 ? " range-4 "  : ""}
+                                                                        onClick={() => selectPlace(item)}>{item.number}
 
-                                </div>
-                               <div className="frows">
-                                   {fPlace.filter(item => item.row === 1).map(item =>(
-                                       <span className="count-row">
+                                                                        <span className="my_content p-3 justify-content-center">
+                                                                    <span className="row   text-center  mt-3 ">
+                                                                        Ряд:
+                                                                        {" " + item?.block_name}
+                                                                    </span>
+                                                                    <span className="row mt-3   ">
+                                                                         Дата: {" " + item?.event_date}
+                                                                    </span>
+                                                                    <span className="row mt-3">
+                                                                       Время  {" " + item?.event_time?.slice(0, 5)}
+                                                                    </span>
+                                                                    <span className="row mt-3">
+                                                                        Цена  {" " + item?.price}
+                                                                    </span>
+                                                                </span>
+                                                                    </button>
+
+                                                                </>
+                                                                : ""
+                                                        }</>
+                                                ))
+                                            }
+
+                                        </div>
+                                        <div className="frows">
+                                            {fPlace.filter(item => item.row === 1).map(item =>(
+                                                <span className="count-row">
                                            1
                                       </span>
-                                   ))}
-                                   {
-                                       fPlace?.map((item, index) =>(
-                                           <>
-                                               {
-                                                   item.row === 1 ?
-                                                       <button
-                                                           disabled={item.status === 1 ? true : false}
-                                                           className={item.range === 1 ? " range-1 " : item.range === 2 ? " range-2 " : item.range === 3 ? " range-3 " :  item.range === 4 ? " range-4 "  : ""}
-                                                           onClick={() => selectPlace(item)}>{item.number}</button>
-                                                   :
-                                                   ""
-                                               }
-                                                </>
-                                       ))
-                                   }
+                                            ))}
+                                            {
+                                                fPlace?.map((item, index) =>(
+                                                    <>
+                                                        {
+                                                            item.row === 1 ?
+                                                                <>
+                                                                    <button
+                                                                        disabled={item?.status === 1 ? true : false}
+                                                                        className={item.range === 1 ? " range-1 " : item.range === 2 ? " range-2 " : item.range === 3 ? " range-3 " :  item.range === 4 ? " range-4 "  : ""}
+                                                                        onClick={() => selectPlace(item)}>{item.number}
 
-                               </div>
-                            </div>
+                                                                        <span className="my_content p-3 justify-content-center">
+                                                                    <span className="row   text-center  mt-3 ">
+                                                                        Ряд:
+                                                                        {" " + item?.block_name}
+                                                                    </span>
+                                                                    <span className="row mt-3   ">
+                                                                         Дата: {" " + item?.event_date}
+                                                                    </span>
+                                                                    <span className="row mt-3">
+                                                                       Время  {" " + item?.event_time?.slice(0, 5)}
+                                                                    </span>
+                                                                    <span className="row mt-3">
+                                                                        Цена  {" " + item?.price}
+                                                                    </span>
+                                                                </span>
+                                                                    </button>
+
+                                                                </>
+                                                                :
+                                                                ""
+                                                        }
+                                                    </>
+                                                ))
+                                            }
+
+                                        </div>
+                                    </div>
+                                    :
+                                    ""
+                            }
+
 
 
                             <p className="text-black_dark fw-bold fs-38 col mb-lg-0 mb-4">Описание</p>

@@ -7,8 +7,8 @@
     fill: #8EC8FF !important;
 }
 .my-seals{
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: 150px;
+    padding-bottom: 150px;
     background: #F1F1F1;
 }
 .my-seals div{
@@ -193,7 +193,7 @@ button[disabled]{
     padding-bottom: 10px;
 }
 .right-sidebar .sendPay{
-    position: fixed;
+    position: sticky;
     width: 100%;
     bottom: 0;
     left: 0;
@@ -204,6 +204,9 @@ button[disabled]{
     right: 0;
     background-color: #fff;
     color: #3D37F1 !important
+}
+.titles{
+    font-weight: bold;
 }
 .orders .orders-items h3 {
     font-weight: 700;
@@ -218,22 +221,56 @@ button[disabled]{
 .orders .orders-items .items-right .col-8{
     font-size: 14px;
 }
-.orders .orders-items  .col-lg-1 button{
+.orders  .eyem img{
+    width: 100%;
+}
+.orders  .eyem, .fdown{
     background: linear-gradient(94.65deg, #387EC1 0.66%, #47A8DF 100%);
-    border-radius: 8px;
+    border-radius: 8px !important;
     border: none;
     width: 40px;
     height: 40px;
+    padding: 7px;
     float: right;
 }
 .orders .orders-items .items-right{
     padding-left: 20px;
 }
+
+.orders .orders-items .items:before {
+    content: "";
+    background-size: 100% 100%;
+    /*background-image: url("../images/Group.png");*/
+    position: absolute;
+    top: 30px;
+    width: 500px;
+    height: 224px;
+    z-index: -1;
+
+    left: 30px;
+}
 .orders .orders-items .items{
     display: flex;
-    background: #FFFFFF;
+    position: relative;
+    z-index: 9999;
+    width: 500px;
+    height: 224px;
+    /*background: transparent;*/
+    /*border: 1px solid #BCC3D0;*/
+    border-radius: 16px;
+    padding: 24px;
+    /*box-shadow: 0 0 50px #ccc;*/
+    background-size: 100% 100%;
+    background-image: url("../images/Vector.png");
+}
+.orders .orders-items .items-2{
+    display: flex;
+    position: relative;
+    z-index: 9999;
+    /*background: transparent;*/
     border: 1px solid #BCC3D0;
     border-radius: 16px;
+    margin-top: 20px;
     padding: 24px;
 }
 .orders .orders-items .items{

@@ -5,7 +5,7 @@ const Payment = () => {
     return (
         <div className="body-site">
             <div className="bg-snow-2">
-                <div className="header-carousel mt-4 mb-5">
+                <div className="header-carousel pt-4 mb-5">
                     <div className="container">
                         <div className="d-flex justify-content-center align-items-center">
                             <div className="w-lg-60 mt-5 position-relative">

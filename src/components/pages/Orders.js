@@ -42,53 +42,47 @@ const Orders = () => {
                              {
                                  orders?.map((item, index) => (
                                      <>
-                                             <div className="items">
-                                                 <div className="col-lg-4">
-                                                     <img src="/images/items.png" className="w-100" alt="123"/>
-                                                 </div>
-                                                 <div className="col-lg-7 items-right">
-                                                     <h3>Wonder Girls 2010 Wonder Girls World Tour San Francisco</h3>
+                                             <div className="items-2">
+                                                 <div className="col-lg-11 items-right">
                                                      <div className="row">
-                                                         <div className="col-6 ">
-                                                             <div className="row">
-                                                                 <div className="col-4">Кому</div>
-                                                                 <div className="col-8">{item?.first_name}</div>
-                                                             </div>
-                                                             <div className="row">
-                                                                 <div className="col-4">Телефон</div>
-                                                                 <div className="col-8">{item?.phone}</div>
-                                                             </div>
-                                                             <div className="row">
-                                                                 <div className="col-4">Где</div>
-                                                                 <div className="col-8"><span>Alpomish muz saroyi</span>
-                                                                 </div>
-                                                             </div>
+
+                                                         <div className="col-md-12">
+                                                              <h4 className="mb-4">{item?.event?.title}</h4>
                                                          </div>
-                                                         <div className="col-6">
-                                                             <div className="row">
-                                                                 <div className="col-4">Ряд</div>
-                                                                 <div className="col-8">{item?.tickets?.map(item3 => (<span>{item3.block_name + " "}</span>))}
-                                                                 </div>
-                                                             </div>
-                                                             <div className="row">
-                                                                 <div className="col-4">Место</div>
-                                                                 <div className="col-8">{item?.tickets?.map(item3 => (<span>{item3.place + " "}</span>))}
-                                                                 </div>
-                                                             </div>
-                                                             <div className="row">
-                                                                 <div className="col-4">Сумма</div>
-                                                                 <div className="col-8">{item?.summ}</div>
-                                                             </div>
+                                                             <div className="col-md-1  titles">Кому</div>
+                                                             <div className="col-md-2">{item?.first_name}</div>
+
+                                                             <div className="col-md-2 titles">Телефон</div>
+                                                             <div className="col-md-2">{item?.phone}</div>
+
+                                                             <div className="col-md-2 titles">Где</div>
+                                                             <div className="col-md-3"><span>Alpomish muz saroyi</span>
                                                          </div>
                                                      </div>
+                                                     {
+                                                         item?.tickets?.map((item4, index)=>(
+                                                             <div className="row mt-3 ">
+                                                                 <hr/>
+                                                                 <div className="col-md-1 titles">Ряд</div>
+                                                                 <div className="col-md-2">{item4?.block_name }
+                                                                 </div>
+                                                                 <div className="col-md-2 titles">Место</div>
+                                                                 <div className="col-md-2">{item4?.place }
+                                                                 </div>
+                                                                 <div className="col-md-2 titles">Сумма</div>
+                                                                 <div className="col-md-3">{item4?.price}</div>
+                                                             </div>
+                                                         ))
+                                                     }
+
+
                                                  </div>
                                                  <div className="col-lg-1">
-                                                     <button className=" ">
+                                                     <Link className ="eyem" to={"/orders/" + item?.id}>
                                                          <img src="/images/view2.png" className="w-100" alt=""/>
-                                                     </button>
+                                                     </Link>
                                                  </div>
                                              </div>
-
                                      </>
                                  ))
                              }

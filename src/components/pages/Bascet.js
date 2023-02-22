@@ -48,6 +48,7 @@ const Bascet = (props) => {
             "last_name": lastName,
             "phone": phone,
             "email": email,
+            "event_id": props.bascketList[0]?.tickets?.event_id,
             "payment_type": "payme",
             "tickets": tick
 
@@ -100,13 +101,13 @@ const Bascet = (props) => {
            
             
             <div className="bg-snow-2">
-                <div className="header-carousel mt-4 mb-5">
+                <div className="header-carousel pt-4 mb-5">
                     <div className="container">
                         <div className="d-flex justify-content-center align-items-center">
                             <div className="w-lg-85">
                                 <div className="d-flex align-items-center justify-content-between flex-wrap">
                                     <p className="text-black_dark fw-600 lh-24 fs-20">Корзина</p>
-                                    <p className="text-silver_4 fs-14">Корзина будет очищена через: 22:10</p>
+                                    {/*<p className="text-silver_4 fs-14">Корзина будет очищена через: 22:10</p>*/}
                                 </div>
                                 <div className="row align-items-start">
                                     <div className="col-lg-6 mt-lg-0 mt-3">
