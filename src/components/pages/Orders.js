@@ -46,7 +46,7 @@ const Orders = () => {
                                                  <div className="col-lg-11 items-right">
                                                      <div className="row">
 
-                                                         <div className="col-md-12">
+                                                         <div className="col-md-12 d-flex justify-content-between">
                                                               <h4 className="mb-4">{item?.event?.title}</h4>
                                                          </div>
                                                              <div className="col-md-1  titles">Кому</div>

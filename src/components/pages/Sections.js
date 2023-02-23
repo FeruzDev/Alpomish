@@ -26,7 +26,7 @@ const customStyles = {
 const Sections = (props) => {
 
     let subtitle;
-    const [modalIsOpen, setIsOpen] = React.useState(false);
+    const [modalIsOpen, setIsOpen] = useState(false);
     const [first_name, setfirst_name] = useState("")
     const [last_name, setlast_name] = useState("")
     const [phone, setphone] = useState("")

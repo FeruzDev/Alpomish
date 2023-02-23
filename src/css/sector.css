@@ -252,7 +252,7 @@ button[disabled]{
 .orders .orders-items .items{
     display: flex;
     position: relative;
-    z-index: 9999;
+    /*z-index: 0;*/
     width: 500px;
     height: 224px;
     /*background: transparent;*/
@@ -298,4 +298,56 @@ button[disabled]{
 
 .frows button:hover .my_content {
     display: block;
+}
+
+
+
+.print-for{
+
+}
+.forpad{
+    padding-top: 30px;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+.print-for p{
+    font-size: 14px;
+    /*line-height: 14px;*/
+    text-align: justify;
+}
+.print-for h3{
+    padding-left: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: -5px;
+    font-family: sans-serif;
+}
+.print-for h4 {
+    font-size: 16px;
+    padding-left: 0;
+    font-weight: bold;
+
+}
+.exportpdf{
+    position: relative;
+    z-index: 9999999;
+}
+.exportpdfitem{
+    background: #fff;
+
+}
+.download-button-f img{
+    width: 20px;
+    margin-right: 10px;
+}
+.download-button-f{
+    background: #0A075F;
+    color: #fff;
+    border-radius: 6px;
+    padding: 10px 20px;
+
+}
+.close-button-f{
+    background: transparent;
+    border: none;
 }
