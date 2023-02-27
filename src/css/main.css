@@ -260,3 +260,11 @@
   padding: 10px 20px;
 }
 
+.rem{
+  background: none;
+  border: none;
+  padding: 0;
+  position: absolute;
+  right: 20px;
+  top: 30px;
+}

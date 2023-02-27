@@ -37,10 +37,9 @@ const OrdersDetail = (props) => {
         html2pdf().from(element).save();
     }
 
-    const customStyles = {
-
-    };
-
+    function mysum(sum) {
+        return sum.toLocaleString('ru-RU')
+    }
 
     return (
         <div className="orders">
@@ -70,7 +69,7 @@ const OrdersDetail = (props) => {
                                                                 </p>
 
 
-                                                                    <div className="col-8">{item?.price + " UZS"}</div>
+                                                                    <div className="col-8">{mysum(item?.price) + " UZS"}</div>
 
                                                             </div>
 
@@ -136,7 +135,7 @@ const OrdersDetail = (props) => {
                                           <p className="mb-0">Qator</p>
                                           <p className="mb-0">Ряд </p>
                                       </div>
-                                      <h3>22 500.00 UZS</h3>
+                                      <h3>{mysum(999999)} UZS</h3>
                                   </div>
                               </div>
                               <div className="col-4">
@@ -145,7 +144,7 @@ const OrdersDetail = (props) => {
                                           <p className="mb-0">O'rin</p>
                                           <p className="mb-0">Место </p>
                                       </div>
-                                      <h3>22 500.00 UZS</h3>
+                                      <h3>{mysum(9999999)} UZS</h3>
                                   </div>
                               </div>
                               <div className="col-4">
@@ -163,7 +162,7 @@ const OrdersDetail = (props) => {
                                   <div className="col-md-12  ">
                                       <p className="mb-0">Chipta narxi</p>
                                       <p className="mb-0">Цена билета</p>
-                                      <h4>22 500.00 UZS</h4>
+                                      <h4>{mysum(9999999)} UZS</h4>
                                   </div>
                               </div>
                               <div className="col-4">

@@ -72,7 +72,9 @@ const Bascet = (props) => {
 
 
     }
-
+    function mysum(sum) {
+        return sum.toLocaleString('ru-RU')
+    }
     function convertDate(unixDate) {
         const d = new Date(unixDate * 1000);
         const day = d.toLocaleString(d.getDate())
@@ -82,7 +84,22 @@ const Bascet = (props) => {
     }
 
 
+    const remove =(id)=>{
+        axios.post(API_PATH + "basket/delete-ticket", {"ticket_id": id},  {headers: {Authorization: "Bearer " + localStorage.getItem("alpToken")}})
+            .then(res =>{
+                props.getBascketList()
 
+            })
+    }
+    let dl = []
+    const deleteAll =(id)=>{
+          props.bascketList.map(item=> {dl.push(item.ticket_id)})
+        axios.post(API_PATH + "basket/delete-all", {"tickets": dl}, {headers: {Authorization: "Bearer " + localStorage.getItem("alpToken")}})
+            .then(res =>{
+                props.getBascketList()
+
+            })
+    }
     useEffect(()=>{
         props.getBascketList()
         summaZ()
@@ -106,16 +123,20 @@ const Bascet = (props) => {
                         <div className="d-flex justify-content-center align-items-center">
                             <div className="w-lg-85">
                                 <div className="d-flex align-items-center justify-content-between flex-wrap">
-                                    <p className="text-black_dark fw-600 lh-24 fs-20">Корзина</p>
+                                    <p className="text-black_dark fw-600 lh-24 fs-20 "><span>Корзина</span> </p>
                                     {/*<p className="text-silver_4 fs-14">Корзина будет очищена через: 22:10</p>*/}
                                 </div>
+                                <button className="btn bg-transparent text-danger focus-none p-0 mb-3 d-block" onClick={() => deleteAll()}  >Очистить все</button>
                                 <div className="row align-items-start">
                                     <div className="col-lg-6 mt-lg-0 mt-3">
                                         {
                                             props.bascketList?.map((item, index) =>(
-                                                <div className="row bilet2 position-relative m-0 justify-content-between mt-5">
+                                                <div className="row bilet2 position-relative m-0 justify-content-between mb-4">
                                                     <div className="col-xxl-7 col-md-7 col-sm-8 col-7 py-3 d-flex flex-column justify-content-between">
                                                         <div className>
+                                                            <button onClick={() => remove(item.ticket_id)} className="rem">
+                                                                <img src="/images/trash.png" alt=""/>
+                                                            </button>
                                                             <p className="fw-600 fs-xl-20 fs-lg-14 fs-sm-28 fs-14 text-black_dark mb-sm-2 mb-0">
                                                                 Концерт Сплин</p>
                                                             <p className="fs-xl-14 fs-lg-10 fs-sm-12 fs-10 text-black_dark mb-sm-2 mb-0">
@@ -125,7 +146,7 @@ const Bascet = (props) => {
                                                             <p className="fs-xl-14 fs-lg-10 fs-sm-12 fs-10 text-black_dark mb-sm-2 mb-0">Ряд {item?.tickets?.block_name}
                                                                 / Место {item?.tickets?.place}</p>
                                                         </div>
-                                                        <p className="fw-bold fs-xl-28 fs-lg-14 fs-sm-28 fs-14 text-black_dark mb-0 ">{item?.tickets?.price}
+                                                        <p className="fw-bold fs-xl-28 fs-lg-14 fs-sm-28 fs-14 text-black_dark mb-0 ">{mysum(item?.tickets?.price)}
                                                             <span className="text-blue font-DM"> UZS</span>
                                                         </p>
                                                     </div>
@@ -141,7 +162,7 @@ const Bascet = (props) => {
                                             </div>
                                             <div className="d-flex align-items-center py-2 border-bottom">
                                                 <p className="mb-0 text-silver_3 w-50">Цена билета</p>
-                                                <p className="mb-0 text-silver_3">{summa} UZS</p>
+                                                <p className="mb-0 text-silver_3">{mysum(summa)} UZS</p>
                                             </div>
                                             {/*<div className="d-flex align-items-center py-2 border-bottom">*/}
                                             {/*    <p className="mb-0 text-silver_3 w-50">Сервисный сбор</p>*/}
@@ -149,7 +170,7 @@ const Bascet = (props) => {
                                             {/*</div>*/}
                                             <div className="d-flex align-items-center mt-2">
                                                 <p className="mb-0 text-black_small fw-600 w-50">Итого к оплате</p>
-                                                <p className="mb-0 text-black_small fw-600">{summa} UZS</p>
+                                                <p className="mb-0 text-black_small fw-600">{mysum(summa)} UZS</p>
                                             </div>
                                         </div>
                                         <div className="mt-5">
