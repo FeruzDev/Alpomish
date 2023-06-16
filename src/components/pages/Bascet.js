@@ -22,7 +22,6 @@ const Bascet = (props) => {
     const summaZ =()=>{
         axios.get(API_PATH + "basket", {headers: {Authorization: "Bearer " + localStorage.getItem("alpToken")}})
             .then(res => {
-                console.log(res.data)
                 setSumma(res.data.reduce(
                     (prevValue, currentValue) => prevValue + currentValue.tickets?.price,
                     0
@@ -42,7 +41,6 @@ const Bascet = (props) => {
             // setTick(...tick, item.id)
             tick.push(item?.tickets?.id)
         })
-        console.log(tick)
         axios.post(API_PATH + "order/add", {
             "first_name": firstName,
             "last_name": lastName,
@@ -78,7 +76,6 @@ const Bascet = (props) => {
     function convertDate(unixDate) {
         const d = new Date(unixDate * 1000);
         const day = d.toLocaleString(d.getDate())
-        console.log(day)
 
         return(day);
     }
@@ -103,7 +100,6 @@ const Bascet = (props) => {
     useEffect(()=>{
         props.getBascketList()
         summaZ()
-        console.log(Date.now())
         axios.get(API_PATH + "user-profile", {headers: {Authorization: "Bearer " + localStorage.getItem("alpToken")}})
             .then(res => {
                 setFirstName(res.data?.data?.first_name)
@@ -126,7 +122,12 @@ const Bascet = (props) => {
                                     <p className="text-black_dark fw-600 lh-24 fs-20 "><span>Корзина</span> </p>
                                     {/*<p className="text-silver_4 fs-14">Корзина будет очищена через: 22:10</p>*/}
                                 </div>
-                                <button className="btn bg-transparent text-danger focus-none p-0 mb-3 d-block" onClick={() => deleteAll()}  >Очистить все</button>
+                                {
+                                    props.bascketList.length > 0 ?
+                                        <button className="btn bg-transparent text-danger focus-none p-0 mb-3 d-block" onClick={() => deleteAll()}  >Очистить все</button>
+                                        :
+                                        ""
+                                }
                                 <div className="row align-items-start">
                                     <div className="col-lg-6 mt-lg-0 mt-3">
                                         {

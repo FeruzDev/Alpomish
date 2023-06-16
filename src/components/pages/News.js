@@ -25,8 +25,8 @@ const News = (props) => {
                                     <p className="news-card_title">
                                         {item?.title}
                                     </p>
-                                    <p className="news-card_text">
-                                        {item?.desc.length > 100 ? item?.desc.slice(0, 100) + "..." : item?.desc}
+                                    <p className="news-card_text"  dangerouslySetInnerHTML={{__html:  item?.desc?.length > 100 ? item?.desc?.slice(0, 100) + "..." : item?.desc}}>
+
                                     </p>
                                     <p className="news-card_time">12 Март - 16:00
                                         {item?.created_at.slice(8, 10) + " " + monthsRu[Number(item?.created_at?.slice(5, 7))] + " " +

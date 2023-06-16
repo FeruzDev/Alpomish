@@ -22,6 +22,7 @@ const customStyles = {
     },
 };
 
+const url = "https://muzsaroy.bgsoft.uz/storage/"
 
 const Sections = (props) => {
 
@@ -128,7 +129,7 @@ const Sections = (props) => {
                                             </div>
                                             <div className="col-lg-4">
                                                   <button onClick={() => openModal(item.id)} className="btn border-0 bg-transparent focus-none">
-                                                      <img src={  item?.img_url} />
+                                                      <img src={ url +  item?.img_url} />
                                                   </button>
                                                 {/*<div className="card-3d mt-5" style={{background: 'linear-gradient(99.29deg, #E4048F 0.94%, #7A1B86 100%)'}} data-bs-toggle="modal" data-bs-target="#exampleModal">*/}
                                                 {/*    <div className="card-3d-img position-relative d-flex align-items-center w-lg-30">*/}

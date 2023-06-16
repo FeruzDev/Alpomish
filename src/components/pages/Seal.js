@@ -30,9 +30,6 @@ const Seal = (props) => {
         }, AUTH)
             .then(res =>{
                 setFPlace(res.data.count_place)
-                console.log(res)
-                console.log(res.data)
-                console.log(res.data.count_place)
             })
     }
     const selectPlace = (item) => {
@@ -45,7 +42,6 @@ const Seal = (props) => {
             // "event_time": item?.event_time
         }, {headers: {Authorization: "Bearer " + localStorage.getItem("alpToken")}})
             .then(res => {
-                console.log(res.data.exists)
                 if (res.data.exists === 0) {
                     axios.post(API_PATH + "basket/add", {
                         "ticket_id": item?.id,
@@ -203,7 +199,7 @@ const Seal = (props) => {
                                                             item?.row === 7 ?
                                                                 <>
                                                                     <button
-                                                                        disabled={item?.status === 1 ? true : false}
+                                                                        disabled={item?.status === 0 ? false : true}
                                                                         className={item.range === 1 ? " range-1 " : item.range === 2 ? " range-2 " : item.range === 3 ? " range-3 " :  item.range === 4 ? " range-4 "  : ""}
                                                                         onClick={() => selectPlace(item)}>{item.number}
 

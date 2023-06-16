@@ -13,7 +13,6 @@ const View = (props) => {
     const history = useHistory()
 
     const feruzjalilov = (value) => {
-        console.log(value)
         localStorage.setItem("block_name", value)
         history.push("/events/detail/"+ params.id + "/seal")
 
@@ -39,14 +38,10 @@ const View = (props) => {
                 localStorage.setItem("eventDate", res.data.eventDate[0]?.eventDate)
                 localStorage.setItem("eventTime", res.data.eventDate[0]?.eventTime)
                 localStorage.setItem("eventDateStatus", res.data.eventDate[0]?.status)
-                console.log( res.data);
             })
     }
     useEffect(() => {
         getDetail()
-        console.log(queryParameters)
-        console.log(type)
-        console.log(name)
     }, [])
     return (
         <div className="body-site">

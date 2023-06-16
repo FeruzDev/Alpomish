@@ -7,6 +7,7 @@ import MyNavbar from "../MyNavbar";
 const NewsDetail = (props) => {
     useEffect(() =>{
         props.getNewsDetail()
+        console.log(props.newsItem)
     }, [])
     return (
         <div className="body-site">
@@ -18,8 +19,9 @@ const NewsDetail = (props) => {
                         <div className="col-lg-7">
                             <p className="fw-bold fs-40 text-blue_1">{props.newsItem?.title}</p>
                             <img src={props.newsItem?.image} className="w-100 rounded-20 mb-4" alt="news" />
-                            <p className="fs-20 text-black_dark">
-                                {props.newsItem?.short_text}
+                            <p  className="fs-20 text-black_dark"
+                                 dangerouslySetInnerHTML={{__html: props.newsItem?.desc}}
+                            >
                             </p>
                         </div>
                     </div>

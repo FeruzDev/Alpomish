@@ -14,7 +14,6 @@ export function getEvents(){
     return function (dispatch){
         axios.get(API_PATH + "event")
             .then(res => {
-                console.log(res)
                 dispatch(updateState({eventsList: res.data}));
 
             })
@@ -37,7 +36,6 @@ export function getNews(){
     return function (dispatch){
         axios.get(API_PATH + "news")
             .then(res => {
-                console.log(res)
                 dispatch(updateState({newsList: res.data}));
 
             })
@@ -50,7 +48,6 @@ export function getNewsDetail(id){
         const last  =  url.substr(url.lastIndexOf('/') + 1) ;
         axios.get(API_PATH + "news/" +  last)
             .then(res => {
-                console.log(last)
                 dispatch(updateState({newsItem: res.data}));
 
             })
@@ -62,7 +59,6 @@ export function getSections(){
     return function (dispatch){
         axios.get(API_PATH + "katok-service")
             .then(res => {
-                console.log(res.data.data)
                 dispatch(updateState({sectionList: res.data.data}));
 
             })
@@ -72,7 +68,6 @@ export function getBascketList(){
     return function (dispatch){
         axios.get(API_PATH + "basket", {headers: {Authorization: "Bearer " + localStorage.getItem("alpToken")}})
             .then(res => {
-                console.log(res.data)
                 dispatch(updateState({bascketList: res.data}));
 
             })
